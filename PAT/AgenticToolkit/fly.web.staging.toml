@@ -1,0 +1,45 @@
+# Fly.io config for pat-web — Anam.ai avatar frontend + Hono backend.
+#
+# This config lives at repo root (vs the legacy pat-web/fly.toml) so the
+# Docker build context spans both pat-web/ and the sibling scenarios/
+# workspace package — same pattern as fly.nanoclaw.toml. See
+# Dockerfile.web for context-spanning rationale.
+#
+# Public edge: HTTPS on 443 → internal port 8788 (Hono).
+# Server proxies to pat-nanoclaw's anam-web channel adapter via 6PN:
+#   NANOCLAW_ANAM_WEB_URL = http://pat-nanoclaw-staging.internal:8766
+#
+# Deploy from repo root:
+#   FLY_API_TOKEN="$(grep ^FLY_DEPLOY_TOKEN_PAT_WEB= .env.agent | cut -d= -f2-)" \
+#     flyctl deploy -c fly.web.toml --remote-only
+
+app             = "pat-web-staging"
+primary_region  = "sjc"
+kill_signal     = "SIGTERM"
+kill_timeout    = "10s"
+
+[build]
+  dockerfile = "Dockerfile.web"
+
+[env]
+  PORT                  = "8788"
+  NANOCLAW_ANAM_WEB_URL = "http://pat-nanoclaw-staging.internal:8766"
+  NODE_ENV              = "production"
+
+[http_service]
+  internal_port      = 8788
+  force_https        = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "15s"
+    timeout  = "5s"
+    grace_period = "10s"
+    method   = "GET"
+    path     = "/healthz"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory_mb = 256

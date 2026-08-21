@@ -1,0 +1,56 @@
+# Commit history (flattened archive)
+
+This directory was flattened to a single snapshot for public release.
+Original commit subjects preserved below for provenance (secrets/PII redacted).
+
+- `92bd779` 2026-06-25 — Badge: select-none so pills aren't selectable text (normal cursor, not I-beam)
+- `f8355f8` 2026-06-25 — Response view: enumerate skipped questions
+- `30bc952` 2026-06-24 — Quality model: per-answer `qualities` JSONB + derived response rollups
+- `36a7816` 2026-06-24 — Admin: "Rejected" pill → yellow "Low Quality" (short OR AI-suspected)
+- `41bfd1f` 2026-06-23 — CLAUDE.md: update styling section for the unified theme (admin.css/ps-* removed)
+- `b993a0a` 2026-06-23 — Survey binding: import (prepare) raw forms instead of mutating them
+- `e231c93` 2026-06-23 — Admin: keep bound-form names fresh
+- `a5cccf6` 2026-06-23 — A11y: brighten muted-foreground for contrast
+- `acd7702` 2026-06-23 — Delete experiment: type-to-confirm, cascade-aware
+- `548d5aa` 2026-06-23 — Run menu: shareable link | Prolific draft (unpublished)
+- `0413b7b` 2026-06-23 — Unify theming: one global shadcn theme for public + admin
+- `d596b9f` 2026-06-23 — Fix transparent dialog/popover backgrounds in admin
+- `fe2c7ea` 2026-06-23 — Fix multi-select answers truncated to first choice in reads/export
+- `ee66dae` 2026-06-23 — Survey binding: bind a Typeform form to an experiment (in-app, auto-webhook)
+- `08cb624` 2026-06-23 — Admin mutations → React 19 Server Functions
+- `586d81c` 2026-06-22 — Minimal public root: just 'The Test', no operator branding
+- `104d517` 2026-06-22 — Harden admin auth-bypass: provably inert in production
+- `456f3d5` 2026-06-22 — Render experiment-rename field as the heading itself + red cancel
+- `f87daca` 2026-06-22 — Add inline experiment rename (first admin write/edit)
+- `7001e7b` 2026-06-22 — Add inline voice player to Live Results feed
+- `91d9854` 2026-06-22 — Use canonical Palisade logo mark in admin sidebar
+- `60199c1` 2026-06-22 — Questions view, Science Green theming, mini-player + short-code polish
+- `4127e12` 2026-06-22 — Admin: stock shadcn theme, first-class answers, live results, polish
+- `9669460` 2026-06-22 — Admin: migrate to shadcn/ui + Tailwind (brand-themed), sidebar-07 shell
+- `6c35515` 2026-06-22 — Admin: CSV export (experiment + cohort) and prominent New-cohort-link
+- `34ec8cd` 2026-06-22 — Admin: hierarchical drill-down dashboard with deep links
+- `c2a681b` 2026-06-22 — Voice recordings: track provenance, fix em-dash false-positive on transcripts
+- `4461d28` 2026-06-22 — Redeploy: pick up BLOB_READ_WRITE_TOKEN (voice recording Blob store now connected)
+- `f75c608` 2026-06-22 — Persist voice recordings to private Vercel Blob
+- `675fe7d` 2026-06-18 — Voice: pull audio_url from Responses API, not the (empty) webhook payload
+- `5a33596` 2026-06-18 — Completed: treat unsubstituted Typeform recall tokens as absent
+- `3e7f3be` 2026-06-18 — Voice transcription: run synchronously in webhook (after() wasn't firing in prod)
+- `6954a2a` 2026-06-18 — Completed: only mention Prolific when a real SESSION_ID is present
+- `14c1c57` 2026-06-18 — Redeploy to pick up ELEVENLABS_API_KEY (voice transcription)
+- `2f29491` 2026-06-18 — Voice: re-transcribe with ElevenLabs in webhook; /completed always-redirects
+- `b4b6ab2` 2026-06-18 — Parse multi_format (voice) answers: transcript -> answer_text
+- `d6872e2` 2026-06-18 — Narrow AI-suspected signal to em-dash only
+- `4a711b7` 2026-06-18 — Flag AI-suspected responses via smart-punctuation at ingest
+- `1b23be7` 2026-06-18 — Persist is_rejected on survey_response
+- `a009575` 2026-06-18 — Gate: reject freeform under 8 words (simpler flat rule)
+- `fd1347e` 2026-06-18 — Reject low-effort submissions; require 2-6 sentences on freeform
+- `221ed73` 2026-06-18 — Brand the app + redesign dashboard; add /completed flow
+- `3e56fea` 2026-06-16 — Enrich browser metadata from Typeform Responses API
+- `8f61fd6` 2026-06-16 — Webhook: completed submission supersedes partial (same token)
+- `0f4f433` 2026-06-16 — Admin: domain-gate page, ordered/striped answers, new-cohort button
+- `214a4dd` 2026-06-16 — Fix webhook 500 on Typeform partial responses (integer overflow)
+- `ae1db49` 2026-06-16 — Add Clerk-gated /admin with live responses table
+- `15a1bbd` 2026-06-16 — Normalize empty-string hidden fields to null
+- `8132854` 2026-06-16 — Add /g/<short_code> launch redirect (no-login click capture)
+- `b2bf371` 2026-06-16 — Revise to v1 model: experiment > cohort (channel) > responses
+- `c0bab8d` 2026-06-16 — Scaffold the-test-web: Typeform webhook ingest into Neon

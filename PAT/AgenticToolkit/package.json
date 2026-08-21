@@ -1,0 +1,7 @@
+{
+	"scripts": {
+		"dev": "bash scripts/dev.sh",
+		"prod": "bash scripts/prod.sh",
+		"teardown": "bash scripts/teardown.sh"
+	}
+}

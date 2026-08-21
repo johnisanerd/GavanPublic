@@ -1,0 +1,91 @@
+# Fly.io config for pat-signal-rig — multi-account signal-cli front-end
+# used as the "other party" in PAT smoketests.
+#
+# Single process (one image): signal-cli daemon + FastAPI rig spawned by
+# entrypoint.sh. The rig is the only public-facing thing; signal-cli is
+# loopback-only inside the container.
+#
+# State (per-burner identity, prekeys, contact lists, group memberships)
+# lives on the `pat_signal_rig_state` Fly volume mounted at
+# /root/.local/share/signal-cli — same layout signal-cli uses locally
+# (data/accounts.json + data/<hash>/ + data/<hash>.d/).
+#
+# Initial deploy:
+#   1. flyctl apps create pat-signal-rig --org <org>
+#   2. flyctl volumes create pat_signal_rig_state -a pat-signal-rig -r sjc -s 1
+#   3. flyctl secrets set -a pat-signal-rig \
+#        SIGNAL_TEST_RIG_TOKEN=... \
+#        SIGNAL_TEST_RIG_ACCOUNTS=+15550100005,+15550100006
+#   4. scripts/migrate-signal-rig-state.sh +15550100005 +15550100006
+#   5. flyctl deploy --remote-only
+#
+# See README.md "Fly deploy" section for the full walkthrough.
+
+app             = "pat-signal-rig"
+primary_region  = "sjc"            # match other PAT Fly apps for low intra-org latency
+kill_signal     = "SIGTERM"
+kill_timeout    = "20s"            # drain WS connections + signal-cli graceful close
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # Bind the rig to all IPv4 interfaces. `0.0.0.0` (not `::`) so Fly's
+  # edge proxy + tcp health-check can reach it — see entrypoint.sh's
+  # comment for the bindv6only / dual-stack details.
+  SIGNAL_TEST_RIG_BIND = "0.0.0.0"
+  SIGNAL_TEST_RIG_PORT = "7585"
+  # SIGNAL_TEST_RIG_TOKEN + SIGNAL_TEST_RIG_ACCOUNTS are Fly secrets.
+
+# signal-cli identity state — must persist across machine restarts so
+# the burner identities survive without re-registering. Volume created
+# once per region with `flyctl volumes create pat_signal_rig_state -a
+# pat-signal-rig -r sjc -s 1`, then seeded by
+# scripts/migrate-signal-rig-state.sh from the local Mac.
+[[mounts]]
+  source      = "pat_signal_rig_state"
+  destination = "/root/.local/share/signal-cli"
+
+# Public service for the rig's WS + REST. Bearer-token auth is the only
+# thing keeping unrelated traffic out — the token is the load-bearing
+# secret. (The signal-cli daemon on :7583 is NOT exposed; only the rig
+# on :7585 is public.)
+[[services]]
+  protocol      = "tcp"
+  internal_port = 7585
+  auto_stop_machines  = "off"   # WS clients can't reconnect a cold-started machine fast enough
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+
+  [[services.ports]]
+    # Redirect plain HTTP → HTTPS at the edge. force_https only makes
+    # sense on a non-TLS port; if it sits on the 443 block alongside
+    # the tls handler, Fly rejects the config.
+    port        = 80
+    handlers    = ["http"]
+    force_https = true
+
+  [services.concurrency]
+    # WS clients are long-lived but cheap (one task per connection).
+    # 50/40 is generous for the smoketest-only use case.
+    type       = "connections"
+    hard_limit = 50
+    soft_limit = 40
+
+  [[services.tcp_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "30s"
+
+# Single VM. signal-cli JAR + JRE + Python venv steady-state RSS is
+# ~250-300MB per account. 512MB covers the two-burner config with
+# headroom; bump if a third burner gets added.
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"

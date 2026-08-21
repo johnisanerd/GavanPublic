@@ -1,0 +1,53 @@
+{
+  "name": "@agentic-toolkit/realtime",
+  "version": "0.0.1",
+  "description": "Front-mind / back-mind realtime library for the Palisade Agentic Toolkit. Implements the design doc at ../docs/front-mind-design.md.",
+  "type": "module",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./nanoclaw-client": {
+      "types": "./dist/nanoclaw-client.d.ts",
+      "import": "./dist/nanoclaw-client.js"
+    },
+    "./state": {
+      "types": "./dist/state.d.ts",
+      "import": "./dist/state.js"
+    },
+    "./narration": {
+      "types": "./dist/narration.d.ts",
+      "import": "./dist/narration.js"
+    },
+    "./timeline": {
+      "types": "./dist/timeline/index.d.ts",
+      "import": "./dist/timeline/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run --dir src --exclude='**/*.live.test.ts'",
+    "test:live": "vitest run src/narration.live.test.ts src/request-layer.live.test.ts",
+    "test:all": "vitest run --dir src"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@cerebras/cerebras_cloud_sdk": "1.64.1",
+    "better-sqlite3": "^11.7.2",
+    "undici": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.19.17",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
+  }
+}

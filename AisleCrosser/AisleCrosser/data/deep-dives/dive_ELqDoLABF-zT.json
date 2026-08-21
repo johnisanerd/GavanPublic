@@ -1,0 +1,189 @@
+{
+  "id": "dive_ELqDoLABF-zT",
+  "researchId": "res_8TV93DmRK3Nd",
+  "recommendationId": "rec_OpZf1FPOG5iZ",
+  "connectionIndex": 0,
+  "connectionType": "legal_background",
+  "connectionDetail": "Both Warren (Rutgers Law, Harvard Law professor) and Graham (University of South Carolina Law, JAG Corps attorney) built careers grounded in legal practice before entering politics. Both approach legislation through a statutory and legal-framework lens.",
+  "targetLegislatorName": "Lindsey Graham",
+  "initiativeTitle": "Bipartisan Tech Regulation",
+  "status": "completed",
+  "results": [],
+  "toolCalls": [
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Elizabeth Warren Lindsey Graham bipartisan technology bill legislation"
+      },
+      "timestamp": "2026-03-24T22:28:29.729Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Lindsey Graham Elizabeth Warren bipartisan tech regulation legal framework senators"
+      },
+      "timestamp": "2026-03-24T22:28:29.729Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Lindsey Graham tech regulation legislation EARN IT Act KOSA legal background"
+      },
+      "timestamp": "2026-03-24T22:28:29.729Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.nytimes.com/2023/07/27/opinion/lindsey-graham-elizabeth-warren-big-tech-regulation.html"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.warren.senate.gov/newsroom/press-releases/warren-graham-unveil-bipartisan-bill-to-rein-in-big-tech"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Graham Warren AICOA Digital Consumer Protection Commission Act DCPCA 2023"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.lgraham.senate.gov/public/index.cfm/2023/7/graham-warren-introduce-bill-to-hold-big-tech-accountable-and-put-americans-back-in-control-of-their-online-data"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.congress.gov/bill/118th-congress/senate-bill/2597"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Lindsey Graham legal background JAG attorney Section 230 reform tech regulation Senate Judiciary"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.judiciary.senate.gov/press/dem/releases/durbin-graham-introduce-bill-to-sunset-section-230-immunity-for-tech-companies-protect-americans-online"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.judiciary.senate.gov/press/rep/releases/graham-blumenthal-reintroduce-earn-it-act"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Elizabeth Warren Harvard Law professor legal framework antitrust tech regulation \"law professor\" approach legislation"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.newyorker.com/business/currency/how-elizabeth-warren-came-up-with-a-plan-to-break-up-big-tech",
+        "max_chars": 5000
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Graham Warren \"Digital Consumer Protection Commission\" legal basis statutory framework antitrust Clayton Act"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Lindsey Graham Senate Judiciary Committee tech regulation hearing 2023 2024 legal framework liability"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.judiciary.senate.gov/press/releases/durbin-graham-announce-january-2024-hearing-with-five-big-tech-ceos-on-their-failure-to-protect-children-online"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.warren.senate.gov/imo/media/doc/DCPC%20Section-By-Section.pdf",
+        "max_chars": 5000
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Lindsey Graham JAG Corps military attorney legal career before Senate tech regulation approach"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://en.wikipedia.org/wiki/Lindsey_Graham",
+        "max_chars": 5000
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Reuters \"Warren Graham\" bipartisan anti-Big Tech push 2023 details antitrust FTC DOJ commission"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Graham Warren DCPCA \"Digital Consumer Protection Commission\" legal scholars reaction statutory analysis 2023"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.reuters.com/technology/us-senators-warren-graham-kick-off-bipartisan-anti-big-tech-push-2023-07-27/",
+        "max_chars": 5000
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://techliberation.com/2023/08/10/america-does-not-need-a-digital-consumer-protection-commission/",
+        "max_chars": 5000
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Elizabeth Warren Harvard Law bankruptcy professor legal background senator legislation \"law professor\" policymaking approach"
+      },
+      "timestamp": "2026-03-24T22:28:29.730Z"
+    }
+  ],
+  "startedAt": "2026-03-24T22:27:41.364Z",
+  "completedAt": "2026-03-24T22:28:29.730Z"
+}

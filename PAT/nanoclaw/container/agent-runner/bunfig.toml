@@ -1,0 +1,9 @@
+# PAT (S2, supply-chain): a soak window so that a `bun install` which BUMPS a dep
+# in this tree can't pull a brand-new (possibly compromised) release with zero
+# aging. This tree processes every CRM tool result and carries the injected auth
+# header, so a poisoned patch release is a silent-exfil surface. The Docker build
+# uses `bun install --frozen-lockfile` and is UNAFFECTED (it resolves exactly from
+# bun.lock) — this only gates a non-frozen install (a developer/CI dep bump).
+# Mirrors the host pnpm `minimumReleaseAge`.
+[install]
+minimumReleaseAge = 604800  # 7 days, in seconds

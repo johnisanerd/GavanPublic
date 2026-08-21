@@ -1,0 +1,525 @@
+# Commit history (flattened archive)
+
+Flattened to a single snapshot for release; subjects preserved for provenance (redacted).
+
+- `992f13a` 2026-07-16 — Snapshot of in-flight working-tree changes before machine migration
+- `21af907` 2026-07-07 — Operator decisions: wire BackMindState, delete+convert smoke purge, full-sequence GO
+- `fccb2f2` 2026-07-07 — sprint: record pat_raw match_all fix + stray scaffold adjudication
+- `6967e50` 2026-07-07 — AGENTS.md: fix pat_raw recipe (no ts column) + note match_all works there
+- `e9f1cc8` 2026-07-07 — Fold repo-review-remaining.md into the arch-review program
+- `2741036` 2026-07-07 — Architecture review 2026-07-07: 3-agent fan-out, 34 findings, tiered program
+- `a90899c` 2026-07-07 — plans: commit the original 2026-07-01 repo-review findings doc (was untracked)
+- `403253f` 2026-07-07 — bump nanoclaw: cold-contact approval card + verified removal + bunfig release-age
+- `f296214` 2026-07-07 — Voice fix wave: two-deploy sequencing + implementation shapes
+- `62db0c0` 2026-07-07 — pat-web: gate the public abuse endpoints behind a dedicated PAT_WEB_TOKEN (W1/W2/W5-W7)
+- `8ba87ac` 2026-07-07 — sprint: fold the 2026-07-07 pre-CRM security fixes + prod selective-flip into #9 prod promotion
+- `b1f9a12` 2026-07-07 — sprint/current: point at the two live plans + record verified prod security state
+- `90a4012` 2026-07-07 — plans: durable list of remaining NON-security repo-review work (context-wall insurance)
+- `3ebfdaa` 2026-07-07 — backlog: supply-chain pinning follow-up (staging-verified) + /update-pins skill idea
+- `09dfdce` 2026-07-07 — bump nanoclaw: rebind guard + admin-token fail-closed + stdio MCP off-by-default
+- `691c2cc` 2026-07-07 — pat-frontend: clickjacking + referrer hardening on the operator dashboard 
+- `9100fe4` 2026-07-07 — security(pre-crm): fold in 2026-07-07 operator decisions on the undecided items
+- `ccc45d8` 2026-07-07 — security: record operator decisions on the pre-CRM red-team (plain-English ledger)
+- `9c286aa` 2026-07-06 — security: record the sensitive-action Slack alerting idea (detective control)
+- `e303cab` 2026-07-06 — Yellow (a) constraint: no silence — reword/generic instead
+- `af25ab3` 2026-07-06 — security review: internal notes
+- `f21b98e` 2026-07-06 — Fix-wave yellows: name all three duplication shapes as one story
+- `0c0097a` 2026-07-06 — bump nanoclaw: admin 6PN-only bind 
+- `d665d4c` 2026-07-06 — deploy: drop PAT_ADMIN_BIND_HOST=:: so admin binds 6PN-only 
+- `35b8f56` 2026-07-06 — Fix forward-tag spec in the story: invokeText field_rules govern content
+- `0af47b9` 2026-07-06 — Disposition-tag grammar finalized: content-between-tags for both
+- `2a47c28` 2026-07-06 — Fix-wave design: banter disposition tag replaces the request-layer guesser
+- `bf1defb` 2026-07-06 — bump nanoclaw: admin log-serve date-param path-traversal validation
+- `deebd2b` 2026-07-06 — security: scope viewer-token DB reads + slugify scenario slug + record surface
+- `13eb223` 2026-07-06 — bump nanoclaw: review fixes (realtime-utterance thread_id, doc-stub edge)
+- `f1282d8` 2026-07-06 — transports: review fix  — cancel in-flight /inbound posts before /call-ended
+- `c7eefb0` 2026-07-06 — realtime: review fixes — circuit breaker now actually opens (B1) + thread_id plumb
+- `3a0287b` 2026-07-06 — bump nanoclaw: signal send-failure retry + doc/video stub + pairing/self-mod security
+- `4898823` 2026-07-06 — transports: unblock barge-in (fire-and-forget /inbound) + stop cross-call audio leak
+- `760cf2c` 2026-07-06 — realtime: half-open circuit breaker + narrator repetition/backoff fixes
+- `155e433` 2026-07-06 — repo cleanup (review §1): drop dead deploy/bench debris, fix ws dep + gitignore
+- `558137d` 2026-07-06 — Sprint grooming: continuous-flow current.md + 2026-07-06 session record
+- `3c164cc` 2026-07-06 — Smokeskill full-coverage run: skill upgrades + findings (signal SHIP, voice NO-SHIP)
+- `382246d` 2026-07-06 — Smoke-caller pre-auth on the Cartesia voice leg (staging)
+- `3561e36` 2026-07-06 — smoke-call: agentic voice primitives (say / listen / start / hangup)
+- `9d6ef1e` 2026-07-04 — Capture operator directive: voice testing is AGENTIC-FIRST (smokeskill)
+- `37f6c09` 2026-07-04 — KNOWN_ISSUES: voice fix wave live-verified (4 staging calls)
+- `04e2ecd` 2026-07-04 — Voice fix set: audible refusal + continuous-mic smoke + stt.empty-turn observability
+- `ca4b04d` 2026-07-04 — Voice bug: 3-lens fan-out synthesis — two mechanisms, inaudible refusal, prod trap
+- `0f921b4` 2026-07-04 — Rename .agent-secrets -> .env.agent + renormalize AGENTS.md to PAT-only
+- `fa44553` 2026-07-04 — KNOWN_ISSUES: realtime voice "greets but never answers" — root-caused, premise retracted
+- `0987e78` 2026-07-04 — docs: patobs logging is durable (retention infinite) — document the `since` scan-window trap
+- `273d6ad` 2026-07-04 — sprint/KNOWN_ISSUES: compaction prep — interactive smokeskill wave + realtime-voice finding
+- `395cd4a` 2026-07-03 — skill: document both smoke layers (--layer=realtime vs signal) + :8769 tunnel
+- `a297b7c` 2026-07-03 — smoke: read the signal-out capture as the reply on --layer=signal (loop complete)
+- `273f9ed` 2026-07-03 — smoke: artifacts → smoketest/artifacts/ (not the local nanoclaw checkout's data dir)
+- `9f3ed79` 2026-07-03 — smoke: smoke-chat --layer=signal|realtime (drive back-mind directly vs front+back)
+- `a38f65b` 2026-07-03 — observability: turn ON debug on staging (LOG_LEVEL info→debug) so llm.call ships
+- `33be382` 2026-07-03 — docs: correct the llm.call/patobs claim (debug-level; staging ships info+ only)
+- `5e96d5e` 2026-07-03 — smoke: round-2 friction fixes + log the front-mind→back-mind memory-bridge bug
+- `35ca53f` 2026-07-03 — smoke: apply fresh-agent friction fixes (trace --all full text, skill caveats, PAT findings)
+- `fc0adce` 2026-07-03 — smoke: rebuild smoke-chat on the log proxy (fresh-agent friction #1)
+- `962108f` 2026-07-03 — smokeskill: codify in AGENTS.md + make the interactive smoke one continuous context
+- `2c4560f` 2026-07-03 — skill: use npx tsx (pnpm run is broken in smoketest from the lockfile drift)
+- `a057a97` 2026-07-03 — smoke: interactive smoke SKILL (pat-smoke-interactive) + self-loading creds
+- `206cd92` 2026-07-03 — smoke: interactive harness — smoke-chat (drive) + smoke-trace (inspect) + pin bump
+- `bc43802` 2026-07-03 — plans/smoke-coverage: mark log-check + SUITES done, signal-transport parked, SS1 capture path
+- `6d4b14a` 2026-07-03 — smoke: log-check helper + SUITES/--suite selection (smoke-coverage-plan §next-build #1,#3)
+- `0e58c06` 2026-07-03 — sprint: SS1 capture-channel signal-feature smoke SHIPPED + PASSING on staging
+- `eec87dd` 2026-07-03 — smoke: SS1 attachment leg uses a named signal destination (send_file has no cold-contact)
+- `812a6b4` 2026-07-03 — smoke: SS1 signal-sim-outbound (capture-transport feature smoke) + bump nanoclaw pin
+- `6ce71dd` 2026-07-03 — sprint: record Signal feature scenarios + rig-transport-broken pivot to capture channel
+- `91197f6` 2026-07-03 — KNOWN_ISSUES: rig↔staging-PAT signal-cli decrypt — two-sided reset findings + real fix
+- `60b59c3` 2026-07-03 — smoke: drop E164 sender-gate in Signal feature scenarios (UUID-source false-miss)
+- `9ad5bee` 2026-07-03 — smoke: Signal feature scenarios S3/S4/S6 (publish, voice-memo, attachment) + log reaction/edit gap
+- `3521434` 2026-07-03 — AGENTS.md: add rule — re-familiarize with the codebase after a compaction
+- `2ae9be3` 2026-07-03 — sprint: sharpen smoke-runner north-star (memoryless agent → materialize memories into repo)
+- `758db32` 2026-07-03 — sprint: record agentic smoke runner (built+proven) + compaction prep
+- `243a2ba` 2026-07-03 — smoke runner: value flags are --name=value only (space form leaked into test-id list)
+- `6f1e99e` 2026-07-03 — Agentic smoke runner: select by channel/level/SID + emit exact log pointers
+- `3206909` 2026-07-03 — smoke plan v2: promote Signal in build order (staging live); add S11 + R10 staging variant
+- `e23aec2` 2026-07-03 — Plan: smoke-test coverage (rest/call/signal — ~30 paths, quick/thorough, SUITES)
+- `e0cf2ae` 2026-07-03 — sprint: Signal-live-on-staging wave + 3 rough-edge findings; prod Smoke McGee
+- `84429ec` 2026-07-03 — transports staging: add signal process group + volume (mirror prod)
+- `e367117` 2026-07-03 — backlog: cycle staging PAT Signal SIM to a dedicated number (currently shared)
+- `3da7da6` 2026-07-03 — Plan: outbound-messaging model (two send actions + sync/async + hard a2a wrapper)
+- `ed53230` 2026-07-03 — Record cold-contact-send-ungated security finding + fold into directory plan
+- `885b10a` 2026-07-03 — sprint: E2E smoke wave record (3 tiers verified vs staging)
+- `809a486` 2026-07-03 — smoke harness vs deployed staging: streaming-reply vocabulary + call tier
+- `be1e604` 2026-07-03 — smoke: publish-file scenario + generic 'check' step; search_directory plan
+- `e637840` 2026-07-03 — sprint: publish_file shipped + live-proven record
+- `22cb200` 2026-07-03 — publish_file wave: pin + public proxy route + log kinds + PAT_PUBLIC_BASE_URL
+- `e917c1f` 2026-07-03 — Phase 4 COMPLETE on staging: record + doc updates (re-verified)
+- `5101d28` 2026-07-03 — nanoclaw pin → 4bd719a (ncl messaging-groups create NOT NULL fix)
+- `fd48c7b` 2026-07-03 — Phase 4 wave 1: nanoclaw pin (HOST_ prefix router) + secrets-push prefix guard
+- `83028e4` 2026-07-02 — sprint: Phase 4 promoted to FIRST next-session item (operator: slipped 3x, top of mind)
+- `c391e9f` 2026-07-02 — 2026-07-02 second wave: nanoclaw pin (MCP hardening) + signal smoke UUID fix + sprint record
+- `ffc9dbe` 2026-07-02 — backlog: signal smoke findings — unknown-sender silent drop (prod, no-touch), scenario UUID drift, rig registration parked
+- `8605851` 2026-07-02 — nanoclaw pin → 1ca12df (supply-chain cooldown + delivery retry backoff)
+- `07d2d06` 2026-07-01 — sprint: record 2026-07-02 wave (env.remote+secrets-push, deploy-clean+repro fix, selective-default, self-mod guidance) + 3 backlog items
+- `e7613b1` 2026-07-01 — deploy-clean: tolerate pnpm 11 ignored-builds exit; tsc is the gate
+- `4233136` 2026-07-01 — deploy-clean: build realtime+scenarios from committed source in the worktree
+- `16e6d5a` 2026-07-01 — nanoclaw pin → selective-by-default agent secret scoping
+- `020199a` 2026-07-01 — Pillar A+B tooling: deploy-clean (worktree deploys) + secrets-push (.env.remote)
+- `fea6815` 2026-07-01 — sprint+runbook: credential-gated MCP activation SHIPPED + staging-verified (nanoclaw 8b7ed95)
+- `e8aebaa` 2026-07-01 — Credential-gated MCP activation: nanoclaw pin + log-event mirrors + plans
+- `2a9747a` 2026-07-01 — plans(doc-cleanup): mark §8b/§8c memory sweep executed (OpenClaw/Railway pruned, clusters promoted to docs, UUIDs de-hardcoded)
+- `24aea11` 2026-07-01 — docs(signal): stop hardcoding Signal ACI/PNI UUIDs — document how to find them
+- `b013708` 2026-07-01 — docs: promote memory gotchas into repo docs; reframe Mission (internal tool vs external demo)
+- `ca64344` 2026-07-01 — docs: staleness sweep — rewrite stale guides, archive shipped plans, fix AGENTS.md
+- `400ee7d` 2026-06-30 — sprint: record MCP-add flow proven e2e + observability + follow-up gaps
+- `2fdc92f` 2026-06-30 — bump nanoclaw: approval-card markdown fix + backlog root fix
+- `f409609` 2026-06-30 — bump nanoclaw: relax add-mcp anti-thrash prompting
+- `7eb0ce9` 2026-06-30 — bump nanoclaw: fix add_mcp_server http intake path
+- `82293e8` 2026-06-30 — bump nanoclaw: add-mcp single-path + stop-after-one-call
+- `a4d7c9e` 2026-06-30 — obs: agent.tool_result schema (tool OUTPUT) + bump nanoclaw
+- `14726a7` 2026-06-30 — obs: agent.tool_use schema + bump nanoclaw (back-mind tool-call observability)
+- `d65b8c8` 2026-06-30 — sprint: top-of-backlog — back-mind container tool-call observability
+- `76696fa` 2026-06-30 — docs(AGENTS): centralized patobs is the canonical forensics path
+- `1c15f94` 2026-06-30 — pat-frontend: pairing targets per-env, no prod default (close cross-env leak)
+- `cb4e859` 2026-06-30 — bump nanoclaw: apply.ts tidy
+- `02965f3` 2026-06-30 — bump nanoclaw: add_mcp_server one-call credential routing
+- `9365b99` 2026-06-30 — scripts: seed-routing-from-vault + routing-promote (Phase 3, DB-side)
+- `386a429` 2026-06-30 — bump nanoclaw: credential_routing table (Phase 3 foundation)
+- `ec1615a` 2026-06-30 — docs(AGENTS): nanoclaw submodule deploy workflow (bump + check-submodule.sh)
+- `daa3f3e` 2026-06-30 — deploy: make nanoclaw a git submodule (reproducible deploys)
+- `ef5bce4` 2026-06-30 — docs/sprint: empirical update, DR snapshot finding, sprint status
+- `53d3cf5` 2026-06-30 — scripts: mcp-promote — staging<->prod MCP config promotion
+- `178bbd3` 2026-06-30 — pat-frontend: runtime PUBLIC_ injection — kill the Clerk build-arg
+- `878e98a` 2026-06-30 — obs: outbound.sent event — schema + mirrors (built, not deployed)
+- `86cd451` 2026-06-30 — plans+security: 1Password-vault-on-OneCLI plan + security review notes [drafted 2026-06-29]
+- `bb4b47b` 2026-06-30 — plans: lock deployment+credentials & mcp-management decisions
+- `893639c` 2026-06-30 — plans: deployment-and-credentials + mcp-management (compact intent-focused)
+- `2622a42` 2026-06-26 — plans: deploy-cli.md — self-guiding SHA-pinned deploy tool (design)
+- `93ed0b2` 2026-06-26 — sprint: restore pruned May state to archive-2026-05.md (don't bury it in git only)
+- `0e42e2f` 2026-06-26 — sprint: reconcile June arc → completed.md; trim current.md to live items
+- `75c0d78` 2026-06-26 — pat-frontend: build-time renderer-coverage warning (non-fatal)
+- `1c4603b` 2026-06-26 — pat-frontend: fail-soft event renderer (warn, don't break the build)
+- `ac90925` 2026-06-26 — docs(deploy): pat-frontend REQUIRES Clerk --build-arg (VITE key baked at build)
+- `341cd86` 2026-06-26 — pat-frontend: render people.upserted/people.removed (fix exhaustive-check build break)
+- `1aacee0` 2026-06-25 — plans: read-only observability proxy + MCP rework (outlined)
+- `6759f84` 2026-06-25 — obs: person_id-only events + people.* directory kinds (schema + orchestrator)
+- `73e2ffd` 2026-06-25 — docs: security review notes + backlog item for the security pass
+- `6e50771` 2026-06-25 — obs: inbound.received gains channel_type/person_id/person_name/text (schema + orchestrator)
+- `144464a` 2026-06-25 — sprint: note PAT_OWNER_PHONES retirement (OAuth/people self-provision supersedes); don't build yet
+- `31e2cf3` 2026-06-25 — pat-frontend: render permissions.caller-refused events (phone-gate)
+- `a927398` 2026-06-25 — docs: log-centralization plan + sprint updates
+- `ec72baa` 2026-06-25 — transports(signal): -v + keep receive-stdout for daemon decrypt observability (staging)
+- `026f3b7` 2026-06-25 — transports: surface Cartesia->transport frames (TTS observability); built not deployed
+- `033bcf2` 2026-06-25 — schema: add permissions.caller-refused kind (phone-gate mirror); built not deployed
+- `3e16475` 2026-06-25 — pat-frontend: Phone pairing auto-links by caller ID — drop the "say the code" copy
+- `22ec00c` 2026-06-25 — pat-frontend: tabbed pairing modal with per-channel QR codes + deep links
+- `e72d71e` 2026-06-25 — sprint: delete-person SHIPPED to prod (main consolidated, gateway verified)
+- `45e8433` 2026-06-25 — plan+sprint: centralize logging into one sink (§5f) — the strategic logging fix
+- `8d486af` 2026-06-25 — plan+sprint: logging three-surface framing + better /pat-logs skill (§5e); ops hardening into current sprint
+- `a1531ab` 2026-06-25 — sprint: delete-person cascade done (597b259/773c73c), held for deploy + scope flags
+- `601751c` 2026-06-25 — sprint: record 2026-06-25 session (signal recovery, pairing, domains) + role-enforcement TODO
+- `773c73c` 2026-06-25 — pat-frontend: Delete-person action with type-the-name confirmation
+- `ec856dc` 2026-06-25 — pat-frontend: add pat.plsd.app + pat-staging.plsd.app to Clerk authorizedParties
+- `3e441fb` 2026-06-25 — plans: BOTH approval cards disabled (gated), not deleted
+- `e99b72a` 2026-06-25 — PAT: render signal.health-ok / signal.health-degraded in the dashboard
+- `9af8511` 2026-06-25 — plans: channel-registration card is DISABLED (gated), not deleted
+- `090a4db` 2026-06-25 — PAT: Signal account keep-alive + health-probe schema (transports + log events)
+- `5b476e9` 2026-06-25 — plans: pairing is a parallel subsystem; channel-registration card deleted
+- `2b040bf` 2026-06-25 — pat-frontend: pairing-code handle linking — My Handles view + modal
+- `04af3f6` 2026-06-24 — signal: stage signal-cli 0.14.5 bump (sealed-sender fix, NOT deployed) + debug-infra plan
+- `5428454` 2026-06-24 — transports/signal: bump signal-cli 0.14.3 → 0.14.5 (sealed-sender decrypt fix)
+- `e36afa9` 2026-06-24 — transports/signal: watchdog quarantines poison (not delete) + stale-cache signal
+- `f125247` 2026-06-24 — transports/signal: receive-liveness watchdog for signal-cli wedge
+- `4a0c05a` 2026-06-24 — plans: keep infra errors in chat (operator decision) — §2b becomes additive
+- `ff2ba45` 2026-06-24 — plans: upgrade & ops simplification (retro of the v2.1.19 prod fallout)
+- `f59b155` 2026-06-24 — pat-frontend: first-login phone-capture modal
+- `96bf2b4` 2026-06-24 — backlog: auto-approve known-person across channels (deferred)
+- `ed82f9d` 2026-06-24 — pat-frontend: add/remove person identifiers (phone/email) in People dialog
+- `71c12d7` 2026-06-24 — docs: resolve onboarding-guide uncertainties against live envs
+- `8033e7b` 2026-06-24 — pat-frontend: fire /api/me mint inside QueryProvider (fix 'No QueryClient' crash)
+- `a877de8` 2026-06-24 — pat-frontend: call /api/me on dashboard load to fire the login→person mint
+- `5fe3a3b` 2026-06-24 — pat-frontend: People tab + login→person mint + handle-linking write path
+- `2ad26e1` 2026-06-24 — backlog: require person for handle approval + self-serve approval from dashboard
+- `8796a9b` 2026-06-24 — docs: new-user onboarding guide (Telegram/Signal/Slack)
+- `e5d8b91` 2026-06-23 — AGENTS.md: keep dashboard DB table-reference in sync with schema (esp. after nanoclaw upgrade)
+- `18ac005` 2026-06-23 — pat-frontend: DB table reference — data dictionary with tooltips + ? modal
+- `675337e` 2026-06-23 — pat-frontend: sync bun.lock (react-table/router/query/fonts deps)
+- `5a739ea` 2026-06-23 — pat-frontend: Database table — @tanstack/react-table, sortable headers, tooltips
+- `6a5f8b2` 2026-06-23 — pat-frontend: remove the viewer-token user-writer (security P0) + dead local-DB
+- `fb84b81` 2026-06-23 — pat-frontend: purge legacy palette from non-Timeline views (stock new-york)
+- `d0cadd5` 2026-06-23 — pat-frontend: Database header contrast + move DataTable out of gitignored data/
+- `c1d225d` 2026-06-23 — pat-frontend: Nhost-style Database — left table rail, typed headers, paging
+- `d470c80` 2026-06-23 — pat-frontend: Database reads over the network (proxy to nanoclaw /admin/db)
+- `c13befd` 2026-06-23 — pat-frontend: correct OAuth — Clerk session auth on data/SSE routes + login gate
+- `bae8684` 2026-06-23 — pat-frontend: don't trust better-sqlite3's build (bun uses bun:sqlite)
+- `6b1118c` 2026-06-23 — pat-frontend: fix Docker runtime deps + bake Clerk publishable key
+- `07a904e` 2026-06-23 — pat-frontend: restore Data → Database nav section (above Session)
+- `855ed86` 2026-06-23 — pat-frontend: data = single drillable Database (FK drill-through); nav reorder
+- `281e8b2` 2026-06-23 — pat-frontend: rebuild data tabs from scratch (react-query + shadcn)
+- `d50aa0f` 2026-06-23 — pat-frontend: fail-safe SSE reconnect — backoff + cap (no more tab lock)
+- `c9196a3` 2026-06-23 — pat-frontend: app shell + router (TheTest sidebar) — Timeline preserved
+- `53d2041` 2026-06-23 — pat-frontend: theme — TheTest shadcn dark + brand tokens (global, no scoping)
+- `1d1e912` 2026-06-23 — backlog: maybe port pat-frontend bun → Node+pnpm (unify backend stack)
+- `63befbd` 2026-06-23 — pat-frontend: dashboard UI foundation — shadcn components + deps (wave 1)
+- `e49d361` 2026-06-23 — plan: dashboard UI replication — clobber pat-frontend to TheTest's design
+- `bb13dc8` 2026-06-23 — plan: dashboard permissions — simplify to person_roles enum
+- `0dd8797` 2026-06-23 — plan: dashboard permissions — centralized person-keyed authorization
+- `556d76d` 2026-06-22 — backlog: correct callback flow — answer + announce, then hang up + call back
+- `ee19fc3` 2026-06-22 — backlog: add `hangup` tool (agent ends the call)
+- `b6d770c` 2026-06-22 — backlog: immediate callback is an automatic pre-session transport gate
+- `3beadd2` 2026-06-22 — backlog: immediate callback — verify a phone caller by calling back
+- `504a591` 2026-06-22 — PAT (Phase 3 follow-up): sprint sync — sessions bind sender; phone-call memory
+- `f456de5` 2026-06-22 — PAT (Phase 0): harden auth domain gate + bun trustedDependencies (review)
+- `dbdfb6b` 2026-06-22 — PAT (Phase 0): sprint sync — OAuth round-trip verified end-to-end
+- `46c614f` 2026-06-22 — PAT (Phase 0): scope clerkMiddleware to human routes (off the log/SSE routes)
+- `23a7332` 2026-06-22 — PAT (Phase 0): switch to @clerk/hono + pass keys explicitly (fix /api 500)
+- `5106b44` 2026-06-22 — PAT people spine (Phase 0): sprint sync — Clerk OAuth scaffolded
+- `731a5a5` 2026-06-22 — PAT: Clerk OAuth scaffold (Phase 0 spike) — pending browser verification
+- `ec6e542` 2026-06-22 — PAT people spine (Phase 3): sprint sync — per-person memory shipped
+- `3942ceb` 2026-06-22 — PAT people spine (Phase 2): sprint sync + recall backlog
+- `b867446` 2026-06-22 — PAT people spine (Phase 1): pat-frontend B1 fix + plan/sprint sync
+- `38cb7c8` 2026-06-22 — people plan: defer dashboard UI, resolve write path + Clerk org
+- `d700156` 2026-06-22 — people plan: handle creation → backlog, verification rerouting → own plan, memory off
+- `b355520` 2026-06-22 — Refine people plan from live review; deprecate person-identity.md
+- `e3910dc` 2026-06-22 — sprint: point active track at finalized three-table people schema
+- `d901fe7` 2026-06-22 — plan: finalize people-table schema as three additive tables
+- `54138f8` 2026-06-22 — Plan: admin dashboard + people spine
+- `905e3b1` 2026-06-22 — Add Telegram + Signal investigation plans
+- `433a937` 2026-06-19 — sprint: next-session agenda — prod push, smoke test, onboarding/isolation, Telegram multi-user
+- `0de8536` 2026-06-19 — plans: web-access — add interactive browser automation surface (dual-purpose)
+- `5c07800` 2026-06-19 — plans: web-access — refocus on self-hosted + anti-fingerprint (Camoufox) as core
+- `d056bcf` 2026-06-19 — plans: web-access Fly machine design (resilient "unblockable" web fetch)
+- `2018852` 2026-06-19 — backlog: root-cause the 30-min container kill + idempotency-on-retry caveat
+- `a296d13` 2026-06-19 — backlog: unblockable web access (residential proxy) + chat-channel narration
+- `9d68941` 2026-06-19 — feat(firecrawl): make firecrawl the default web-fetch; demote WebFetch to JSON/.md
+- `9780e81` 2026-06-19 — refactor: rename agent-group slug realtime-with-gavan -> palisade-internal
+- `edb6afd` 2026-06-19 — docs+sprint: Fly deploy procedure, Exa backlog, staging-outage record
+- `d2d5931` 2026-06-19 — feat(pat-trace): allow PAT_FRONTEND env override for staging traces
+- `d2be220` 2026-06-19 — sprint: record v2.1.19 upgrade + staging env + Telegram trial (completed.md) + GH Actions push-to-deploy backlog item
+- `a7b9b10` 2026-06-18 — backlog: correct OneCLI gateway hardening (bridge 172.17.0.1 not loopback) + port-fixes-to-upgrade item
+- `dcf390a` 2026-06-18 — pat-frontend: render session.ttl-expired event (fix exhaustive-switch build break)
+- `c8baa8c` 2026-06-18 — staging: add -staging Fly configs + VITE_DASHBOARD_ORIGIN build-arg
+- `7366bb8` 2026-06-18 — chore: gitignore replay-results-* benchmark dumps
+- `7dfb82d` 2026-06-18 — realtime: hard TTL sweep for zombie sessions + session.ttl-expired event
+- `10687c1` 2026-05-25 — PAT: strip </think> leak, disable shared transcript example, prefer Firecrawl in prompt
+- `70d8f0f` 2026-05-25 — PAT: prewarm removal mirrors + Firecrawl prompt + backlog items
+- `be9ec26` 2026-05-25 — realtime: deliver-chat.step instrumentation for the 16s render gap
+- `9fc2b1b` 2026-05-24 — pat-web + back-mind: first-gesture prewarm — earlier lead time, throwaway session
+- `f28e894` 2026-05-24 — back-mind: ship /anam-web/prewarm Sonnet warmup + sentinel filter
+- `716d8ca` 2026-05-24 — realtime: swap CerebrasFastProvider to official @cerebras/cerebras_cloud_sdk
+- `e1d3174` 2026-05-24 — pat-web: simUserSay — Cartesia TTS injected into fake mic
+- `3f59028` 2026-05-24 — sprint: log empty-message bug fix (back-mind "Nothing came through")
+- `4c05cb7` 2026-05-24 — realtime: FastLlmKeepalivePinger — keep fast-LLM TLS sockets warm
+- `2fd7baa` 2026-05-24 — CerebrasFastProvider: send reasoning_effort='none' for zai-glm-4.7
+- `447502f` 2026-05-24 — PAT-AGENT: tighten back-mind verbosity for voice
+- `7a8cfbe` 2026-05-24 — pat-frontend: render back-mind.llm-call events
+- `a1bb76f` 2026-05-24 — realtime + transports + pat-frontend: back-mind.llm-call structured event
+- `e28d4a6` 2026-05-24 — pat-web: ?autostart=1 — auto-fire startSession() on first mount
+- `ac2c3ca` 2026-05-24 — dev.sh: unconditional teardown via scripts/teardown.sh
+- `c0b0eca` 2026-05-24 — AGENTS.md: subagents are always opus
+- `83f6566` 2026-05-24 — pat-trace + pat-frontend: make log fetching reliable
+- `358074c` 2026-05-24 — identity: tighten PAT-IDENTITY.md + add front-mind identity partial
+- `b6e6780` 2026-05-24 — realtime + transports + pat-frontend: instrument llm.call with HTTP-level + prompt-size fields
+- `c55a1ac` 2026-05-24 — pat-prompts: add PAT-AGENT.md — full @-import chain as a versioned template
+- `097cd50` 2026-05-24 — realtime: silent provider fallback warning + setProviderFallbackHook
+- `f8367ed` 2026-05-24 — pat-prompts: move PAT-ARCHITECTURE.md out of nanoclaw/groups/.../
+- `cd60f24` 2026-05-24 — realtime + transports + pat-frontend: anam-web.llm-prewarmed kind
+- `3a74cd3` 2026-05-24 — realtime: add CerebrasFastProvider — OAI-compat, drop CoT deltas
+- `a134c5a` 2026-05-24 — realtime + pat-prompts: rewire banter — recordBanter callback + PAT-REALTIME.md
+- `dde784c` 2026-05-24 — pat-web: bump Anam endOfSpeechSensitivity 0.5 → 0.7
+- `6d51504` 2026-05-24 — realtime: remove dispatcher: httpAgent — was making EVERY OpenRouter call silently fail to Haiku
+- `6b8048b` 2026-05-24 — scripts: probe-ttfb diagnostics — Python + Node
+- `fe41da1` 2026-05-23 — pat-prompts: drop Gavan references from identity + cross-channel
+- `4143094` 2026-05-23 — pat-web: HMAC bearer — change separator : → | (platformId contains :)
+- `90552b3` 2026-05-23 — pat-web: stateless HMAC bearer + use Hono upgradeWebSocket (fix prod WS)
+- `b2aecd9` 2026-05-23 — fly: pat-web — repo-root Dockerfile + toml so scenarios builds cleanly
+- `d1f2c93` 2026-05-23 — fly: Dockerfile.nanoclaw — copy scenarios/ + pat-prompts/ into image
+- `05bb209` 2026-05-23 — realtime: revert Anthropic SDK undici dispatcher wrapper — Connection error in prod path
+- `beafd6e` 2026-05-23 — pat-web/realtime: restructure to single WS-to-WS pipe + Sec-WebSocket-Protocol bearer auth
+- `dc28412` 2026-05-23 — realtime: add ttfb_ms + connection_reused to llm.call traces
+- `8f0a911` 2026-05-23 — pat-web: zoom + offsetY sliders in settings panel
+- `36a1316` 2026-05-23 — pat-web: persist zoom + offsetY via usePersistedState; URL params seed-only
+- `00b74c7` 2026-05-23 — pat-web: zoom + offsetY URL params for per-kiosk avatar framing
+- `55c77bb` 2026-05-23 — pat-web/realtime: replace POST + EventSource with single long-lived WS (Mode C')
+- `deae03b` 2026-05-23 — pat-prompts: install-wide PAT markdown sourced by nanoclaw
+- `a9fe836` 2026-05-23 — backlog: prompt templating (Tier 1+2 first, Tier 4 hooks later)
+- `f8d1ff1` 2026-05-23 — pat-web/realtime: instrument browser-side RTT measurement (inbound.sent + utterance.delta-received)
+- `9a6586d` 2026-05-23 — realtime: shrink front-mind SYSTEM prompts by ~700 tokens to recover ~50ms TTFC on Groq (no caching there)
+- `d39eb4d` 2026-05-23 — pat-web: pre-warm back-mind container at Anam session-token mint
+- `a9acb27` 2026-05-23 — realtime: FAST_MODEL is primary; provider implied by slug prefix
+- `e1d17b9` 2026-05-23 — pat-web: drop 350ms banter debounce, fire on USER_SPEECH_ENDED
+- `568d6cc` 2026-05-23 — realtime: drop narration poll from 1000ms → 25ms
+- `ed1eaf8` 2026-05-23 — scripts: replay-llm-calls.py — Phase 2 of front-mind LLM swap
+- `f429aeb` 2026-05-23 — docs: voice-agent latency + UX research notes
+- `28b89b5` 2026-05-23 — front-mind: awaitJson helper, lift defensive JSON parse out of request-layer
+- `9527e79` 2026-05-23 — front-mind: drop non-streaming provider path, one method only
+- `3887ef2` 2026-05-22 — front-mind: Phase 1 — LLM provider abstraction
+- `fa26c92` 2026-05-22 — plans: front-mind LLM swap + streaming pivot pipeline
+- `a7f664d` 2026-05-22 — front-mind: tighten banter↔request-layer contract
+- `0968b28` 2026-05-22 — log-events: add signal.send-acked + signal.send-failed kinds
+- `8880b8d` 2026-05-22 — smoketest: signal-prod-inbound trace-based scenario
+- `2a9e7d8` 2026-05-22 — signal-test-rig: add live A↔B integration test (opt-in)
+- `d65c44d` 2026-05-22 — signal-test-rig: add GET /address — return rig's own number+ACI UUID+profile
+- `2eb1b9c` 2026-05-21 — signal-test-rig: split burners across two Fly apps to isolate identity stores
+- `a349947` 2026-05-21 — pat-frontend: trim XML output vocab to actual top-level tags
+- `adbb9a9` 2026-05-21 — pat-frontend: add Output-vocabulary (XML) capability group
+- `f2bd205` 2026-05-21 — signal-test-rig: force-start machine before SFTP in migration script
+- `f4a2742` 2026-05-21 — signal-test-rig: deploy fixes uncovered during first Fly deployment
+- `c68673d` 2026-05-21 — pat-frontend: Users-tab CRUD, drop Lens tab, Capability polish
+- `a8dc474` 2026-05-21 — signal-test-rig: multi-account refactor + Fly deployment artifacts
+- `222c529` 2026-05-21 — Split capability lifecycle: per-agent-group install cache vs per-inbound caller context
+- `e994b62` 2026-05-21 — signal-test-rig: local WS+REST wrapper around signal-cli for burner-phone smoketests
+- `a5dd0be` 2026-05-21 — realtime: emit capability.context-resolved per inbound; smoketest reads live snapshot
+- `759c1d5` 2026-05-21 — realtime: wire request-layer prompt to capability-context partial
+- `999cc50` 2026-05-21 — pat-frontend: add Database / Capability / Conversation-Lens tabs
+- `08ad481` 2026-05-21 — pat-frontend: add TanStack Table + shadcn-style Table/Tabs/Dialog primitives
+- `0a5e138` 2026-05-21 — smoketest: add capability-description scenario (trace-based) + shared log-tail DSL
+- `e45d31d` 2026-05-21 — smoketest: add self-knowledge-architecture scenario
+- `6416842` 2026-05-21 — Add One Flow Well, Person Identity, Passkey Research plans
+- `a053296` 2026-05-19 — backlog: anam-web audio-end via Silero VAD + Cartesia STT dual-gate
+- `2fa61e2` 2026-05-19 — realtime: shrink onSay estimate to chars/13 + 200ms
+- `22dcdd0` 2026-05-19 — realtime: tune onSay estimate to chars/12 + 250ms (was chars/11 + 400ms)
+- `d3e6e86` 2026-05-19 — pat-web: WebRTC datachannel tap to reverse-engineer Anam audio-end signal
+- `6abd859` 2026-05-19 — realtime: revert say-completion to chars/11 estimate (6cbd60f broke anam-web)
+- `1b55f69` 2026-05-19 — prod.sh: point pat-frontend upstream at nanoclaw admin port (:8767)
+- `ea58381` 2026-05-19 — scripts: auto-rebuild pat-frontend dist + agent container image
+- `135ced8` 2026-05-19 — deck-pane: mount iframe early at width=0; fix tsc cast
+- `b1f0714` 2026-05-19 — scripts: add dev.sh + prod.sh for single-command monorepo startup
+- `8ac361b` 2026-05-19 — slide-bus: thread-keyed sticky state for per-call isolation
+- `a3a55a3` 2026-05-19 — docs: mark scroll-view + early-replay bugs as fixed
+- `8bad8e7` 2026-05-19 — deck: fix two iframe demo-blockers — auto scroll-view + early SSE drop
+- `e212aef` 2026-05-19 — prompts: pseudocode-label shared transcript example to kill XML priming
+- `f54a1da` 2026-05-19 — fix: banter-narration prompt anti-XML-leak rule (matches banter-ack/render)
+- `e204788` 2026-05-19 — docs: KNOWN_ISSUES.md + sprint/completed.md recap of Phase 6 wave
+- `0c5b56d` 2026-05-19 — pat-web/deck: log every slide-bus message; fix silent frag-next/-prev no-op
+- `42bd923` 2026-05-19 — Phase 6 end-to-end: extractor public + parser comment-aware + whitespace flush
+- `163b030` 2026-05-18 — strip <verbatim> from runtime; <say> + <timeline_span/> are canonical
+- `93824a0` 2026-05-18 — Phase 6 wiring: scenario context populates current_slide_authored_timeline
+- `e20552c` 2026-05-18 — Phase 6: reveal-HTML extractor + <timeline_span/> hydration
+- `0512d4d` 2026-05-18 — realtime: add ./timeline sub-export; scenarios uses the narrow path
+- `6cbd60f` 2026-05-18 — realtime: bind say-completion to actual TTS end via TtsBusyTracker.waitForEnded
+- `6767b28` 2026-05-18 — pat-frontend + pat-trace: consume action attrs for concrete salients
+- `7d17ac9` 2026-05-18 — realtime: extend timeline-wired mock to full scenarios vocabulary
+- `0e38b18` 2026-05-18 — sprint: record timeline-runtime + scenarios refactor shipped
+- `03ae995` 2026-05-18 — realtime: converge dispatchTagStream onto queue + banter-dispatch + scenarios extension (Task #7)
+- `62ac886` 2026-05-18 — scripts/pat-trace.py: render timeline + banter-dispatch events (Task #11)
+- `79bea61` 2026-05-18 — scenarios: integration test for parser → queue → sequencer → handlers (Task #9)
+- `b45ebba` 2026-05-18 — docs: TIMELINE.md and SCENARIOS.md exit-artifact readmes
+- `7edb2d6` 2026-05-18 — pat-frontend: qa swimlane shows '?' inline (Task #8 nit)
+- `7737784` 2026-05-18 — pat-frontend: split timeline swimlanes by noun + auto-hide empties (Task #8 refine)
+- `3eb76b3` 2026-05-18 — scenarios+realtime: extract scenario actions into registered domain extension (Phase 5)
+- `d8054e1` 2026-05-18 — pat-frontend: timeline swimlanes — per-category action spans (Task #8)
+- `6070b43` 2026-05-18 — pat-frontend: timeline lane in Timeline.tsx (Task #6)
+- `0401f2b` 2026-05-18 — realtime: wire TimelineQueue + Sequencer into ChannelOrchestrator (Phase 2)
+- `7d55053` 2026-05-18 — realtime/timeline: completed-actions XML emitter (Task #5)
+- `fd31bb7` 2026-05-18 — pat-frontend: render cases for 5 timeline log kinds
+- `b6408a6` 2026-05-18 — realtime: banter-dispatch per-<say> Haiku rewrite (Phase 3)
+- `78c09f8` 2026-05-18 — realtime: scaffold timeline runtime module (Phase 1)
+- `b03b860` 2026-05-18 — checkpoint: timeline wrapper shipped + runtime/scenarios plan drafted
+- `e6acd63` 2026-05-18 — sprint: state dump pre-compact 2026-05-18 (demo-prep mid-state)
+- `5e29845` 2026-05-18 — pat-web: action-stream debug toggle + user slide control fallback
+- `ca2942c` 2026-05-18 — ux: draggable deck/debug split + narrow-pane fixes
+- `3484168` 2026-05-18 — pat-web: render deck + dashboard panes side-by-side
+- `9a7bc62` 2026-05-18 — slide-bus: watchdog auto-reconnects stale EventSource
+- `69a9b10` 2026-05-18 — scenario: session_state on every forward, retire qa_snapshot
+- `e1d7314` 2026-05-18 — tag-stream: dispatch one chat row at a time, never merge
+- `8f6aea3` 2026-05-18 — Scenario panel caps + banter-ack scenario tighten
+- `193718b` 2026-05-18 — ScenarioContextResolver: pass threadId so resolver can key by thread
+- `ca22c04` 2026-05-18 — Phase A-D: presenter tag-stream architecture
+- `e1e04dc` 2026-05-17 — scenarios: slide-bus state replay + UI cleanup + tag-stream plan
+- `334063b` 2026-05-17 — scenarios: E2E green — Palisade delivered 6 slides at 92.2% coverage
+- `3c4bc60` 2026-05-17 — scenarios: smoke-test harness shipped + findings recorded
+- `8ebac94` 2026-05-17 — scenarios: ScenarioContext threaded through channel-orchestrator + plan refinements
+- `f5b7ada` 2026-05-16 — realtime/prompts: scenario-context partial woven into all front-mind call sites
+- `85a5afe` 2026-05-16 — scenarios: block launch on placeholders + plan notes (fragments, wake-presenter)
+- `b2330c2` 2026-05-16 — plans: Camp A+ — verbatim-splice markers fix latency without migration
+- `98683ae` 2026-05-16 — plans: presenter-orchestration-locus.md — agent-driven vs channel-driven fork
+- `0fef463` 2026-05-16 — pat-web: /api/packets/:slug alias for the deck loader
+- `8d06bc1` 2026-05-16 — pat-web: scenario Launch button + platform_id override for routing
+- `7c2f563` 2026-05-16 — pat-web: deck iframe side-pane opens on slide-bus {cmd:'open'}
+- `0240a8f` 2026-05-16 — deck: interactive prop for dev/preview routes — keyboard + arrow controls
+- `9214dd6` 2026-05-16 — pat-web scenarios: capability icon pills + Application Development row
+- `7d31df2` 2026-05-16 — pat-web: Scenarios chrome button + side-sheet (list + upload + modal)
+- `73f608a` 2026-05-16 — scenarios: Palisade demo packet + slide-bus + validator retune
+- `d7595cd` 2026-05-16 — scenarios: extract @agentic-toolkit/scenarios package + Palisade brand layer
+- `232441f` 2026-05-16 — pat-web: Phase A — reveal.js slide DSL + 7 layouts + compile + validator
+- `fe8de0b` 2026-05-16 — plans: presenter-channel-plan.md — runtime + designer (v4 scope)
+- `30ffd06` 2026-05-16 — transports: drift test covers pat-frontend + pat-web log-event mirrors
+- `9f8989a` 2026-05-16 — pat-frontend: dashboard polish + adopt use-persisted-state
+- `86a405a` 2026-05-16 — pat-web: 4-mode avatar model + voice blob + PTT input
+- `dd30db9` 2026-05-16 — pat-web + pat-frontend: shared helpers (use-persisted-state, debug-surface)
+- `eb06b49` 2026-05-15 — outbound: unify cold + warm <message> dispatch; back-mind llm.call trace
+- `dcfe52d` 2026-05-15 — sprint: log 2026-05-15 shipments + narrator-repetition open item
+- `35dc445` 2026-05-14 — realtime + dashboard + pat-frontend: structured llm.call traces (debug level) + filterable /admin/logs.jsonl + pat-frontend proxy
+- `664ab1c` 2026-05-14 — pat-web: skip event backlog with since=now to kill ghost-bubble replay
+- `275bc78` 2026-05-14 — pat-web: lift tool-bubble z-index above avatar (z=6 → z=30)
+- `1a7e327` 2026-05-14 — sprint: log pat-web regression-fix bundle 2026-05-15
+- `fdbcb18` 2026-05-14 — pat-web: tool-banner stack drops down from the top of the video
+- `3b155c9` 2026-05-14 — pat-web: constrain settings panel + tabs to the video region
+- `4a32edf` 2026-05-14 — pat-web: fix stop() not actually tearing down the Anam session
+- `6a6c6b8` 2026-05-14 — prompts/_example_transcript: <break/> tag in flow + capitalization polish
+- `744b083` 2026-05-14 — prompts/_example_transcript: tighten the SFMIX ack + render lines
+- `30bf968` 2026-05-14 — realtime prompts: shared SFMIX transcript example + spell-tag conventions + render compression
+- `68ce004` 2026-05-14 — sprint: log pat-web + pat-frontend UI tweaks bundle 2026-05-15
+- `b9251ad` 2026-05-14 — pat-frontend: PAT brand rebrand, anti-flap connection status, NOW-line right-justified, zoom-bar middle transparent, dedup thread ids
+- `460bf5b` 2026-05-14 — pat-web: settings menu rework + play/stop overlay + ghost-tool suppression + avatar tab
+- `afc67c8` 2026-05-14 — realtime + schemas: server-side parse Bash commands into parsed_command
+- `d24311c` 2026-05-14 — realtime + dashboard: call.timed-out event for idle session sweep
+- `b770a54` 2026-05-14 — sprint: refactor bundle deployed 2026-05-15
+- `03c73c3` 2026-05-14 — infra: expose admin port 8767 + flip pat-frontend env; backlog R12
+- `a246bfb` 2026-05-14 — realtime: tighten StructuredLogger.event — data is required, not optional
+- `ebddaf7` 2026-05-14 — realtime: lift NarrationManager + emitApifyRunCompleted + emitErrorSurfaced
+- `b27f100` 2026-05-14 — realtime: lift conversationKey + IntentAccumulator + fallback emit into ChannelOrchestrator
+- `5bfcbb7` 2026-05-14 — plans: refactor bundle for channel orchestration follow-on
+- `d4b0ce7` 2026-05-14 — sprint + plans: channel orchestration refactor shipped 2026-05-14
+- `695a002` 2026-05-14 — realtime + pat-web: ChannelOrchestrator with handleUserMessage; TTS-busy bug wired end-to-end
+- `30180a5` 2026-05-14 — realtime: add channel-orchestration carriers (Phase 1)
+- `0699cd1` 2026-05-14 — sprint/backlog: park 4 items deferred for the channel orchestration refactor
+- `f680131` 2026-05-14 — plans: channel orchestration dedup — Option A (lift to library)
+- `a69cc9e` 2026-05-14 — plans: staging/prod split — written, execution deferred
+- `61d08c3` 2026-05-14 — sprint: capture 2026-05-14 prompts refactor + queue branch unification
+- `99c457c` 2026-05-14 — realtime: prompts refactor + scrub turn / Haiku vocabulary
+- `0f7cd16` 2026-05-14 — sprint: 2026-05-14 — Signal channel push (attachments, voice memos, receipts, status-pill cleanup)
+- `4ff942b` 2026-05-13 — transports: signal_staging binds IPv6 wildcard (Fly 6PN is v6-only)
+- `2e742f0` 2026-05-13 — transports: bump signal vm to 512MB (signal-cli + staging sidecar OOM)
+- `26f558a` 2026-05-13 — transports: signal-staging sidecar for cross-machine voice-note delivery
+- `b2c7593` 2026-05-13 — pat-frontend: render utterance.stream-delta as its own timeline lane
+- `951cc88` 2026-05-13 — smoketest: E2E_PLAN.md — gap analysis + sequenced next steps
+- `6bd392c` 2026-05-13 — scripts: pat-trace — interrupt-aware call timeline from prod logs
+- `f06fc9f` 2026-05-13 — realtime/prompts: add .js extension to ESM imports (hotfix)
+- `69aadc4` 2026-05-13 — pat-web: tool-call display as notification banners (achievement-style)
+- `bd55bcc` 2026-05-13 — sprint: 2026-05-13 — channel-polish, timeline sweep, prompt centralization
+- `d0ba9f9` 2026-05-13 — realtime: centralize system prompts to src/prompts/
+- `3e3bcc5` 2026-05-13 — pat-frontend: render anam-web user speech in timeline
+- `0d56313` 2026-05-13 — pat-web: banter SSE consumer + PWA polish + embedded dashboard pane
+- `145bc3e` 2026-05-12 — pat-web: move tool-call display behind the avatar as ambient icons
+- `67a3ed9` 2026-05-12 — pat-web: guard out-of-band TalkMessageStream calls on isStreaming
+- `a762144` 2026-05-12 — realtime: kill the <silent> sentinel + silence-detect buffer entirely
+- `5fb70b6` 2026-05-12 — pat-web: stop interrupting Pat mid-rendition + debounce dispatch
+- `f395ef2` 2026-05-12 — pat-web: fix avatar not responding — stale stop() ref killed driver
+- `8017665` 2026-05-12 — pat-web: add session-ended + barge-in proxies; serve PWA static files
+- `2795fa6` 2026-05-12 — pat-web: Fly infra — Dockerfile + fly.toml for pat-web.fly.dev
+- `dd4df86` 2026-05-12 — pat-web: PWA add-to-home-screen wiring + icons
+- `ffd3ff7` 2026-05-12 — fly.nanoclaw: expose port 8766 internally for anam-web channel
+- `ad94d74` 2026-05-12 — sprint: capture 2026-05-12 evening state pre-compaction
+- `5bf2c49` 2026-05-12 — pat-web: Anam.ai avatar frontend + nanoclaw anam-web wiring
+- `b354b7d` 2026-05-12 — dashboard + transports: Path A is delta-streamed, not turn-bounded
+- `07437dc` 2026-05-12 — scripts/docs: remove legacy log tools
+- `1776163` 2026-05-12 — voice-transport: Path A — add /chats discovery handshake
+- `0d18cb0` 2026-05-12 — docs: SMOKE-TEST + SESSION-REVIEW for same-day STT correction
+- `15cc8c7` 2026-05-12 — docs: 2026-05-12 EOD wrap — smoke test, sprint update, session review §16
+- `a7382df` 2026-05-12 — voice-transport: delete legacy Line-SDK main.py; Path A is the only path
+- `eba2370` 2026-05-12 — smoketest: outbound-cold-dispatch scenario (#23 deliverable 3)
+- `7aba560` 2026-05-12 — realtime: bantererStreamNarration wrapper + onCall hook (task #31 library half)
+- `5ccb9e4` 2026-05-12 — voice-transport → transports: directory rename + path references (task #33)
+- `dc09006` 2026-05-12 — PAT: task #37 follow-through — Dockerfile.nanoclaw comment refresh
+- `0ff7f17` 2026-05-12 — PAT: task #36 — error legibility Haiku-with-verbatim-context (realtime library half)
+- `ac47c16` 2026-05-12 — smoketest: channel-agnostic dispatch probe + --channel-probe flag
+- `0f2964c` 2026-05-12 — PAT: relax banter — drop "NEVER claim to remember" cross-session rule
+- `c37395c` 2026-05-12 — voice-transport: wire responding_to from user-turn event_id (Path A grouping)
+- `7c1411e` 2026-05-12 — realtime: narration brain outputs plain text (unblocks #31 streaming)
+- `d6ba468` 2026-05-12 — smoketest: document --call (Tier 3A) mode in README
+- `ece67a6` 2026-05-12 — voice-transport: Path A Stage 4 tests (unit + real-Cartesia opt-in)
+- `5914269` 2026-05-12 — realtime: banterer{Stream,StreamRender}OnUserTurn wrappers (Stage 1 follow-up)
+- `bf78819` 2026-05-12 — voice-transport: Path A scaffold — direct WS forwarder (no AgentClass)
+- `5d7344a` 2026-05-11 — realtime: streamHaikuToSse helper + utterance.* log kinds (Path A Stage 1)
+- `cb08b9b` 2026-05-11 — spike: Path A multi-yield diagnostic for streaming-banter-pipeline
+- `a0045bd` 2026-05-11 — plan: streaming-banter-pipeline — implement Path A from cartesia-rethink
+- `a54f684` 2026-05-11 — plan: re-scope streaming doc — ONE Haiku layer, all sites unified
+- `b47fc5b` 2026-05-11 — plan: re-scope streaming doc — banter acks, not rendition
+- `d9b1929` 2026-05-11 — plan: streaming rendition pipeline (Wave 1.1 completion research)
+- `3653424` 2026-05-11 — nanoclaw: install ffmpeg for Signal voice-note transcription
+- `19391dc` 2026-05-11 — Revert "Task #10: Signal attachment relay (host-side)"
+- `6f4a108` 2026-05-11 — Task #10: Signal attachment relay (host-side) — Python HTTP sidecar
+- `becd599` 2026-05-11 — PAT: front-mind wiki awareness — banter + request-layer prompt edits
+- `c45b1dd` 2026-05-11 — plan: mark multi-agent feature buildout SHIPPED — all slices committed
+- `79a69a8` 2026-05-11 — PAT: Wave 3.1 — error legibility (PAT_ANNOUNCE_ERRORS)
+- `e1b9a06` 2026-05-11 — pat-frontend: render imagegen.requested / imagegen.completed (Wave 2.C follow-up)
+- `9e085af` 2026-05-11 — Wave 2.A: lock in Signal deploy fixes from staging
+- `751b21e` 2026-05-11 — PAT: Wave 2.D — apify.run-completed log kind + dashboard renderer
+- `82ccad9` 2026-05-11 — log-events: imagegen.requested / imagegen.completed kinds (Wave 2.C)
+- `7ee620d` 2026-05-11 — Wave 2.A fix: JAR + Temurin JRE 21 (revert from native, post-segfault)
+- `1d3424a` 2026-05-11 — smoketest: refine multi-part-rendition based on observed back-mind timing
+- `dd9f3c1` 2026-05-11 — smoketest: multi-part-rendition scenario for Wave 1.1 Path C
+- `c8aee10` 2026-05-11 — Wave 2.A: signal-cli sidecar in pat-transports + state migration
+- `a37d4b7` 2026-05-11 — docs housekeeping: INDEX, log-schema extract, forensics rename, plan status headers
+- `f3ab2d2` 2026-05-11 — Wave 1.1 Path C: voice-transport becomes a thin forwarder
+- `e21a007` 2026-05-11 — plan: Wave 0 complete — OneCLI / Signal / owner / admins all confirmed
+- `cc4cbd2` 2026-05-11 — plan: multi-agent feature buildout (Wave 0/1/2/3)
+- `96332f1` 2026-05-11 — gitignore: tsbuildinfo + mobile-mcp soft-fork
+- `30b8c79` 2026-05-11 — docs/plans/frontend: catch up tracked state with what's on disk
+- `af3b89f` 2026-05-11 — logs: vendor namespace + server-stamped event ids + SDK monkey-patch
+- `60065b0` 2026-05-11 — secrets: relocate .agent-secrets from pat/ to agentic_toolkit root
+- `7f17393` 2026-05-07 — pat-tui: drop Select dropdown — was capturing focus and starving keys
+- `cf7f671` 2026-05-07 — pat-tui: revert StatePane DataTables → simple two-line Static
+- `51aae12` 2026-05-07 — pat-tui: perf — drop misc records, throttle state updates, yield to UI loop
+- `b2cf420` 2026-05-07 — pat-tui: status pane = two side-by-side DataTables (Front / Back)
+- `d88308f` 2026-05-07 — pat-tui: simplify status pane to a single glanceable line
+- `9d92f2c` 2026-05-07 — pat-tui: simplify — back to two filtered panes, drop pretty/detail toggle
+- `b99c65b` 2026-05-07 — pat-tui: collapse timeline + log into single scrollable pane
+- `95acba1` 2026-05-07 — pat-tui: thread filter dropdown + auto-latest + pretty/detail toggle + interwoven scroll
+- `3c5d6ae` 2026-05-07 — pat-tui: fix StatePane._render naming collision with Textual internals
+- `2443d46` 2026-05-07 — pat-tui: PEP 723 inline deps, run via uv
+- `b9de4de` 2026-05-07 — docs: ARCHITECTURE — persistent log + jq cookbook + TUI quick-start
+- `3a7a503` 2026-05-07 — voice-transport stt.user-said + pat-tui dispatches on kind
+- `64d6d16` 2026-05-07 — Structured log events: TS schema + Python mirror + drift test + voice-transport wiring
+- `adf5f89` 2026-05-07 — scripts/pat-tui.py: Textual TUI for live realtime stack monitoring
+- `89abcb8` 2026-05-07 — voice-transport: forward all log events to nanoclaw /admin/log-event
+- `79c38d7` 2026-05-07 — Persistent log infrastructure: --source persistent + Dockerfile cp fix
+- `7e2dcc1` 2026-05-07 — PAT: Narrator + max-silence cadence + cleaner banter cleaner + timeline
+- `411eb33` 2026-05-06 — Fly migration + narration gating + phone-number admin + smoketest sweep
+- `6882c84` 2026-05-06 — sprint: end-of-day 2026-05-06 — voice quality pass dump
+- `3ffa920` 2026-05-05 — realtime: unified history + tick-based narration brain + voice tags
+- `1866dec` 2026-05-05 — backlog: back-mind spawns Task subagents on user request
+- `79618e8` 2026-05-05 — sprint: end-of-day dump + per-thread recentUserTurns leakage fix
+- `cba5bc8` 2026-05-05 — trace LLM calls + barge-in MVP: cancel passes via banter prompt convention
+- `76f72e8` 2026-05-05 — smoketest: add barge-in-cancel / barge-in-refine / barge-in-new-task scenarios
+- `547d554` 2026-05-05 — banter as only voice: render back-mind output through banter before TTS
+- `76cd23e` 2026-05-05 — backlog: banter-as-only-voice + streaming back-mind output through TTS
+- `f5507fb` 2026-05-05 — banter/request layer split + test isolation via platform_id + smart greeting wait
+- `3f42cb5` 2026-05-05 — realtime: NarrationBrain consults TtsBusyTracker for real-signal gating
+- `4f9fd8e` 2026-05-05 — voice-transport + nanoclaw: forward AgentTurnEnded so host knows real end-of-speech
+- `5d900ba` 2026-05-05 — backlog: barge-in semantics — cancel / refine / new task (was overlapping)
+- `ff30d4d` 2026-05-05 — backlog: threads-of-intent via Task subagents (cancel + concurrent-turn)
+- `f1df889` 2026-05-05 — nanoclaw realtime: thread_id on /inbound; smoketest scenarios isolated per session
+- `dd6662d` 2026-05-05 — smoketest: filter stale SSE events from transcript + pause between scenarios
+- `3e834e9` 2026-05-05 — smoketest: gate wait-* on per-turn timestamp; split unit/smoke vitest scripts
+- `21ed231` 2026-05-05 — smoketest: route ws lookup through dns.resolve4 to dodge macOS DNS cache
+- `9246fae` 2026-05-05 — smoketest: three-tier test infra (unit + fast-LLM + smoke + audio-call)
+- `e9b0e6e` 2026-05-04 — agentic_toolkit: initial commit — realtime + voice-transport

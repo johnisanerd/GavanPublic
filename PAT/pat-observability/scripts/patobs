@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+# patobs — shell-callable SQL query against the pat-observability OpenObserve store.
+#
+# WHY THIS EXISTS: the `patobs` MCP tools are for interactive forensics IN a turn.
+# The autonomous *watch* verbs — Claude Code's Monitor tool, `Bash` with
+# run_in_background, and /loop — consume a shell command's STDOUT and CANNOT call
+# an MCP tool. This CLI is the shell door to the same store + same SQL, so those
+# verbs can watch the logs. (MCP = interactive; this = monitors/loops.)
+#
+# OUTPUT: one compact JSON object per matching row to stdout — jq-friendly AND
+# grep-friendly, one event per line (exactly what Monitor wants). No rows → no
+# output, exit 0. Errors go to stderr with a nonzero exit.
+#
+# USAGE
+#   patobs "SELECT ts,kind,thread_id FROM pat_events WHERE env='staging' ORDER BY _timestamp" [--since 30s] [--size 200]
+#   patobs --schema pat_events            # list a stream's columns
+#
+# STREAMS: pat_events (structured nanoclaw, both envs) | pat_raw (raw app stdout/stderr).
+#
+# CONNECTION: targets the local proxy http://127.0.0.1:5080 by default — run
+# `scripts/proxy.sh` first (the store is flycast-only). Override with $PATOBS_URL.
+# Creds (OPENOBSERVE_USER/PASSWORD/ORG) are read from .observability-secrets next
+# to the repo root, or $PATOBS_SECRETS.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SECRETS="${PATOBS_SECRETS:-$SCRIPT_DIR/../.observability-secrets}"
+URL="${PATOBS_URL:-http://127.0.0.1:5080}"
+
+# Read one KEY=value from the secrets file WITHOUT sourcing it (the file also holds
+# a Fly token whose commas break `source`/`.`). grep the line, take the value.
+getsec() { grep -E "^$1=" "$SECRETS" 2>/dev/null | head -1 | cut -d= -f2-; }
+OO_USER="$(getsec OPENOBSERVE_USER)"
+OO_PASS="$(getsec OPENOBSERVE_PASSWORD)"
+OO_ORG="$(getsec OPENOBSERVE_ORG)"; OO_ORG="${OO_ORG:-default}"
+
+if [[ -z "$OO_USER" || -z "$OO_PASS" ]]; then
+  echo "patobs: missing OPENOBSERVE_USER/PASSWORD (looked in $SECRETS)" >&2
+  exit 2
+fi
+
+# --schema <stream>: print "<column>\t<type>" lines (best-effort).
+if [[ "${1:-}" == "--schema" ]]; then
+  stream="${2:?usage: patobs --schema <stream>}"
+  curl -fsS -u "$OO_USER:$OO_PASS" "$URL/api/$OO_ORG/streams/$stream/schema" 2>/dev/null \
+    | jq -r '(.schema // [])[] | "\(.name)\t\(.type)"' \
+    || { echo "patobs: schema fetch failed — is the proxy up? run scripts/proxy.sh" >&2; exit 1; }
+  exit 0
+fi
+
+# resolve <name-or-id> [--env prod|staging]: look a Person up in the
+# pat_enrichment directory stream → print {person_id, display_name, handles[]}
+# (latest row per person, tombstones dropped), one JSON object per line. This
+# is the FIRST hop of person-scoped forensics: names live ONLY here, never
+# beside message bodies. Feed the returned handles into a pat_events query
+# (WHERE data_sender_id IN (...)). Matches person_id exactly OR display_name
+# (case-insensitive substring).
+if [[ "${1:-}" == "resolve" ]]; then
+  Q="${2:?usage: patobs resolve <name-or-id> [--env prod|staging]}"; shift 2
+  ENVF=""
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --env) ENVF="${2:?}"; shift 2 ;;
+      *) echo "patobs resolve: unknown arg '$1'" >&2; exit 2 ;;
+    esac
+  done
+  QESC="${Q//\'/\'\'}"                       # SQL-escape single quotes
+  ENVCLAUSE=""
+  [[ -n "$ENVF" ]] && ENVCLAUSE=" AND env = '${ENVF//\'/\'\'}'"
+  RSQL="SELECT person_id, display_name, handles, identifiers, removed, _timestamp, env FROM pat_enrichment WHERE entity='person' AND (person_id = '$QESC' OR LOWER(display_name) LIKE LOWER('%$QESC%'))$ENVCLAUSE ORDER BY _timestamp DESC"
+  # Wide window — directory is small + re-dumped ~every 10m, so 30d always has
+  # the latest row for every person.
+  now_us=$(( $(date +%s) * 1000000 ))
+  start_us=$(( now_us - 30 * 86400 * 1000000 ))
+  end_us=$(( now_us + 60000000 ))
+  rbody="$(jq -n --arg sql "$RSQL" --argjson st "$start_us" --argjson en "$end_us" \
+    '{query:{sql:$sql,start_time:$st,end_time:$en,from:0,size:2000}}')"
+  rresp="$(curl -fsS -u "$OO_USER:$OO_PASS" -H 'content-type: application/json' \
+    "$URL/api/$OO_ORG/_search" -d "$rbody")" \
+    || { echo "patobs: resolve query failed — is the proxy up? run scripts/proxy.sh" >&2; exit 1; }
+  # Latest row per person; drop tombstones; emit {person_id, display_name, handles}.
+  echo "$rresp" | jq -c '
+    (.hits // [])
+    | group_by(.person_id)
+    | map(max_by(._timestamp))
+    | map(select((.removed == true or .removed == "true" or .removed == 1) | not))
+    | .[]
+    | {person_id, display_name, handles}
+  '
+  exit 0
+fi
+
+SQL="${1:?usage: patobs \"SQL\" [--since 30s] [--size 200]}"; shift
+SINCE="1h"; SIZE="200"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --since) SINCE="${2:?}"; shift 2 ;;
+    --size)  SIZE="${2:?}";  shift 2 ;;
+    *) echo "patobs: unknown arg '$1'" >&2; exit 2 ;;
+  esac
+done
+
+# --since like 30s/5m/2h/1d → seconds (default 1h on a malformed value).
+n="${SINCE%[smhd]}"; u="${SINCE: -1}"
+case "$u" in
+  s) secs="$n" ;; m) secs=$((n * 60)) ;; h) secs=$((n * 3600)) ;; d) secs=$((n * 86400)) ;;
+  *) secs=3600 ;;
+esac
+
+now_us=$(( $(date +%s) * 1000000 ))
+start_us=$(( now_us - secs * 1000000 ))
+end_us=$(( now_us + 60000000 ))   # +60s future buffer, same as the MCP
+
+body="$(jq -n --arg sql "$SQL" --argjson st "$start_us" --argjson en "$end_us" --argjson sz "$SIZE" \
+  '{query:{sql:$sql,start_time:$st,end_time:$en,from:0,size:$sz}}')"
+
+resp="$(curl -fsS -u "$OO_USER:$OO_PASS" -H 'content-type: application/json' \
+  "$URL/api/$OO_ORG/_search" -d "$body")" \
+  || { echo "patobs: query failed — is the proxy up? run scripts/proxy.sh" >&2; exit 1; }
+
+# One JSON object per row → one Monitor event per row.
+echo "$resp" | jq -c '.hits[]?'

@@ -1,0 +1,29 @@
+# Build context is signal-test-rig/ when flyctl deploy runs from this
+# directory (Dockerfile path is relative to fly.toml's location).
+# Trim everything the image doesn't need.
+
+# Local Python state — Dockerfile rebuilds the venv from pyproject.toml +
+# uv.lock anyway.
+.venv
+.uv-cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Test / dev artifacts. We don't run pytest inside the image; tests stay
+# on the dev box. uv.lock IS needed for reproducible installs.
+.pytest_cache/
+tests/
+examples/
+
+# Editor / VCS noise.
+.git
+.gitignore
+.DS_Store
+
+# Fly artifacts (no need to bake fly.toml into the image — it's already
+# being uploaded to Fly's build service via the deploy invocation).
+fly.toml
+
+# Scripts run on the dev box, not in the container.
+scripts/

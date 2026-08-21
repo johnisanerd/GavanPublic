@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://compass-ui.dev/schemas/experiment.json",
+  "title": "CompassExperiment",
+  "description": "Schema for Compass UI experiment configuration",
+  "type": "object",
+  "required": ["schemaVersion", "title", "models", "iterations", "steps"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Schema version for compatibility"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Unique identifier for the experiment (UUID v4)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required title for the experiment"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description (no UI in v1)"
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+:[a-z0-9.-]+$",
+        "description": "Model identifier in format 'provider:model-name'"
+      },
+      "description": "List of model identifiers to run"
+    },
+    "iterations": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 128,
+      "description": "Number of iterations to run (1-128)"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["prompt"],
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Prompt text with optional Liquid templating"
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Ordered array of prompt steps"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "input", "simulatorPrompt", "output"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-_]+$",
+            "description": "Unique tool identifier (slug)"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable tool name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Tool description"
+          },
+          "input": {
+            "type": "object",
+            "required": ["name", "type"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "enum": ["boolean", "integer", "number", "string", "none"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "simulatorPrompt": {
+            "type": "string",
+            "description": "Prompt template with tokens: {{input}}, {{previous_tool_calls}}, {{output_tool}}, {{step_number}}, {{tool_call_count}}"
+          },
+          "output": {
+            "type": "object",
+            "required": ["name", "type"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "enum": ["boolean", "integer", "number", "string", "none"]
+              }
+            },
+            "additionalProperties": false
+          },
+          "when": {
+            "type": "string",
+            "enum": ["optional_every", "mandatory_every", "mandatory_last"],
+            "default": "optional_every",
+            "description": "When this tool can be called"
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Optional array of tool definitions"
+    }
+  },
+  "additionalProperties": false
+}

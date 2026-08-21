@@ -1,0 +1,10 @@
+node_modules/
+*.log
+checkpoint.json
+.env
+.env.*
+# local store credentials — read by the MCP plugin + TUI, NEVER commit
+.observability-secrets
+.DS_Store
+dist/
+.oo-data/

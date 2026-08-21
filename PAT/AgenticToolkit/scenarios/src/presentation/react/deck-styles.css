@@ -1,0 +1,503 @@
+/**
+ * Palisade brand layout styles for the presenter deck.
+ *
+ * Brand spec lives in ../brand-guide.md. Key derivations applied
+ * here:
+ *   - Stone Green (#F2F3F0) default light background, NOT pure white
+ *   - Steel Grey (#29303E) primary text, NOT pure black
+ *   - DM Sans for display + body, DM Mono only for metadata strip,
+ *     captions, table headers, and the section-number bullet glyph
+ *   - Hierarchy via color and scale, NOT weight (bold rare)
+ *   - No text-transform: uppercase on titles (brand uses sentence case)
+ *
+ * Reveal's white theme is the base; we override the bits that
+ * deviate. Reveal's default uppercase on headings is killed.
+ */
+
+:root {
+  --ps-steel:        #29303E;
+  --ps-stone:        #F2F3F0;
+  --ps-soft-blue:    #3F598C;
+  --ps-foundation:   #173164;
+  --ps-science:      #C7E09C;
+  --ps-yellow:       #EBC932;
+  --ps-red:          #C64B2A;
+  --ps-clarity:      #78C3C6;
+  --ps-verified:     #1D925E;
+  --ps-font-sans:    "DM Sans", system-ui, -apple-system, sans-serif;
+  --ps-font-mono:    "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ps-rule:         1px solid rgba(41, 48, 62, 0.2);
+  --ps-rule-strong:  1px solid rgba(41, 48, 62, 0.4);
+  --ps-margin:       4%;
+}
+
+.reveal {
+  font-family: var(--ps-font-sans);
+  color: var(--ps-steel);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  background-color: var(--ps-stone);
+  text-transform: none;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--ps-font-sans);
+  color: var(--ps-steel);
+  text-transform: none;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+.reveal p,
+.reveal li,
+.reveal blockquote,
+.reveal td,
+.reveal th {
+  color: var(--ps-steel);
+}
+
+.reveal a { color: var(--ps-foundation); }
+
+.reveal .slide-title {
+  text-align: left;
+  font-size: 1.7em;
+  margin: 0 0 0.6em 0;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ─── title layout ─────────────────────────────────────────────── */
+.layout-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: var(--ps-margin) var(--ps-margin) 7% var(--ps-margin);
+  gap: 0.6em;
+}
+.layout-title h1 {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  max-width: 86%;
+  margin: 0;
+}
+.layout-title .subtitle {
+  font-size: 0.5em;
+  color: rgba(41, 48, 62, 0.65);
+  font-weight: 400;
+  max-width: 70%;
+  margin: 0;
+  line-height: 1.4;
+}
+/* Dark-bg variant — title bg.color triggers light text. */
+.reveal section[data-background-color] .layout-title h1 { color: var(--ps-stone); }
+.reveal section[data-background-color] .layout-title .subtitle { color: rgba(242, 243, 240, 0.7); }
+
+/* ─── section divider ──────────────────────────────────────────── */
+.layout-section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--ps-margin) var(--ps-margin) 8% var(--ps-margin);
+}
+.layout-section h2 {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  max-width: 80%;
+  margin: 0;
+}
+
+/* ─── bullets ──────────────────────────────────────────────────── */
+.layout-bullets {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10% var(--ps-margin);
+  gap: 1em;
+}
+.layout-bullets .slide-title { font-size: 1.4em; }
+.layout-bullets ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  counter-reset: bullet;
+}
+.layout-bullets li {
+  position: relative;
+  padding-left: 2em;
+  font-size: 0.8em;
+  line-height: 1.4;
+  text-align: left;
+  counter-increment: bullet;
+}
+.layout-bullets li::before {
+  content: counter(bullet, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-family: var(--ps-font-mono);
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  color: rgba(41, 48, 62, 0.45);
+}
+.layout-bullets li strong {
+  color: var(--ps-steel);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.15em;
+}
+.layout-bullets.is-large li {
+  font-size: 1.45em;
+  padding-left: 2.6em;
+  margin-bottom: 0.65em;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.layout-bullets.is-large li::before {
+  font-size: 0.55em;
+  top: 0.45em;
+}
+.layout-bullets.is-large li strong { margin-bottom: 0.05em; }
+
+/* ─── two-col ──────────────────────────────────────────────────── */
+.layout-two-col {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10% var(--ps-margin);
+  gap: 0.6em;
+}
+.layout-two-col .slide-title { font-size: 1.4em; }
+.two-col-grid {
+  display: grid;
+  gap: 2em;
+  flex: 1;
+  min-height: 0;
+  align-items: start;
+}
+.two-col-side {
+  text-align: left;
+  font-size: 0.8em;
+  line-height: 1.45;
+  min-width: 0;
+}
+.two-col-side .slot-text p { margin: 0 0 0.7em 0; }
+.two-col-side .slot-text p:last-child { margin-bottom: 0; }
+.two-col-side .slot-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  counter-reset: tc-bullet;
+}
+.two-col-side .slot-list li {
+  position: relative;
+  padding-left: 1.6em;
+  counter-increment: tc-bullet;
+}
+.two-col-side .slot-list li::before {
+  content: counter(tc-bullet, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-family: var(--ps-font-mono);
+  font-size: 0.65em;
+  letter-spacing: 0.05em;
+  color: rgba(41, 48, 62, 0.45);
+}
+.two-col-side .slot-figure {
+  margin: 0;
+  text-align: center;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  max-height: 100%;
+  overflow: hidden;
+}
+.two-col-side .slot-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  margin: 0;
+  box-shadow: none;
+  border: 0;
+  background: transparent;
+}
+.two-col-side .slot-figure figcaption {
+  font-family: var(--ps-font-mono);
+  font-size: 0.65em;
+  letter-spacing: 0.04em;
+  color: rgba(41, 48, 62, 0.55);
+  margin-top: 0.3em;
+}
+.two-col-side .slot-code {
+  font-family: var(--ps-font-mono);
+  font-size: 0.65em;
+  line-height: 1.35;
+  margin: 0;
+  background: rgba(41, 48, 62, 0.06);
+  padding: 0.8em 1em;
+  overflow: auto;
+  max-height: 100%;
+}
+
+/* ─── image-full caption ───────────────────────────────────────── */
+.layout-image-full-caption {
+  position: absolute;
+  left: var(--ps-margin);
+  right: var(--ps-margin);
+  bottom: 6%;
+  pointer-events: none;
+}
+.layout-image-full-caption p {
+  display: inline-block;
+  margin: 0;
+  padding: 0.5em 1em;
+  background: rgba(41, 48, 62, 0.85);
+  color: var(--ps-stone);
+  font-size: 0.55em;
+  font-family: var(--ps-font-mono);
+  letter-spacing: 0.04em;
+  max-width: 80%;
+}
+
+/* ─── quote ────────────────────────────────────────────────────── */
+.layout-quote {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: var(--ps-margin) var(--ps-margin) 8% var(--ps-margin);
+  gap: 0.8em;
+}
+.layout-quote .quote-label {
+  font-family: var(--ps-font-mono);
+  font-size: 0.5em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(41, 48, 62, 0.55);
+  margin: 0;
+}
+.layout-quote blockquote {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6em;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ps-steel);
+  max-width: 90%;
+}
+.layout-quote footer {
+  font-size: 0.55em;
+  color: rgba(41, 48, 62, 0.65);
+  font-family: var(--ps-font-mono);
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.layout-quote cite {
+  font-style: normal;
+  font-weight: 600;
+}
+.layout-quote small { opacity: 0.75; }
+
+/* Dark-bg quote variant — common brand pattern (slide 8). */
+.reveal section[data-background-color] .layout-quote .quote-label,
+.reveal section[data-background-color] .layout-quote blockquote,
+.reveal section[data-background-color] .layout-quote footer {
+  color: var(--ps-stone);
+}
+.reveal section[data-background-color] .layout-quote .quote-label,
+.reveal section[data-background-color] .layout-quote footer {
+  color: rgba(242, 243, 240, 0.7);
+}
+
+/* ─── table ────────────────────────────────────────────────────── */
+.layout-table {
+  position: absolute;
+  inset: 0;
+  padding: 10% var(--ps-margin);
+}
+.layout-table .slide-title { font-size: 1.3em; }
+.layout-table-scroll {
+  /* No height/overflow constraints — let the table flow at its
+   * natural height. Validator caps rows+cols so we don't end up
+   * with overflowing decks. If needed for runtime appendix slides,
+   * the agent should pick `bullets` instead. */
+  width: 100%;
+}
+.layout-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ps-font-sans);
+  font-size: 0.62em;
+}
+.layout-table th,
+.layout-table td {
+  text-align: left;
+  padding: 0.6em 1em;
+  border-bottom: var(--ps-rule);
+}
+.layout-table th {
+  font-family: var(--ps-font-mono);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ps-steel);
+  border-bottom: var(--ps-rule-strong);
+}
+.layout-table tbody tr:last-child td { border-bottom: none; }
+
+/* ─── stat (hero number) ───────────────────────────────────────── */
+.layout-stat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--ps-margin) var(--ps-margin) 7% var(--ps-margin);
+  gap: 0.2em;
+}
+.layout-stat .stat-context {
+  font-family: var(--ps-font-mono);
+  font-size: 0.55em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(41, 48, 62, 0.55);
+  margin: 0 0 0.4em 0;
+  max-width: 80%;
+}
+.layout-stat .stat-value {
+  font-family: var(--ps-font-sans);
+  font-weight: 500;
+  font-size: 6em;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--ps-steel);
+  margin: 0;
+  max-width: 100%;
+}
+.layout-stat .stat-label {
+  font-size: 0.85em;
+  line-height: 1.25;
+  color: var(--ps-steel);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  margin: 0.4em 0 0 0;
+  max-width: 75%;
+}
+/* Steel-grey statement variant — closing-slide / pivot-moment register. */
+.layout-stat.is-steel .stat-value,
+.layout-stat.is-steel .stat-label { color: var(--ps-stone); }
+.layout-stat.is-steel .stat-context { color: rgba(242, 243, 240, 0.65); }
+.reveal section[data-background-color] .layout-stat .stat-value,
+.reveal section[data-background-color] .layout-stat .stat-label { color: var(--ps-stone); }
+.reveal section[data-background-color] .layout-stat .stat-context { color: rgba(242, 243, 240, 0.65); }
+
+/* ─── signature: vertical distorted lines ──────────────────────────
+ * Per brand guide p. 30: bar widths VARY, gaps stay CONSISTENT.
+ * Derived from the palisade logomark (protection / structure / control).
+ * Two modes:
+ *   - graphic fill (no photo) — opaque bars on neutral ground
+ *   - reveal overlay (over photo) — bars frame and "let imagery emerge"
+ * Anchored variants: full-bleed default; .is-top / .is-floor cap the
+ * bars at the top or bottom edge of the slide.
+ */
+.ps-distorted-lines {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  right: 0;
+  /* Consistent ~28px gap between bars; widths cycle 12/22/36/18/28/14. */
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ps-science) 0 12px,
+    transparent 12px 40px,
+    var(--ps-science) 40px 62px,
+    transparent 62px 90px,
+    var(--ps-science) 90px 126px,
+    transparent 126px 154px,
+    var(--ps-science) 154px 172px,
+    transparent 172px 200px,
+    var(--ps-science) 200px 228px,
+    transparent 228px 256px,
+    var(--ps-science) 256px 270px,
+    transparent 270px 298px
+  );
+  opacity: 0.92;
+  pointer-events: none;
+}
+.ps-distorted-lines.is-full-bleed { width: 100%; right: 0; left: 0; }
+.ps-distorted-lines.is-top    { top: 0;    bottom: auto; height: 38%; }
+.ps-distorted-lines.is-floor  { top: auto; bottom: 0;    height: 42%; }
+.ps-distorted-lines.is-steel {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ps-steel) 0 12px,
+    transparent 12px 40px,
+    var(--ps-steel) 40px 62px,
+    transparent 62px 90px,
+    var(--ps-steel) 90px 126px,
+    transparent 126px 154px,
+    var(--ps-steel) 154px 172px,
+    transparent 172px 200px,
+    var(--ps-steel) 200px 228px,
+    transparent 228px 256px,
+    var(--ps-steel) 256px 270px,
+    transparent 270px 298px
+  );
+}
+.ps-distorted-lines.is-foundation {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--ps-foundation) 0 12px,
+    transparent 12px 40px,
+    var(--ps-foundation) 40px 62px,
+    transparent 62px 90px,
+    var(--ps-foundation) 90px 126px,
+    transparent 126px 154px,
+    var(--ps-foundation) 154px 172px,
+    transparent 172px 200px,
+    var(--ps-foundation) 200px 228px,
+    transparent 228px 256px,
+    var(--ps-foundation) 270px 270px,
+    transparent 270px 298px
+  );
+}
+/* Photo-overlay mode — bars float over an image with reveal/punch. */
+.ps-distorted-lines.is-overlay { opacity: 0.78; mix-blend-mode: normal; }

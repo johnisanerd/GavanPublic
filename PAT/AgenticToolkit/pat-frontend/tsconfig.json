@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.server.json" }
+  ],
+  "//": "compilerOptions here is only so tooling that reads the root tsconfig (e.g. shadcn CLI) can resolve the @ alias; the actual build uses the referenced configs. App paths live in tsconfig.app.json.",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] }
+  }
+}

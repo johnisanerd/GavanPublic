@@ -1,0 +1,43 @@
+[project]
+name = "signal-test-rig"
+version = "0.0.1"
+description = "Local WebSocket-fronted wrapper around signal-cli for a burner phone — used as the 'other party' in PAT smoketests."
+requires-python = ">=3.11"
+dependencies = [
+    # Mirror transports/ version pins so a colocated `uv` cache reuses
+    # downloads. Both packages already proven against the repo's
+    # supply-chain policy (exclude-newer).
+    "fastapi==0.135.1",
+    "uvicorn==0.46.0",
+    # Explicit websockets pin — uvicorn's [standard] extra would pull
+    # it transitively, but we want it on the surface so the
+    # broadcast-fanout codepath shows its dep clearly.
+    "websockets>=14,<16",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<9",
+    "pytest-asyncio>=0.24,<1",
+    # httpx is the official FastAPI TestClient transport (Starlette
+    # asks for it explicitly when its `TestClient` is used).
+    "httpx>=0.28,<1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+# Live integration tests against the deployed Fly apps are opt-in:
+#   uv run pytest -m integration
+# Default `uv run pytest` skips them — the unit suite stays hermetic.
+markers = [
+    "integration: live tests against deployed Fly apps (network + Signal Service required)",
+]
+addopts = "-m 'not integration'"
+
+[tool.setuptools.packages.find]
+include = ["signal_test_rig*"]
+
+[tool.uv]
+# Supply-chain guard mirroring transports/pyproject.toml. Bump as needed.
+exclude-newer = "2026-04-28T00:00:00Z"

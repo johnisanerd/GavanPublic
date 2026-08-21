@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>smoketest viewer</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 class="brand">smoketest</h1>
+      <button id="run-switch" class="run-switch" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="run-switch-label" id="run-switch-label">latest run</span>
+        <span class="run-switch-caret" aria-hidden="true">&#9662;</span>
+      </button>
+      <div id="run-picker" class="run-picker" role="listbox" hidden></div>
+    </div>
+  </header>
+
+  <aside class="col col-scenarios" aria-label="Scenarios in run">
+    <nav id="scenario-list" class="scenario-list"></nav>
+    <div id="scenarios-pills" class="scenarios-pills"></div>
+  </aside>
+
+  <main id="detail" class="col col-detail">
+    <div class="placeholder">Select a scenario.</div>
+  </main>
+</div>
+<script src="/app.js" type="module"></script>
+</body>
+</html>

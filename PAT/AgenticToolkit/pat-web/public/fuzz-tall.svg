@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 800" width="200" height="800">
+  <rect width="200" height="800" fill="#b86bff"/>
+  <text x="100" y="380" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff">VERY TALL</text>
+  <text x="100" y="420" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#fff">200×800</text>
+  <text x="100" y="450" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#fff">(1:4)</text>
+</svg>

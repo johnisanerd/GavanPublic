@@ -1,0 +1,46 @@
+# Build context is the whole agentic_toolkit/ root (so the nanoclaw
+# Dockerfile can COPY from sibling realtime/). Trim aggressively —
+# anything not needed inside the image just slows uploads.
+
+# Heavy runtime state — never wanted in an image.
+**/node_modules
+**/.pnpm-store
+**/__pycache__
+**/.venv
+**/.uv-cache
+
+# Local nanoclaw runtime data (sessions, DBs, logs).
+nanoclaw/data
+nanoclaw/store
+nanoclaw/groups
+nanoclaw/logs
+nanoclaw/dist
+
+# Local voice-transport state.
+transports/.python-version
+transports/uv.lock
+
+# Local secrets and dev configs that shouldn't end up in images.
+**/.env
+**/.env.*
+**/.env.agent
+
+# Tests + dev artifacts.
+**/*.test.ts
+**/*.test.js
+**/*.live.test.ts
+**/coverage
+**/.vitest_cache
+
+# Editor / VCS noise.
+.git
+.gitignore
+.github
+.vscode
+.idea
+**/.DS_Store
+
+# Fly artifacts (we don't need to bake these into the image we're
+# pushing back to Fly).
+fly.*.toml
+.fly

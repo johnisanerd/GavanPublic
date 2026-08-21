@@ -1,0 +1,28 @@
+schemaVersion: "1.0.0"
+title: Seahorse Emoji Test
+models:
+  - openai:o4-mini
+  - anthropic:claude-haiku-3-5
+iterations: 16
+
+steps:
+  - prompt: "Does a seahorse emoji exist? Please share your reasoning in your response, then answer the yes/no tool call."
+
+tools:
+  - id: answer
+    name: answer
+    description: Answer yes or no
+    input:
+      name: response
+      type: boolean
+    simulatorPrompt: |
+      The assistant answered: {{input}}
+
+      If {{input}} is true (yes, seahorse emoji exists), call {{update_score}} with a score of 0.
+      If {{input}} is false (no, seahorse emoji does not exist), call {{update_score}} with a score of 1.
+
+      Then call {{output_tool}} with their answer.
+    output:
+      name: answer
+      type: boolean
+    when: mandatory_last

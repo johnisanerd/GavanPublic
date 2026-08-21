@@ -1,0 +1,18 @@
+{
+  "name": "trace-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PAT trace-based end-to-end test harness. Drives a real nanoclaw + anam-web session, asserts on the sequence and timing of structured log events. See README.md.",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:one": "vitest run --reporter=verbose"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,44 @@
+[project]
+name = "agentic-toolkit-voice-transport"
+version = "0.0.1"
+description = "Voice transport bridging Cartesia Line ↔ NanoClaw realtime channel for the Palisade Agentic Toolkit."
+requires-python = ">=3.11"
+dependencies = [
+    # Cartesia Line SDK — voice agent runtime, TTS via Cartesia Sonic.
+    # Pinned to match the prior PAT install for behaviour parity during the spike.
+    "cartesia-line==0.2.9",
+    # HTTP/SSE client for talking to the NanoClaw realtime channel.
+    "httpx[http2]==0.28.1",
+    # SSE parsing — keep dep surface minimal; httpx-sse rides on httpx.
+    "httpx-sse>=0.4.0,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<9",
+    "pytest-asyncio>=0.24,<1",
+]
+
+# Optional dev-deps used only by tests/real_cartesia/. Not installed
+# by default — install transiently via `uv add --dev cartesia` when
+# running the opt-in real-API tests.
+#   cartesia>=3,<4
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+# Default to UNIT tests only — real_cartesia/ auto-skip without
+# CARTESIA_API_KEY but still get collected (and import-erorr if
+# `cartesia` SDK isn't installed). Listing testpaths keeps the
+# default `pytest` invocation fast and safe.
+testpaths = ["tests/unit"]
+markers = [
+    "real_cartesia: opt-in test that calls api.cartesia.ai (auto-skipped without CARTESIA_API_KEY)",
+]
+
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.uv]
+# Supply-chain guard: only resolve packages published before this date.
+# Mirrors the PAT voice-line policy. Bump forward as needed.
+exclude-newer = "2026-04-28T00:00:00Z"

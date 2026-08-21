@@ -1,0 +1,47 @@
+# Commit history (flattened archive)
+
+Flattened to a single snapshot for release; subjects preserved for provenance (redacted).
+
+- `357da9d` 2026-07-16 — Snapshot of in-flight working-tree changes before machine migration
+- `c8d0685` 2026-04-01 — Public skill file at /skills/find-allies.md
+- `ca9c10e` 2026-04-01 — Add /find-allies Claude Code skill for cross-party research
+- `eccc212` 2026-04-01 — Full Congress: all 100 senators + 433 house members from api.congress.gov
+- `97fc460` 2026-04-01 — Fix Vercel→Railway proxy: use beforeFiles rewrite to override Next.js API routes
+- `f8d8150` 2026-04-01 — Add store debug logging
+- `cfa18df` 2026-03-27 — Fix stuck status: 30s timeout on synthesis + persist after each connection search
+- `5c5f174` 2026-03-26 — Direct agent runner (no E2B): nominate_candidate as real tool
+- `67f0584` 2026-03-26 — Wire sandbox-v2 into orchestrator + fix shell script
+- `cbe6a5b` 2026-03-26 — Agent SDK v2: WebSocket-based E2B sandbox communication
+- `11e225d` 2026-03-26 — Fix agent limiting: use --max-budget-usd (--max-turns doesn't exist)
+- `8942df0` 2026-03-26 — Live activity feed + source badges with react-icons
+- `9e852f0` 2026-03-26 — Prefetch legislator social media once, pass as context to all searches
+- `3c088a3` 2026-03-26 — Add Twitter/X and Facebook tools for connection search
+- `c338592` 2026-03-26 — Instagram auto-resolve: pass name, tool finds handle via Google
+- `ccfdf5b` 2026-03-26 — Apify tools working: Instagram + Google Search for connection search
+- `b641793` 2026-03-26 — Add Apify tools: Google Search, website crawler, Instagram posts
+- `d9b368b` 2026-03-26 — Enforce agent turn limits via --max-turns CLI flag (low=8, medium=14, high=25)
+- `39df570` 2026-03-25 — Add packageManager field for Railway pnpm compatibility
+- `5ee07c4` 2026-03-25 — Medium effort: sonnet agents, tight timeouts (90s/8 searches/5 conn iterations)
+- `d00fad6` 2026-03-25 — Per-candidate synthesis UI + on-demand endpoint
+- `4228cf9` 2026-03-25 — Replace full synthesis with per-candidate approach strategy
+- `cb123c7` 2026-03-25 — Centralized AI model config with EFFORT levels
+- `f182d9b` 2026-03-25 — Standalone Hono API server for Railway
+- `b535169` 2026-03-25 — Revert Railway proxy + polling — restore pure Vercel deploy
+- `e9a8c8d` 2026-03-25 — Proxy /api/* to Railway backend via Vercel rewrites
+- `94b440f` 2026-03-25 — Fix Railway deploy: add packageManager field + SSE/polling fallback
+- `11061c2` 2026-03-24 — Pass legislator/initiative context via URL params for Vercel
+- `d5ac1e1` 2026-03-24 — Embed legislator/initiative context in research record for Vercel
+- `9c31057` 2026-03-24 — Combined research endpoint: create initiative + launch in one call
+- `0c2b78e` 2026-03-24 — Show legislator name + initiative title in research status bar
+- `2349f6e` 2026-03-24 — Vercel fixes + debounce eager connection searches
+- `5deece1` 2026-03-24 — Fix eager connection search: trigger once 3+ candidates exist, not 2+ nominations
+- `d0ecad3` 2026-03-24 — Add SANDBOX_MODEL env var to override agent model
+- `6c95cd7` 2026-03-24 — In-memory fallback for Vercel + fresh legislator data
+- `84becd4` 2026-03-24 — App shell layout, streaming candidates, and UI overhaul
+- `7f85da7` 2026-03-24 — Polish recommendation card: smarter connection icons and type labels
+- `307503b` 2026-03-24 — Fix synthesis: increase max_tokens to 16384
+- `ca24df7` 2026-03-24 — Add intermediary candidate nominations and personal connection agents
+- `b14e484` 2026-03-24 — Replace synthesizer sandbox with direct API synthesis
+- `bfac3a1` 2026-03-24 — Fix duplicate tool call events in SSE stream
+- `2686e82` 2026-03-24 — Use tool_use for structured recommendation extraction
+- `a73ed6b` 2026-03-24 — Initial commit: Aisle Crosser bipartisan strategy platform

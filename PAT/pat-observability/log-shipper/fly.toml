@@ -1,0 +1,27 @@
+# pat-log-shipper — Path B. Vector subscribes to Fly's org NATS log stream and
+# ships the raw stdout/stderr of the pat-* namespace into OpenObserve `pat_raw`.
+# Outbound-only worker (no inbound service). One machine.
+#
+# Deploy (from this dir):
+#   env -u FLY_API_TOKEN -u FLY_ACCESS_TOKEN flyctl deploy -c fly.toml --remote-only -a pat-log-shipper
+#
+# Required secrets (set before deploy):
+#   ORG                  = <redacted-fly-org>
+#   ACCESS_TOKEN         = <org-wide Fly token: "PAT Observability Token">
+#   OPENOBSERVE_URL      = http://pat-observability.internal:5080
+#   OPENOBSERVE_ORG      = default
+#   OPENOBSERVE_USER     = <ZO_ROOT_USER_EMAIL>
+#   OPENOBSERVE_PASSWORD = <ZO_ROOT_USER_PASSWORD>
+
+app            = "pat-log-shipper"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+# No [[services]] / [http_service] → outbound-only worker.
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"   # Vector + the org NATS stream
+  size     = "shared-cpu-1x"

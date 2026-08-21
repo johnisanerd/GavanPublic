@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" fill="#5b8def"/>
+  <text x="250" y="240" text-anchor="middle" font-family="sans-serif" font-size="48" fill="#fff">SQUARE</text>
+  <text x="250" y="290" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#fff">500×500 (1:1)</text>
+</svg>

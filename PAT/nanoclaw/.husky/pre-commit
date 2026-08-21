@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+# PAT: Format ONLY staged TS/TSX files. The previous `pnpm run format:fix` ran
+# prettier --write on all of src/**/*.ts, which absorbed other agents'
+# uncommitted edits into the committer's commit when multiple workstreams
+# ran in parallel. Scoping to staged files keeps the auto-format intent
+# without clobbering sibling work.
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|tsx)$' || true)
+if [ -n "$STAGED" ]; then
+  echo "$STAGED" | xargs pnpm exec prettier --write
+  echo "$STAGED" | xargs git add
+fi

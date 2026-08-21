@@ -1,0 +1,18 @@
+diff --git a/dist/index.js b/dist/index.js
+index 48c245309ea4468b13c83f1d33953cd85195e679..57137923047f8a5685258fe9717a0476b70b8494 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1481,7 +1481,12 @@ var SlackAdapter = class _SlackAdapter {
+       return;
+     }
+     const isDM = event.channel_type === "im";
+-    const threadTs = isDM ? event.thread_ts || "" : event.thread_ts || event.ts;
++    // PAT: drop upstream's `|| event.ts` synthesis for non-DM. Synthesizing
++    // a threadTs from the post's own ts conflated conversation key with
++    // post id — top-level channel replies threaded under themselves. Empty
++    // threadTs makes top-level posts post at channel top-level; real
++    // threads keep their parent ts. DM branch unchanged (already empty).
++    const threadTs = isDM ? event.thread_ts || "" : event.thread_ts || "";
+     const threadId = this.encodeThreadId({
+       channel: event.channel,
+       threadTs

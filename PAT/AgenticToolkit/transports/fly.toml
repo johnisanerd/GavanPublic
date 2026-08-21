@@ -1,0 +1,117 @@
+# Fly.io config for pat-transports — sidecar(s) bridging external
+# voice/meeting/messaging providers to pat-nanoclaw via HTTP+SSE+6PN.
+#
+# Process groups:
+#   - cartesia: Cartesia Line bridge (Python). Public edge (webhooks
+#     from Cartesia land here). Historically the entire app; the
+#     "voice-transport" name lives on as the structured-log `source`
+#     identifier for this process (see realtime/src/log-events.ts).
+#   - signal:   signal-cli JSON-RPC daemon (native binary). Private
+#     edge — bound to fly-local-6pn:7583, only sibling Fly apps in the
+#     org reach it. Stateful (per-volume).
+#
+# Image is shared between processes (Fly's one-image-per-app model);
+# the Dockerfile is polyglot.
+#
+# Deploy (MUST cd into transports/ first — the Dockerfile uses
+# transports/ as the build context, parent-repo .dockerignore excludes
+# transports/uv.lock among other things):
+#   cd transports
+#   FLY_API_TOKEN="$(grep ^FLY_DEPLOY_TOKEN_TRANSPORTS= ../.env.agent | cut -d= -f2-)" \
+#     flyctl deploy --remote-only
+#
+# The signal process group needs `SIGNAL_TCP_BIND=0.0.0.0:7583` (default in
+# entrypoint.sh) plus `SIGNAL_ACCOUNT=+E164` set as Fly secrets. The
+# pat-nanoclaw adapter env points at `signal.process.pat-transports.internal`,
+# NOT `pat-transports.internal` (which round-robins to cartesia machines
+# without port 7583). See reference_pat_signal_deploy.md for the full deploy
+# sequence + volume seeding.
+
+app             = "pat-transports"
+primary_region  = "sjc"            # same region as pat-nanoclaw for low intra-app latency
+kill_signal     = "SIGTERM"
+kill_timeout    = "20s"            # let Cartesia connections drain
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8000"
+  TZ   = "UTC"
+  # REALTIME_BASE_URL is set as a Fly secret pointing at
+  # http://pat-nanoclaw.flycast:8765 (private 6PN, no public hop).
+
+# Process groups: each one becomes its own machine pool, scaled
+# independently. Same image across all of them — the Dockerfile is
+# polyglot (Python venv + signal-cli native binary + entrypoint scripts).
+#
+# PAT signal sidecar (Wave 2.A): `signal` runs signal-cli as a JSON-RPC
+# daemon bound to fly-local-6pn:7583. The nanoclaw adapter on
+# pat-nanoclaw connects across 6PN via SIGNAL_TCP_HOST=pat-transports.internal.
+# State (identity, prekeys, contact list, group memberships) lives on the
+# pat_signal_state Fly volume mounted at /root/.local/share/signal-cli.
+[processes]
+  cartesia = "python main.py"
+  signal   = "/app/signal-cli/entrypoint.sh"
+
+# PAT: signal-cli state volume — must persist across machine restarts so
+# the identity survives. Created once per region with `flyctl volumes
+# create pat_signal_state -a pat-transports -r sjc -s 1` then seeded by
+# scripts/migrate-signal-state.sh from the local Mac.
+[[mounts]]
+  source      = "pat_signal_state"
+  destination = "/root/.local/share/signal-cli"
+  processes   = ["signal"]
+
+# Single public service for the cartesia bridge (Cartesia webhooks
+# land here). Other sidecars will get their own [[services]] blocks
+# bound to their respective process groups.
+[[services]]
+  protocol      = "tcp"
+  internal_port = 8000
+  processes     = ["cartesia"]
+  auto_stop_machines  = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+
+  [[services.ports]]
+    # Redirect plain HTTP → HTTPS at the edge. force_https only makes
+    # sense on a non-TLS port; if it sits on the 443 block alongside
+    # the tls handler, Fly rejects the config.
+    port        = 80
+    handlers    = ["http"]
+    force_https = true
+
+  [services.concurrency]
+    type       = "connections"
+    hard_limit = 100
+    soft_limit = 80
+
+  [[services.tcp_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "30s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"
+  processes = ["cartesia"]
+
+# PAT: signal-cli VM — Java daemon RSS ~150-200MB steady with one
+# account. 256MB was OK for daemon-only; bumped to 512MB on 2026-05-13
+# when the signal_staging.py sidecar (FastAPI + uvicorn ~80MB) was
+# added — combined working set was OOM-killing signal-cli on every
+# voice-memo attempt. Bump further if attachment-heavy traffic
+# pushes it.
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"
+  processes = ["signal"]

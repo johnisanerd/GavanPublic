@@ -1,0 +1,67 @@
+# Fly.io config for pat-signal-rig-b — single-account signal-cli front-end
+# for burner B (+15550100006).
+#
+# Companion to fly.toml (pat-signal-rig, burner A +15550100005). The two
+# apps are deployed independently from the same Dockerfile / entrypoint.
+# They each manage exactly one Signal account so the signal-cli identity
+# store can't cross-contaminate across burners — see the "Two-burner
+# topology" section of README.md for the rationale.
+#
+# Initial deploy (already done; here for reference / re-bootstrap):
+#   1. flyctl apps create pat-signal-rig-b -o <redacted-fly-org>
+#   2. flyctl volumes create pat_signal_rig_b_state -a pat-signal-rig-b -r sjc -s 1
+#   3. flyctl secrets set -a pat-signal-rig-b \
+#        SIGNAL_TEST_RIG_TOKEN=<same token as pat-signal-rig> \
+#        SIGNAL_TEST_RIG_ACCOUNTS=+15550100006
+#   4. flyctl deploy -c fly.b.toml --remote-only  # initial deploy to create a machine
+#   5. scripts/migrate-signal-rig-b-state.sh +15550100006
+#   6. (machine auto-restarts at end of migration; verify with /status)
+
+app             = "pat-signal-rig-b"
+primary_region  = "sjc"
+kill_signal     = "SIGTERM"
+kill_timeout    = "20s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  SIGNAL_TEST_RIG_BIND = "0.0.0.0"
+  SIGNAL_TEST_RIG_PORT = "7585"
+  # SIGNAL_TEST_RIG_TOKEN + SIGNAL_TEST_RIG_ACCOUNTS are Fly secrets.
+
+[[mounts]]
+  source      = "pat_signal_rig_b_state"
+  destination = "/root/.local/share/signal-cli"
+
+[[services]]
+  protocol      = "tcp"
+  internal_port = 7585
+  auto_stop_machines  = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+
+  [[services.ports]]
+    port        = 80
+    handlers    = ["http"]
+    force_https = true
+
+  [services.concurrency]
+    type       = "connections"
+    hard_limit = 50
+    soft_limit = 40
+
+  [[services.tcp_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "30s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"

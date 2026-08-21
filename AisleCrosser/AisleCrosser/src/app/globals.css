@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: var(--font-noto-serif);
+  --font-sans: var(--font-public-sans);
+
+  /* Surface Hierarchy */
+  --color-surface: #fcf9f6;
+  --color-surface-low: #f6f3f0;
+  --color-surface-mid: #f0edea;
+  --color-surface-high: #e5e2df;
+  --color-surface-bright: #ffffff;
+
+  /* Core Brand */
+  --color-navy: #002147;
+  --color-navy-light: #0a3a6b;
+  --color-parchment: #F8F5F2;
+  --color-gold: #B1976B;
+  --color-gold-dim: #9a8260;
+  --color-crimson: #8B0000;
+  --color-bipartisan: #6D28D9;
+
+  /* Text */
+  --color-ink: #000a1e;
+  --color-ink-light: #3d4654;
+  --color-ink-muted: #6b7280;
+
+  /* Semantic */
+  --color-dem-blue: #1e40af;
+  --color-dem-bg: #eff6ff;
+  --color-rep-red: #991b1b;
+  --color-rep-bg: #fef2f2;
+  --color-ind-purple: #5b21b6;
+  --color-ind-bg: #f5f3ff;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+/* Tablet-first touch targets */
+button, a, input, select, textarea {
+  min-height: 44px;
+}
+
+/* Smooth transitions — opt-in, not global */
+.transition-tonal {
+  transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
+}
+
+/* Typography tokens */
+.display-lg {
+  font-family: var(--font-serif, 'Noto Serif', Georgia, serif);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+.headline-md {
+  font-family: var(--font-serif, 'Noto Serif', Georgia, serif);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.title-lg {
+  font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.body-lg {
+  font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-light);
+}
+
+.label-md {
+  font-family: var(--font-sans, 'Public Sans', system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* Ghost border utility */
+.ghost-border {
+  box-shadow: inset 0 0 0 1px rgba(0, 10, 30, 0.08);
+}
+
+/* Ambient shadow for modals */
+.shadow-ambient {
+  box-shadow: 0 0 32px rgba(0, 10, 30, 0.04);
+}
+
+/* Glassmorphism for floating nav */
+.glass {
+  background: rgba(252, 249, 246, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gold accent line */
+.gold-thread {
+  position: relative;
+}
+.gold-thread::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--color-gold);
+}
+
+/* Progress bar with gold */
+.progress-gold {
+  background: linear-gradient(90deg, var(--color-gold-dim), var(--color-gold));
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-high);
+  border-radius: 3px;
+}

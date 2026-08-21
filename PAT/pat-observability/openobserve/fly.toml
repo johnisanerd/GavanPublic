@@ -1,0 +1,74 @@
+# pat-observability — the single structured log store for PAT (OpenObserve).
+#
+# One instance serves BOTH prod and staging; records carry an `env` field
+# (stamped by the forwarder / shipper) so you query across or filter by env.
+#
+# Streams:
+#   pat_events — structured JSONL from nanoclaw (via the forwarder, Path A).
+#                Includes debug + llm.call. SQL-queryable; the agent's store.
+#   pat_raw    — raw stdout/stderr of every Fly app (via the NATS log-shipper,
+#                Path B): signal-cli daemon, dockerd, OneCLI gateway, crashes.
+#
+# Deploy (from this dir):
+#   env -u FLY_API_TOKEN -u FLY_ACCESS_TOKEN flyctl deploy -c fly.toml --remote-only -a pat-observability
+# Set the root creds first (used by forwarder/shipper/MCP as basic-auth):
+#   flyctl secrets set ZO_ROOT_USER_EMAIL=... ZO_ROOT_USER_PASSWORD=... -a pat-observability
+#
+# v1 = local disk on a Fly volume (simplest; verify ingest first). For cheap
+# unbounded retention, switch to Tigris (Fly-native S3) later: set
+# ZO_LOCAL_MODE_STORAGE=s3 + the S3_* / AWS_* creds (see README §retention).
+
+app            = "pat-observability"
+primary_region = "sjc"            # co-located with pat-nanoclaw for low-latency 6PN ingest + query
+
+[build]
+  image = "public.ecr.aws/zinclabs/openobserve:latest"
+
+[mounts]
+  source      = "pat_observability_data"
+  destination = "/data"
+
+[env]
+  ZO_DATA_DIR        = "/data"
+  ZO_HTTP_PORT       = "5080"
+  # Single-node mode (SQLite metadata + local/object data). Fine at PAT volume.
+  ZO_LOCAL_MODE      = "true"
+  ZO_TELEMETRY       = "false"
+  # Listen on IPv6 so Fly's 6PN (.internal, IPv6-only) reaches it directly and
+  # `flyctl proxy` from a laptop works. Without this OpenObserve binds 0.0.0.0
+  # (IPv4) only → ConnectionRefused over 6PN. Dual-stack on Linux also keeps
+  # IPv4/localhost health checks working.
+  ZO_HTTP_IPV6_ENABLED = "true"
+  # Root creds come from secrets (ZO_ROOT_USER_EMAIL / ZO_ROOT_USER_PASSWORD).
+
+# Internal-only — NO public IP (PII-sensitive log store; internal tool).
+# Reachable in-org at `pat-observability.flycast:5080` over 6PN. We go through
+# the Fly proxy (flycast) rather than `.internal` because OpenObserve binds IPv4
+# (0.0.0.0) and Fly's 6PN `.internal` is IPv6-only — a direct .internal:5080
+# connection gets ConnectionRefused. The Fly proxy bridges 6PN(IPv6)→app(IPv4),
+# so flycast works regardless of the app's bind family. Requires a PRIVATE
+# flycast IPv6 (allocate: `fly ips allocate-v6 --private -a pat-observability`).
+# Laptop/agent access: `flyctl proxy -a pat-observability 5080:5080` → 127.0.0.1.
+[[services]]
+  internal_port        = 5080
+  protocol             = "tcp"
+  auto_stop_machines   = "off"     # a log store must not nap
+  auto_start_machines  = false
+  min_machines_running = 1
+  # Port served by the Fly proxy on the PRIVATE flycast IP only (no public IP
+  # exists, so this is not internet-exposed). flycast needs an explicit port
+  # mapping — without it the proxy has no listener and connections get closed.
+  [[services.ports]]
+    port     = 5080
+    handlers = ["http"]
+  [[services.tcp_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "20s"
+    port         = 5080
+
+[[vm]]
+  cpu_kind  = "shared"
+  cpus      = 1
+  memory    = "2gb"               # OpenObserve is a single Rust binary; 2gb is comfortable headroom
+  size      = "shared-cpu-1x"

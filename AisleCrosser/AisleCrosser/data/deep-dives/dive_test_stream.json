@@ -1,0 +1,14 @@
+{
+  "id": "dive_test_stream",
+  "researchId": "test_stream",
+  "recommendationId": "rec_test",
+  "connectionIndex": 0,
+  "connectionType": "military service",
+  "connectionDetail": "Both served in the U.S. Navy",
+  "targetLegislatorName": "Sen. Dan Sullivan",
+  "initiativeTitle": "Veterans Mental Health Access Act",
+  "status": "queued",
+  "results": [],
+  "toolCalls": [],
+  "startedAt": "2026-03-24T22:55:00.000Z"
+}

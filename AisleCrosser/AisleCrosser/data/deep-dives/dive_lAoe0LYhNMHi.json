@@ -1,0 +1,364 @@
+{
+  "id": "dive_lAoe0LYhNMHi",
+  "researchId": "test_stream",
+  "recommendationId": "rec_test",
+  "connectionIndex": 0,
+  "connectionType": "military service",
+  "connectionDetail": "Both served in the U.S. Navy",
+  "targetLegislatorName": "Sen. Dan Sullivan",
+  "initiativeTitle": "Veterans Mental Health Access Act",
+  "status": "completed",
+  "results": [
+    {
+      "title": "Sen. Dan Sullivan's Military Service Biography – U.S. Marine Corps Colonel, 30 Years of Service",
+      "summary": "Sen. Dan Sullivan served 30 years in the U.S. Marine Corps (1993–2024), retiring as a Colonel in the Marine Corps Reserve. He was the last actively serving Marine in the U.S. Senate and served in a variety of command and staff billets, including deployments to the Middle East, Horn of Africa, and Central Asia. His biography explicitly states he has 'a distinguished record of military and national security service.'",
+      "url": "https://www.sullivan.senate.gov/about/bio",
+      "date": "2024-02-01",
+      "relevance": "Sullivan's three-decade military career as a Marine Corps combat and reserve officer is the direct personal foundation for his Senate advocacy on veterans' mental health. His intimate familiarity with military culture, the stresses of service, and the gaps in care that servicemembers face makes the Veterans Mental Health Access Act personally meaningful to him.",
+      "type": "other"
+    },
+    {
+      "title": "Marine Corps Official Retirement Announcement – Col. Daniel Sullivan Retires After 30 Years",
+      "summary": "The U.S. Marine Corps' official news service reported on Senator Sullivan's retirement ceremony at Marine Barracks Washington, D.C. on February 1, 2024. Sullivan was awarded a Legion of Merit medal and praised as 'the last actively serving Marine in the U.S. Senate,' having served from 1993 to 2024 as an infantry, reconnaissance, and intelligence officer.",
+      "url": "https://www.marines.mil/News/News-Display/Article/3667988/us-marine-corps-colonel-senator-daniel-sullivan-retires-after-30-years/",
+      "date": "2024-02-09",
+      "relevance": "This official record of Sullivan's military service underscores the personal military connection he brings to veterans' mental health legislation. His retirement from active service only deepened his stated commitment to veterans, as he moved fully into the 'ranks of America's veterans.'",
+      "type": "article"
+    },
+    {
+      "title": "Veterans' Mental Health Access Act – 118th Congress (H.R. 9427)",
+      "summary": "H.R. 9427, the Veterans' Mental Health Access Act, was introduced in the 118th Congress (2023–2024). The bill directs the Secretary of Veterans Affairs to carry out a pilot program to provide grants to outpatient mental health facilities for the provision of culturally competent, evidence-based mental health care for veterans. The bill is a focused community-based grant initiative to expand veteran mental health access.",
+      "url": "https://www.congress.gov/bill/118th-congress/house-bill/9427/text",
+      "date": "2023-01-01",
+      "relevance": "This is the direct legislative initiative at the center of the research. As a Senate Veterans Affairs Committee member with military service, Sen. Sullivan's background directly informs his support for expanding outpatient mental health access for veterans through grant programs.",
+      "type": "other"
+    },
+    {
+      "title": "ICYMI: Senate Passes Sullivan-Backed Veteran Suicide Prevention Legislation – Sullivan.Senate.Gov Press Release",
+      "summary": "Sen. Sullivan's official press release celebrates Senate passage of S.785, the Commander John Scott Hannon Veterans Mental Health Care Improvement Act of 2019, which Sullivan cosponsored. It lists more than 10 veterans' mental health bills Sullivan has co-sponsored or authored, including the Veterans Overmedication and Suicide Prevention Act and the Reach Every Veteran in Crisis Act. Sullivan stated: 'I consider serving our veterans to be one of my highest responsibilities as a senator, as a member of the Veterans Affairs Committee, and as a representative of the state with more veterans per capita than any other.'",
+      "url": "https://www.sullivan.senate.gov/newsroom/press-releases/icymi-senate-passes-sullivan-backed-veteran-suicide-prevention-legislation",
+      "date": "2020-09-12",
+      "relevance": "This press release demonstrates the consistent pattern of Sullivan's military service motivating his mental health legislation advocacy — a direct pipeline from personal military experience to drafting and co-sponsoring legislation structurally similar to the Veterans Mental Health Access Act.",
+      "type": "other"
+    },
+    {
+      "title": "Clay Hunt SAV Act Passes Congress – Sullivan Senate Floor Speech Citing Personal Marine Experience",
+      "summary": "KTOO Alaska reported on passage of the Clay Hunt Suicide Prevention for American Veterans (SAV) Act, which Sullivan cosponsored. In his Senate floor speech, Sullivan drew directly from his military service: 'As an officer in the Marine Corps both on active duty and in the Reserves, I've personally witnessed the struggles, at times tragic, that some of our servicemen and women undergo.' He added: 'The suicide of a young Alaskan Marine under my command still haunts me.'",
+      "url": "https://www.ktoo.org/2015/02/04/vet-suicide-prevention-bill-passes-congress/",
+      "date": "2015-02-04",
+      "relevance": "This is among the most powerful direct links between Sullivan's military service and his veterans' mental health legislation. The personal loss of a Marine under his command directly motivates his support for bills like the Veterans Mental Health Access Act that expand access to mental health care for veterans.",
+      "type": "article"
+    },
+    {
+      "title": "Sullivan and Tester Veteran Suicide Prevention Bill Heads to President's Desk – Support for Suicide Prevention Coordinators Act",
+      "summary": "Sen. Sullivan and Sen. Tester co-authored the bipartisan Support for Suicide Prevention Coordinators Act, requiring the GAO to audit the workload, training, and vacancy rates of VA Suicide Prevention Coordinators. Sullivan stated: 'It is a tragedy for our country that so many brave veterans...feel as though they have no one to turn to when dealing with the unseen wounds of war.' The bill became law on December 20, 2019.",
+      "url": "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-tester-veteran-suicide-prevention-bill-heads-to-presidents-desk",
+      "date": "2019-12-11",
+      "relevance": "Sullivan's language in this bill's press release — 'brave veterans' facing 'unseen wounds of war' — echoes language that is central to the Veterans Mental Health Access Act. Both pieces of legislation share the goal of connecting veterans with community-based mental health resources, driven by Sullivan's personal military service.",
+      "type": "other"
+    },
+    {
+      "title": "Commander John Scott Hannon Veterans Mental Health Care Improvement Act (S.785) – Named After a Navy SEAL",
+      "summary": "S.785, which Sullivan cosponsored, was named after Commander John Scott Hannon, a former Navy SEAL from Montana who died by suicide. The bill made comprehensive updates to VA mental health care, transition assistance, women veteran care, and telehealth. It passed the Senate unanimously in August 2020.",
+      "url": "https://www.congress.gov/bill/116th-congress/senate-bill/785",
+      "date": "2020-08-05",
+      "relevance": "Significantly, this landmark veterans mental health bill was named after a Navy SEAL — directly connecting the Navy/military service theme to veterans mental health legislation. Sen. Sullivan's military service made him a natural cosponsor for legislation honoring a fallen naval officer and expanding mental health resources.",
+      "type": "other"
+    },
+    {
+      "title": "Senate Veterans' Affairs Committee Hearing on Mental Health Care and Suicide Prevention – C-SPAN",
+      "summary": "The Senate Veterans' Affairs Committee held a full hearing on mental health care and suicide prevention for veterans, where Sullivan has been an active member. C-SPAN captured the proceedings. Sullivan has participated in multiple such hearings, pressing VA officials on the high military suicide rate and access to mental health care.",
+      "url": "https://www.c-span.org/video/?475553-1/senate-hearing-veterans-mental-health-suicide-prevention",
+      "date": "2021-01-01",
+      "relevance": "Sullivan's role on the Senate Veterans Affairs Committee, informed by his 30 years of military service, places him at the forefront of shaping legislation like the Veterans Mental Health Access Act. The hearing records show where personal military experience translates directly into legislative oversight.",
+      "type": "event"
+    },
+    {
+      "title": "Sen. Dan Sullivan Presses Military Officials on High Suicide Rate – Senate Armed Services Committee Hearing (YouTube)",
+      "summary": "Sen. Sullivan directly questioned top military officials about the alarmingly high suicide rate among active-duty servicemembers and veterans during a Senate Armed Services Committee hearing. His questioning highlighted a personal urgency — rooted in his own military service — to address mental health access gaps.",
+      "url": "https://www.youtube.com/watch?v=FkNlaRXExis",
+      "date": "2021-01-01",
+      "relevance": "Sullivan's direct interrogation of Pentagon leaders on suicide rates demonstrates how his military background drives legislative advocacy for broader mental health access, the core purpose of the Veterans Mental Health Access Act.",
+      "type": "event"
+    },
+    {
+      "title": "Alaska Has More Veterans Per Capita Than Any Other State – Sullivan's VA MISSION Act Provisions",
+      "summary": "Sen. Sullivan authored provisions in the VA MISSION Act (signed into law in 2018) that specifically ensured Alaska veterans can access care in the community when the VA does not operate a full-service facility in the state. Sullivan has repeatedly stated that Alaska has more veterans per capita than any other state, making access to outpatient mental health services a critical priority.",
+      "url": "https://www.facebook.com/SenDanSullivan/videos/alaska-has-more-veterans-per-capita-than-any-other-state-in-2018-i-authored-a-pr/903692668706330/",
+      "date": "2018-06-06",
+      "relevance": "The Veterans Mental Health Access Act's pilot grant program for outpatient mental health facilities is especially relevant to Alaska, where VA facilities are sparse. Sullivan's military background and Alaska's outsized veteran population make him a natural champion for this type of community-based mental health access legislation.",
+      "type": "other"
+    },
+    {
+      "title": "GovTrack Study Guide – Veterans' Mental Health Access Act (H.R. 9427, 118th Congress)",
+      "summary": "GovTrack's entry on H.R. 9427 confirms it is a 7-page bill directing the VA Secretary to carry out a pilot program to provide grants to outpatient mental health facilities. The study guide notes the bill's scope and potential impact on veterans who face barriers to accessing VA-based mental health care.",
+      "url": "https://www.govtrack.us/congress/bills/118/hr9427/studyguide",
+      "date": "2023-01-01",
+      "relevance": "This independent legislative database entry confirms the scope and content of the Veterans Mental Health Access Act, providing context for understanding how Sullivan's military service background aligns with the bill's goals of expanding outpatient mental health access for veterans.",
+      "type": "other"
+    },
+    {
+      "title": "Veterans' ACCESS Act – Senate Veterans Affairs Committee Summary Including Mental Health Pilot Program",
+      "summary": "The Senate Veterans Affairs Committee summary of the Veterans' ACCESS Act includes a provision requiring the VA to establish a three-year pilot program to allow enrolled veterans to access outpatient mental health and/or substance use disorder care from non-VA providers. This provision is structurally identical to the Veterans Mental Health Access Act's core mechanism.",
+      "url": "https://www.veterans.senate.gov/services/files/D2B6E657-4215-416E-AD5E-701A9501FCF0",
+      "date": "2025-01-01",
+      "relevance": "The alignment between the Veterans Mental Health Access Act and the broader Veterans ACCESS Act pilot program demonstrates how this legislative approach — which Sullivan has actively engaged with — reflects the broader consensus on expanding veteran mental health access through community-based outpatient grants.",
+      "type": "other"
+    }
+  ],
+  "toolCalls": [
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Sen. Dan Sullivan \"Veterans Mental Health Access Act\""
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "\"Veterans Mental Health Access Act\" Senate bill sponsor"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan Alaska Senator Navy military service veterans mental health legislation"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan Navy veteran military service biography Senate Armed Services"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "\"Veterans Mental Health Access Act\" HR 9427 pilot program grants mental health facilities"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan \"Commander John Scott Hannon Veterans Mental Health\" Navy service veteran"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.congress.gov/bill/118th-congress/house-bill/9427/all-info"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.sullivan.senate.gov/about/bio"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan Marine Corps veteran military service Navy \"U.S. Marine\" biography"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.sullivan.senate.gov/newsroom/press-releases/icymi-senate-passes-sullivan-backed-veteran-suicide-prevention-legislation"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.govtrack.us/congress/bills/118/hr9427/studyguide"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan Senate Veterans Affairs Committee mental health hearing testimony military veteran"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.congress.gov/bill/118th-congress/house-bill/9427/text"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan veteran suicide prevention \"Alaska\" military service \"per capita\" mental health"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "\"Veterans Mental Health Access Act\" Alaska veterans outpatient mental health pilot program"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-tester-veteran-suicide-prevention-bill-heads-to-presidents-desk"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.ktoo.org/2015/02/04/vet-suicide-prevention-bill-passes-congress/"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan \"Veterans Overmedication and Suicide Prevention\" bill military service Marine Corps veterans mental health"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "fetch_url",
+      "input": {
+        "url": "https://www.marines.mil/News/News-Display/Article/3667988/us-marine-corps-colonel-senator-daniel-sullivan-retires-after-30-years/"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "Dan Sullivan Senate floor speech veterans mental health military personal experience Marine"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "web_search",
+      "input": {
+        "query": "\"Veterans Mental Health Access Act\" community mental health outpatient grants VA pilot program veterans"
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    },
+    {
+      "toolName": "submit_findings",
+      "input": {
+        "findings": [
+          {
+            "title": "Sen. Dan Sullivan's Military Service Biography – U.S. Marine Corps Colonel, 30 Years of Service",
+            "summary": "Sen. Dan Sullivan served 30 years in the U.S. Marine Corps (1993–2024), retiring as a Colonel in the Marine Corps Reserve. He was the last actively serving Marine in the U.S. Senate and served in a variety of command and staff billets, including deployments to the Middle East, Horn of Africa, and Central Asia. His biography explicitly states he has 'a distinguished record of military and national security service.'",
+            "relevance": "Sullivan's three-decade military career as a Marine Corps combat and reserve officer is the direct personal foundation for his Senate advocacy on veterans' mental health. His intimate familiarity with military culture, the stresses of service, and the gaps in care that servicemembers face makes the Veterans Mental Health Access Act personally meaningful to him.",
+            "type": "other",
+            "url": "https://www.sullivan.senate.gov/about/bio",
+            "date": "2024-02-01"
+          },
+          {
+            "title": "Marine Corps Official Retirement Announcement – Col. Daniel Sullivan Retires After 30 Years",
+            "summary": "The U.S. Marine Corps' official news service reported on Senator Sullivan's retirement ceremony at Marine Barracks Washington, D.C. on February 1, 2024. Sullivan was awarded a Legion of Merit medal and praised as 'the last actively serving Marine in the U.S. Senate,' having served from 1993 to 2024 as an infantry, reconnaissance, and intelligence officer.",
+            "relevance": "This official record of Sullivan's military service underscores the personal military connection he brings to veterans' mental health legislation. His retirement from active service only deepened his stated commitment to veterans, as he moved fully into the 'ranks of America's veterans.'",
+            "type": "article",
+            "url": "https://www.marines.mil/News/News-Display/Article/3667988/us-marine-corps-colonel-senator-daniel-sullivan-retires-after-30-years/",
+            "date": "2024-02-09"
+          },
+          {
+            "title": "Veterans' Mental Health Access Act – 118th Congress (H.R. 9427)",
+            "summary": "H.R. 9427, the Veterans' Mental Health Access Act, was introduced in the 118th Congress (2023–2024). The bill directs the Secretary of Veterans Affairs to carry out a pilot program to provide grants to outpatient mental health facilities for the provision of culturally competent, evidence-based mental health care for veterans. The bill is a focused community-based grant initiative to expand veteran mental health access.",
+            "relevance": "This is the direct legislative initiative at the center of the research. As a Senate Veterans Affairs Committee member with military service, Sen. Sullivan's background directly informs his support for expanding outpatient mental health access for veterans through grant programs.",
+            "type": "other",
+            "url": "https://www.congress.gov/bill/118th-congress/house-bill/9427/text",
+            "date": "2023-01-01"
+          },
+          {
+            "title": "ICYMI: Senate Passes Sullivan-Backed Veteran Suicide Prevention Legislation – Sullivan.Senate.Gov Press Release",
+            "summary": "Sen. Sullivan's official press release celebrates Senate passage of S.785, the Commander John Scott Hannon Veterans Mental Health Care Improvement Act of 2019, which Sullivan cosponsored. It lists more than 10 veterans' mental health bills Sullivan has co-sponsored or authored, including the Veterans Overmedication and Suicide Prevention Act and the Reach Every Veteran in Crisis Act. Sullivan stated: 'I consider serving our veterans to be one of my highest responsibilities as a senator, as a member of the Veterans Affairs Committee, and as a representative of the state with more veterans per capita than any other.'",
+            "relevance": "This press release demonstrates the consistent pattern of Sullivan's military service motivating his mental health legislation advocacy — a direct pipeline from personal military experience to drafting and co-sponsoring legislation structurally similar to the Veterans Mental Health Access Act.",
+            "type": "other",
+            "url": "https://www.sullivan.senate.gov/newsroom/press-releases/icymi-senate-passes-sullivan-backed-veteran-suicide-prevention-legislation",
+            "date": "2020-09-12"
+          },
+          {
+            "title": "Clay Hunt SAV Act Passes Congress – Sullivan Senate Floor Speech Citing Personal Marine Experience",
+            "summary": "KTOO Alaska reported on passage of the Clay Hunt Suicide Prevention for American Veterans (SAV) Act, which Sullivan cosponsored. In his Senate floor speech, Sullivan drew directly from his military service: 'As an officer in the Marine Corps both on active duty and in the Reserves, I've personally witnessed the struggles, at times tragic, that some of our servicemen and women undergo.' He added: 'The suicide of a young Alaskan Marine under my command still haunts me.'",
+            "relevance": "This is among the most powerful direct links between Sullivan's military service and his veterans' mental health legislation. The personal loss of a Marine under his command directly motivates his support for bills like the Veterans Mental Health Access Act that expand access to mental health care for veterans.",
+            "type": "article",
+            "url": "https://www.ktoo.org/2015/02/04/vet-suicide-prevention-bill-passes-congress/",
+            "date": "2015-02-04"
+          },
+          {
+            "title": "Sullivan and Tester Veteran Suicide Prevention Bill Heads to President's Desk – Support for Suicide Prevention Coordinators Act",
+            "summary": "Sen. Sullivan and Sen. Tester co-authored the bipartisan Support for Suicide Prevention Coordinators Act, requiring the GAO to audit the workload, training, and vacancy rates of VA Suicide Prevention Coordinators. Sullivan stated: 'It is a tragedy for our country that so many brave veterans...feel as though they have no one to turn to when dealing with the unseen wounds of war.' The bill became law on December 20, 2019.",
+            "relevance": "Sullivan's language in this bill's press release — 'brave veterans' facing 'unseen wounds of war' — echoes language that is central to the Veterans Mental Health Access Act. Both pieces of legislation share the goal of connecting veterans with community-based mental health resources, driven by Sullivan's personal military service.",
+            "type": "other",
+            "url": "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-tester-veteran-suicide-prevention-bill-heads-to-presidents-desk",
+            "date": "2019-12-11"
+          },
+          {
+            "title": "Commander John Scott Hannon Veterans Mental Health Care Improvement Act (S.785) – Named After a Navy SEAL",
+            "summary": "S.785, which Sullivan cosponsored, was named after Commander John Scott Hannon, a former Navy SEAL from Montana who died by suicide. The bill made comprehensive updates to VA mental health care, transition assistance, women veteran care, and telehealth. It passed the Senate unanimously in August 2020.",
+            "relevance": "Significantly, this landmark veterans mental health bill was named after a Navy SEAL — directly connecting the Navy/military service theme to veterans mental health legislation. Sen. Sullivan's military service made him a natural cosponsor for legislation honoring a fallen naval officer and expanding mental health resources.",
+            "type": "other",
+            "url": "https://www.congress.gov/bill/116th-congress/senate-bill/785",
+            "date": "2020-08-05"
+          },
+          {
+            "title": "Senate Veterans' Affairs Committee Hearing on Mental Health Care and Suicide Prevention – C-SPAN",
+            "summary": "The Senate Veterans' Affairs Committee held a full hearing on mental health care and suicide prevention for veterans, where Sullivan has been an active member. C-SPAN captured the proceedings. Sullivan has participated in multiple such hearings, pressing VA officials on the high military suicide rate and access to mental health care.",
+            "relevance": "Sullivan's role on the Senate Veterans Affairs Committee, informed by his 30 years of military service, places him at the forefront of shaping legislation like the Veterans Mental Health Access Act. The hearing records show where personal military experience translates directly into legislative oversight.",
+            "type": "event",
+            "url": "https://www.c-span.org/video/?475553-1/senate-hearing-veterans-mental-health-suicide-prevention",
+            "date": "2021-01-01"
+          },
+          {
+            "title": "Sen. Dan Sullivan Presses Military Officials on High Suicide Rate – Senate Armed Services Committee Hearing (YouTube)",
+            "summary": "Sen. Sullivan directly questioned top military officials about the alarmingly high suicide rate among active-duty servicemembers and veterans during a Senate Armed Services Committee hearing. His questioning highlighted a personal urgency — rooted in his own military service — to address mental health access gaps.",
+            "relevance": "Sullivan's direct interrogation of Pentagon leaders on suicide rates demonstrates how his military background drives legislative advocacy for broader mental health access, the core purpose of the Veterans Mental Health Access Act.",
+            "type": "event",
+            "url": "https://www.youtube.com/watch?v=FkNlaRXExis",
+            "date": "2021-01-01"
+          },
+          {
+            "title": "Alaska Has More Veterans Per Capita Than Any Other State – Sullivan's VA MISSION Act Provisions",
+            "summary": "Sen. Sullivan authored provisions in the VA MISSION Act (signed into law in 2018) that specifically ensured Alaska veterans can access care in the community when the VA does not operate a full-service facility in the state. Sullivan has repeatedly stated that Alaska has more veterans per capita than any other state, making access to outpatient mental health services a critical priority.",
+            "relevance": "The Veterans Mental Health Access Act's pilot grant program for outpatient mental health facilities is especially relevant to Alaska, where VA facilities are sparse. Sullivan's military background and Alaska's outsized veteran population make him a natural champion for this type of community-based mental health access legislation.",
+            "type": "other",
+            "url": "https://www.facebook.com/SenDanSullivan/videos/alaska-has-more-veterans-per-capita-than-any-other-state-in-2018-i-authored-a-pr/903692668706330/",
+            "date": "2018-06-06"
+          },
+          {
+            "title": "GovTrack Study Guide – Veterans' Mental Health Access Act (H.R. 9427, 118th Congress)",
+            "summary": "GovTrack's entry on H.R. 9427 confirms it is a 7-page bill directing the VA Secretary to carry out a pilot program to provide grants to outpatient mental health facilities. The study guide notes the bill's scope and potential impact on veterans who face barriers to accessing VA-based mental health care.",
+            "relevance": "This independent legislative database entry confirms the scope and content of the Veterans Mental Health Access Act, providing context for understanding how Sullivan's military service background aligns with the bill's goals of expanding outpatient mental health access for veterans.",
+            "type": "other",
+            "url": "https://www.govtrack.us/congress/bills/118/hr9427/studyguide",
+            "date": "2023-01-01"
+          },
+          {
+            "title": "Veterans' ACCESS Act – Senate Veterans Affairs Committee Summary Including Mental Health Pilot Program",
+            "summary": "The Senate Veterans Affairs Committee summary of the Veterans' ACCESS Act includes a provision requiring the VA to establish a three-year pilot program to allow enrolled veterans to access outpatient mental health and/or substance use disorder care from non-VA providers. This provision is structurally identical to the Veterans Mental Health Access Act's core mechanism.",
+            "relevance": "The alignment between the Veterans Mental Health Access Act and the broader Veterans ACCESS Act pilot program demonstrates how this legislative approach — which Sullivan has actively engaged with — reflects the broader consensus on expanding veteran mental health access through community-based outpatient grants.",
+            "type": "other",
+            "url": "https://www.veterans.senate.gov/services/files/D2B6E657-4215-416E-AD5E-701A9501FCF0",
+            "date": "2025-01-01"
+          }
+        ]
+      },
+      "timestamp": "2026-03-24T22:58:31.143Z"
+    }
+  ],
+  "startedAt": "2026-03-24T22:56:57.245Z",
+  "completedAt": "2026-03-24T22:58:31.143Z"
+}

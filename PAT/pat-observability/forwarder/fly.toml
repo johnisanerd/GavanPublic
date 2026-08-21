@@ -1,0 +1,35 @@
+# pat-log-forwarder — Path A. One tiny app, one machine, handles BOTH envs
+# (prod + staging) via the SOURCES json. Internal-only (no public IP); reaches
+# each nanoclaw at pat-nanoclaw[-staging].internal:8767 over 6PN, and the store
+# at pat-observability.internal:5080.
+#
+# Deploy (from this dir):
+#   env -u FLY_API_TOKEN -u FLY_ACCESS_TOKEN flyctl deploy -c fly.toml --remote-only -a pat-log-forwarder
+#
+# Required secrets (set before deploy):
+#   SOURCES            = '[{"env":"prod","tailUrl":"http://pat-nanoclaw.internal:8767/admin/logs.tail","token":"<PROD_ADMIN_TOKEN>"},{"env":"staging","tailUrl":"http://pat-nanoclaw-staging.internal:8767/admin/logs.tail","token":"<STAGING_ADMIN_TOKEN>"}]'
+#   OPENOBSERVE_URL    = http://pat-observability.internal:5080
+#   OPENOBSERVE_USER   = <ZO_ROOT_USER_EMAIL>
+#   OPENOBSERVE_PASSWORD = <ZO_ROOT_USER_PASSWORD>
+#   (OPENOBSERVE_ORG=default, OPENOBSERVE_STREAM=pat_events are defaults)
+
+app            = "pat-log-forwarder"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[mounts]
+  source      = "pat_log_forwarder_data"   # holds /data/checkpoint.json
+  destination = "/data"
+
+[env]
+  OPENOBSERVE_ORG    = "default"
+  OPENOBSERVE_STREAM = "pat_events"
+
+# No [[services]] / [http_service] → no inbound; it's an outbound-only worker.
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "256mb"
+  size     = "shared-cpu-1x"

@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────────────────────────────
+   Design tokens
+   ─────────────────────────────────────────────────────────────────────
+   Tone: editorial-meets-instrument. Ink-and-graphite paper, single
+   cyan candle for front-mind, single azure candle for back-mind.
+   Type: Instrument Serif (display, italic), Inter (UI), JetBrains Mono
+   (log content). Generous spacing, controlled density.
+*/
+@theme {
+  /* Palette */
+  --color-bg-base: oklch(0.16 0.012 250);          /* near-black graphite */
+  --color-bg-elevated: oklch(0.20 0.014 250);      /* card ground */
+  --color-bg-sunken: oklch(0.13 0.01  250);        /* log column floor */
+  --color-bg-glass: oklch(0.22 0.014 250 / 0.6);
+
+  --color-border-subtle: oklch(0.28 0.014 250);
+  --color-border: oklch(0.34 0.018 250);
+  --color-border-strong: oklch(0.45 0.022 250);
+
+  --color-ink-1: oklch(0.96 0.005 250);            /* primary text */
+  --color-ink-2: oklch(0.78 0.008 250);            /* body */
+  --color-ink-3: oklch(0.60 0.010 250);            /* secondary */
+  --color-ink-4: oklch(0.45 0.012 250);            /* labels */
+  --color-ink-5: oklch(0.32 0.014 250);            /* faint */
+
+  /* Accent — front mind (cyan candle) */
+  --color-front: oklch(0.86 0.13 190);
+  --color-front-soft: oklch(0.86 0.13 190 / 0.18);
+  --color-front-line: oklch(0.86 0.13 190 / 0.42);
+
+  /* Accent — back mind (azure candle) */
+  --color-back: oklch(0.78 0.14 255);
+  --color-back-soft: oklch(0.78 0.14 255 / 0.18);
+  --color-back-line: oklch(0.78 0.14 255 / 0.42);
+
+  /* Semantic */
+  --color-good: oklch(0.85 0.16 150);
+  --color-warn: oklch(0.85 0.15 80);
+  --color-bad: oklch(0.72 0.20 25);
+
+  /* Per-kind ink (log content tints) */
+  --color-kind-inbound: oklch(0.88 0.13 95);
+  --color-kind-banter: oklch(0.78 0.16 0);
+  --color-kind-rendition: oklch(0.92 0.13 190);
+  --color-kind-narrator: oklch(0.78 0.10 195);
+  --color-kind-forward: oklch(0.85 0.18 145);
+  --color-kind-noop: oklch(0.50 0.012 250);
+  --color-kind-state: oklch(0.85 0.15 75);
+  --color-kind-call-start: oklch(0.85 0.18 145);
+  --color-kind-call-end: oklch(0.72 0.20 25);
+  --color-kind-session: oklch(0.85 0.13 160);
+  --color-kind-container: oklch(0.85 0.15 75);
+  --color-kind-chat: oklch(0.78 0.14 240);
+  --color-kind-tts: oklch(0.86 0.005 250);
+  --color-kind-stt: oklch(0.85 0.13 90);
+  --color-kind-routing: oklch(0.78 0.10 280);
+  --color-kind-detail: oklch(0.55 0.012 250);
+  /* Timeline lane — front-mind sequencer cascade. Violet to read
+     distinctly from scenario (~chat-row, golden) and tools (back-mind). */
+  --color-kind-timeline: oklch(0.82 0.16 295);
+  --color-kind-timeline-soft: oklch(0.82 0.16 295 / 0.30);
+  --color-kind-timeline-bracket: oklch(0.74 0.20 285);
+
+  /* Type — brand fonts (TheTest): DM Sans / DM Mono. Imported in main.tsx.
+     NOTE: Timeline's mono labels now render in DM Mono — verify legibility. */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 0 oklch(1 0 0 / 0.03) inset, 0 0 0 1px oklch(1 0 0 / 0.04);
+  --shadow-card-hover: 0 1px 0 oklch(1 0 0 / 0.05) inset, 0 0 0 1px oklch(1 0 0 / 0.06);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Global resets / atmospherics
+*/
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Background + foreground now come from the shadcn dark palette via the
+   @layer base body rule below (var(--background) / var(--foreground)). */
+
+/* Subtle hairline between sections */
+.hairline {
+  background-image: linear-gradient(to right,
+    transparent,
+    var(--color-border-subtle) 12%,
+    var(--color-border-subtle) 88%,
+    transparent);
+  height: 1px;
+}
+
+/* Scrollbar — thin, ghostly */
+.thin-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.thin-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-strong);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+/* Live-flip animation for state dots */
+@keyframes pulse-on {
+  0% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  70% { box-shadow: 0 0 0 6px oklch(from currentColor l c h / 0); opacity: 0.9; }
+  100% { box-shadow: 0 0 0 0 oklch(from currentColor l c h / 0); opacity: 1; }
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-ink-5);
+  vertical-align: middle;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.dot.on {
+  background: var(--color-good);
+  color: var(--color-good);
+  animation: pulse-on 2.4s ease-out infinite;
+}
+.dot.warn { background: var(--color-warn); color: var(--color-warn); }
+.dot.bad  { background: var(--color-bad);  color: var(--color-bad); }
+
+/* Selection */
+::selection {
+  background: var(--color-front-soft);
+  color: var(--color-ink-1);
+}
+
+/* Buttons & selects (fallback chrome before shadcn) */
+button, select { font-family: inherit; }
+/* ─── TheTest shadcn theme: token→var mapping + brand dark palette (global,
+   always-dark). Lifted from TheTest's admin.css. ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #c7e09c;
+  --primary-foreground: #1d222c;
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #c7e09c;
+
+  --success: #1d925e;
+  --warning: oklch(0.769 0.188 70.08);
+  --info: oklch(0.715 0.143 215.221);
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.922 0 0);
+  --sidebar-primary-foreground: oklch(0.205 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    cursor: pointer;
+  }
+  tbody tr:nth-child(even) {
+    background-color: color-mix(in oklab, var(--muted) 45%, transparent);
+  }
+}

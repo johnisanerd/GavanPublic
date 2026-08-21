@@ -1,0 +1,186 @@
+# Fly.io config for pat-nanoclaw — NanoClaw v2 host process for the
+# Palisade Agentic Toolkit. Runs the front-mind cognitive layer (Haiku
+# banter + Sonnet request-layer + Haiku narration) and orchestrates
+# per-session back-mind containers via Docker-in-Docker on the same VM.
+#
+# Internal-only: no public IP. Reachable from sibling Fly apps (e.g.
+# pat-transports) on the private 6PN network at `pat-nanoclaw.flycast`.
+# Fly's edge does not terminate TLS for .flycast — sidecars hit it on
+# plain HTTP at port 8765.
+#
+# Single-machine app: nanoclaw's session DBs are SQLite on a Fly Volume,
+# so multi-machine would need session affinity or a different storage
+# layout (see meet-channel-plan.md backlog). One machine until that's
+# revisited.
+#
+# Deploy from the toolkit root (agentic_toolkit/) so the build context
+# includes both nanoclaw/ and its sibling realtime/ workspace dep:
+#   FLY_API_TOKEN="$(grep ^FLY_DEPLOY_TOKEN_NANOCLAW= .env.agent | cut -d= -f2-)" \
+#     flyctl deploy -c fly.nanoclaw.toml --remote-only
+
+app             = "pat-nanoclaw-staging"
+primary_region  = "sjc"           # us-west (San Jose), low-latency to existing PAT services
+kill_signal     = "SIGTERM"
+kill_timeout    = "30s"           # SIGTERM → tini in container → SQLite flush
+
+[build]
+  dockerfile = "Dockerfile.nanoclaw"
+
+# Single volume covers both nanoclaw state and dockerd state. Layout:
+#   /data/nanoclaw/  — sessions, DBs, group folders, on-disk config
+#   /data/docker/    — dockerd data-root (configured via daemon.json);
+#                      holds the nanoclaw-agent image and per-session
+#                      container layers. ~30GB needed long-term.
+# We mount one volume because Fly Machines pin a machine to a single
+# volume per mount and using two would split the budget; one larger
+# volume is simpler to size and reason about.
+[mounts]
+  source      = "pat_nanoclaw_data_staging"
+  destination = "/data"
+
+[env]
+  # Realtime channel binds 0.0.0.0 so it's reachable on the 6PN private
+  # interface (where pat-transports.flycast hits us). PAT bind-host
+  # patch in src/channels/realtime.ts honors this.
+  # Bind on ::, the IPv6 wildcard, since Fly's private 6PN network is
+  # IPv6-only. Node's dual-stack mode accepts IPv4 connections too,
+  # so this also covers localhost callers.
+  REALTIME_BIND_HOST = "::"
+  REALTIME_PORT      = "8765"
+  # anam-web channel — same IPv6 bind story as REALTIME_BIND_HOST.
+  # pat-web (sibling Fly app, not yet deployed) reaches the channel at
+  # `pat-nanoclaw.internal:8766` over 6PN. ANAM_WEB_BIND_HOST defaults
+  # to 127.0.0.1 in-process (see src/channels/anam-web.ts); the
+  # override is required on Fly so the per-machine VM accepts inbound
+  # on the IPv6 interface.
+  ANAM_WEB_BIND_HOST   = "::"
+  ANAM_WEB_CHANNEL_PORT = "8766"
+  # Admin/observatory server — pat-frontend (the dashboard Fly app
+  # embedded in pat-web via iframe) reads `/admin/logs.tail` etc. from
+  # this port. Same IPv6 bind story as the channel servers above.
+  # PAT (security): admin server binds the 6PN private address (FLY_PRIVATE_IP),
+  # NOT `::`, so docker-bridge agent containers can't reach unauthenticated admin
+  # endpoints (scenarios/provision). Set PAT_ADMIN_BIND_HOST = "::" to revert.
+  PAT_ADMIN_PORT       = "8767"
+  TZ                 = "UTC"
+  NODE_ENV           = "production"
+  ONECLI_URL         = "http://127.0.0.1:10254"
+  HOME               = "/root"
+  # publish_file: public base for minted file URLs (served via the
+  # pat-frontend /files/pub/* pass-through proxy, which owns this cert).
+  PAT_PUBLIC_BASE_URL = "https://pat-staging.plsd.app"
+
+# Internal service: nanoclaw's main HTTP API is reachable inside the org
+# as pat-nanoclaw.internal:8765 (no edge proxy, no public IP). All admin
+# endpoints (/admin/*, /inbound, /agent-turn-ended, /admin/log-event)
+# live on this port and stay private — only voice-transport and other
+# sibling Fly apps reach it via 6PN.
+[[services]]
+  internal_port = 8765
+  protocol      = "tcp"
+  auto_stop_machines  = "off"
+  auto_start_machines = false
+  min_machines_running = 1
+
+  # No [[services.ports]] block → no public exposure. Fly still wires
+  # the .flycast / .internal DNS names for sibling apps in the same org.
+
+  [[services.tcp_checks]]
+    interval = "30s"
+    timeout  = "5s"
+    grace_period = "60s"
+    port = 8765
+
+# Internal service: admin/observatory HTTP server. Reachable inside
+# the org as pat-nanoclaw.internal:8767 by pat-frontend (dashboard Fly
+# app embedded in pat-web via iframe). Read endpoints (/admin/logs.*,
+# /admin/monitor, /admin/sessions/<id>/host-log.jsonl) live here.
+# `POST /admin/log-event` is also reachable on 8765 via a fallback
+# dispatch in src/channels/phone-call.ts so voice-transport (which
+# only knows REALTIME_BASE_URL) keeps working without env coupling.
+#
+# No [[services.ports]] = no public exposure (same as 8765 / 8766).
+[[services]]
+  internal_port = 8767
+  protocol      = "tcp"
+  auto_stop_machines  = "off"
+  auto_start_machines = false
+  min_machines_running = 1
+
+  [[services.tcp_checks]]
+    interval = "30s"
+    timeout  = "5s"
+    grace_period = "60s"
+    port = 8767
+
+# Internal service: anam-web channel adapter HTTP surface. Reachable
+# inside the org as pat-nanoclaw.internal:8766 by the pat-web Fly app
+# (and any other sibling that wants to push anam-web inbound). Mirrors
+# the 8765 admin service: no [[services.ports]] = no public edge, just
+# the 6PN .flycast / .internal DNS.
+#
+# Why a separate [[services]] block instead of extending the 8765
+# block: Fly's tcp ingress is per-port — each port needs its own
+# [[services]] entry, even when both are internal-only. Adding
+# internal_port = 8766 inside the 8765 block would silently get
+# ignored.
+#
+# The tcp_check on 8766 is safe because anam-web's setup() listens on
+# the port unconditionally at service start (not gated on adapter
+# registration the way the chat-sdk webhook server is on port 3000).
+[[services]]
+  internal_port = 8766
+  protocol      = "tcp"
+  auto_stop_machines  = "off"
+  auto_start_machines = false
+  min_machines_running = 1
+
+  [[services.tcp_checks]]
+    interval = "30s"
+    timeout  = "5s"
+    grace_period = "60s"
+    port = 8766
+
+# Public service: webhook ingress for Chat-SDK channel adapters
+# (Slack, Discord, Teams, GitHub, etc.). The chat-sdk-bridge spins up a
+# shared HTTP server (`src/webhook-server.ts`) on `WEBHOOK_PORT`
+# (default 3000) and routes ONLY `/webhook/{adapterName}` paths,
+# returning 404 for everything else. Each adapter brings its own
+# request-signature verification (Slack: HMAC w/ signing secret).
+#
+# Why a separate [[services]] block: Fly ingress is per-port. Adding a
+# public mapping here exposes ONLY port 3000 — port 8765 (admin) stays
+# private. Future non-webhook services on different ports also stay
+# private unless they get their own [[services.ports]] entries.
+#
+# Why no tcp_check on 3000: the webhook server is started lazily by the
+# chat-sdk-bridge factory on first adapter registration. Until at
+# least one channel adapter (Slack, Discord, etc.) is wired via
+# `/manage-channels`, port 3000 isn't listening — a tcp_check would
+# flap the machine "unhealthy" pre-wiring. Health is gated on 8765
+# above, which is always live.
+[[services]]
+  internal_port = 3000
+  protocol      = "tcp"
+  auto_stop_machines  = "off"
+  auto_start_machines = false
+
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+
+  [[services.ports]]
+    port     = 80
+    handlers = ["http"]
+
+# Note: Fly Machines are Firecracker microVMs with full kernel access,
+# so dockerd inside one does NOT need a `[experimental] privileged`
+# flag — it's already running on its own kernel. The only DinD-on-Fly
+# trick is using a docker:dind-style image (or installing dockerd in
+# the entrypoint). See: github.com/fly-apps/docker-daemon (canonical).
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 4
+  memory   = "8gb"           # host process + dockerd + agent containers
+  size     = "shared-cpu-4x"

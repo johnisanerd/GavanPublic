@@ -1,0 +1,32 @@
+# nanoclaw/ is a git submodule (see .gitmodules) — no longer gitignored.
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.local
+.env.legacy
+.env.agent
+*.log
+/tmp/
+.cache/
+realtime/dist/
+realtime/node_modules/
+transports/.venv/
+transports/__pycache__/
+*.tar.gz
+*.tsbuildinfo
+# mobile-mcp soft-fork has its own git history + uncommitted local edits;
+# treat as a sibling working tree, not nested content.
+mobile-mcp/
+
+# Runtime / generated artifacts
+/data/
+pat-web/data/packets/
+trace-e2e/node_modules/
+trace-e2e/test-logs/
+
+# replay/benchmark result dumps (throwaway artifacts)
+replay-results-*
+.env.remote*

@@ -1,0 +1,1613 @@
+# Commit history (flattened archive)
+
+Flattened to a single snapshot for release; subjects preserved for provenance (redacted).
+
+- `de3d7b6` 2026-07-16 — Snapshot of in-flight working-tree changes before machine migration
+- `2c385de` 2026-07-07 — agent-runner: bunfig minimumReleaseAge soak for dep bumps (S2 supply-chain)
+- `9580d5b` 2026-07-07 — people: remove the dead person_identifiers.verified flag (migration 025)
+- `de904eb` 2026-07-07 — delivery: register cold_contact approval handler at boot, not module-load
+- `d1173d9` 2026-07-07 — delivery: gate cold-contact behind an admin approval card, not an auto-grant 
+- `569468f` 2026-07-07 — security: credential-rebind guard + admin-token fail-closed + stdio MCP off-by-default
+- `68efd18` 2026-07-06 — admin: bind the admin server to the 6PN private address, not :: 
+- `45cd7bd` 2026-07-06 — admin: validate the log-serve date param before it pins a filename (path traversal)
+- `dace8e4` 2026-07-06 — signal/phone-call: review fixes — stamp thread_id on realtime-utterance, doc stub edge
+- `dcf67e6` 2026-07-06 — security: harden pairing-code matching + gate self-mod on the requester
+- `9ac30a6` 2026-07-06 — signal: surface send failures for retry + stop dropping doc/video-only messages
+- `e038d87` 2026-07-04 — phone-call: E.164-gate the pstn: identity mint + refresh stale gate comments
+- `559b70d` 2026-07-04 — Rename .agent-secrets -> .env.agent in add-signal skill
+- `f33b67d` 2026-07-03 — channels: sim-signal inbound binds :: (6PN IPv6) so flyctl proxy reaches it
+- `852869a` 2026-07-03 — channels: make sim-signal BIDIRECTIONAL — HTTP inbound → straight to back-mind
+- `7dfa149` 2026-07-03 — channels: capture adapter logs actual outbound content (text + spoken_text)
+- `0aaad43` 2026-07-03 — channels: simulated-Signal capture adapter for full-plumbing E2E smoke
+- `daa3427` 2026-07-03 — publish_file: agent-published signed expiring public file URLs
+- `4bd719a` 2026-07-03 — Fix ncl messaging-groups create: instance column omitted from INSERT
+- `6f85382` 2026-07-03 — Phase 4: boot-time HOST_ env prefix router (process.env + .env halves)
+- `b4d2e0f` 2026-07-02 — MCP hardening from live incidents: URL preflight (intake) + dead-server notes to the agent
+- `1ca12df` 2026-07-02 — Delivery: wire retry backoff (finishes the stashed WIP — dropped-replies fix)
+- `205095c` 2026-07-02 — Supply-chain cooldown: 1-week release-age window on agent runtime installs
+- `24384ff` 2026-07-01 — Selective-by-default secret scoping for new OneCLI agents (= new agent groups)
+- `9e9595a` 2026-07-01 — add_mcp_server: make stdio a verified last resort; unprefixed secret_name guard
+- `8b7ed95` 2026-07-01 — Credential-gated MCP activation + boot reconcile (routing table → vault)
+- `c44577c` 2026-06-30 — fix: approval card ValidationError — backtick dynamic values in add-mcp question
+- `c374bf2` 2026-06-30 — add-mcp: relax the anti-thrash prompting (the thrash was a real bug, not flightiness)
+- `4f06d70` 2026-06-30 — fix: add_mcp_server intake handler rejected + dropped the http (remote) path
+- `be56f85` 2026-06-30 — add-mcp: single path + hard stop-after-one-call (fix the thrash)
+- `a59c5ba` 2026-06-30 — obs: capture tool OUTPUT (agent.tool_result) + ~2KB cap + re-emit test
+- `c25e5ba` 2026-06-30 — skill: add-mcp — playbook for adding MCP servers the right way
+- `be1d04b` 2026-06-30 — Back-mind tool-call observability: emit agent.tool_use via stderr tee
+- `78b5583` 2026-06-30 — tidy: move VAULT_PLACEHOLDER const below imports (apply.ts)
+- `1ce34a6` 2026-06-30 — self-mod: add_mcp_server registers credential routing in one call
+- `cc8d4d1` 2026-06-30 — db: credential_routing table — DB-sourced OneCLI routing (Phase 3 foundation)
+- `9987ece` 2026-06-30 — mcp: soft-delete tombstone for MCP servers
+- `5c972c4` 2026-06-30 — self-mod: add http (remote) transport to add_mcp_server (tool + CLI)
+- `a0cbb4c` 2026-06-30 — PAT(obs): emit outbound.sent at channel-registry deliver seam (built, not deployed)
+- `6454e73` 2026-06-25 — PAT(obs): person_id-only on inbound/routing + live people.* directory events
+- `276323b` 2026-06-25 — PAT(obs): person-enriched inbound.received with message body on every channel
+- `014922c` 2026-06-25 — PAT(phone): policy-driven caller authorization gate (built, not deployed)
+- `730eb9b` 2026-06-25 — PAT(voice): send_voice_memo works for code-paired (UUID) Signal users
+- `0cc4d8d` 2026-06-25 — PAT(test): fix seed-resolver test — use valid SenderScope/IgnoredMessagePolicy
+- `2a784eb` 2026-06-25 — PAT(signal): fix seed-agent resolution skipping wired groups → pairing/new-sender drop
+- `597b259` 2026-06-25 — PAT(people): delete-person cascade — fully deregister every linked handle
+- `efc128a` 2026-06-25 — PAT(people): normalizePhone assumes US +1 for bare 10-digit input
+- `6e284b6` 2026-06-25 — PAT(pairing): gate the unknown-sender approval card off too (PAT_SENDER_APPROVAL_CARDS, default off)
+- `2ae0e10` 2026-06-25 — PAT(pairing): DISABLE channel-registration cards (gated), don't delete them
+- `57f5d15` 2026-06-25 — PAT: external Signal health probe + admin alerting (nanoclaw side)
+- `f43ca2c` 2026-06-25 — PAT(pairing): make pairing a parallel subsystem + delete channel-registration cards
+- `cdff616` 2026-06-25 — PAT(pairing): integration tests for the ingress flow
+- `54b265f` 2026-06-25 — PAT(pairing): self-service handle linking by pairing code
+- `c72352f` 2026-06-25 — PAT(people): cross-channel auto-approve — autoApprove + slack email link
+- `8c3af5b` 2026-06-24 — PAT(signal): auto-reconnect on daemon drop — re-subscribe without nanoclaw restart
+- `a8307b7` 2026-06-24 — PAT(agent): drop /pnpm/claude override — let claude-agent-sdk use its bundled binary
+- `b1636e1` 2026-06-24 — PAT(ncl): channel-registrations resource — list/approve pending registration cards
+- `85c236c` 2026-06-24 — PAT(fly): fix .env allowlist drift that silently broke the signal channel
+- `96b78a3` 2026-06-23 — PAT: admin /admin/db — read-only central-DB browser over the network
+- `02e3bc8` 2026-06-23 — PAT: person_roles foundation — dashboard data-visibility authority (Phase B)
+- `dc0854f` 2026-06-22 — PAT: bind session to its sender at creation; trivial person resolution (#11)
+- `9c66b8f` 2026-06-22 — PAT: address review findings (people spine / recall / memory / admin bridge)
+- `b14071c` 2026-06-22 — PAT: per-person memory (Phase 3) — /personal & /shared mounts; fix the leak
+- `b7b932e` 2026-06-22 — PAT: conversation recall (Phase 2) — transcript-backed list/fetch/search
+- `31a9904` 2026-06-22 — PAT: people spine — HTTP control-plane bridge + dev console + harness
+- `08d6b90` 2026-06-22 — PAT: people spine (Phase 1 backend) — additive identity tables + auto-enroll
+- `b8f8609` 2026-06-19 — feat(firecrawl): make the paid Firecrawl MCP work via OneCLI gateway; rename skill
+- `acb51d0` 2026-06-19 — refactor: rename agent-group slug realtime-with-gavan -> palisade-internal
+- `28e2cf7` 2026-06-19 — refactor(signal): unify voice onto shared synth + Scribe path
+- `0aa7215` 2026-06-19 — fix(fly): rebuild agent image when container source changes
+- `7ac2681` 2026-06-19 — fix(voice): default to PAT's canonical voice, not a generic Cartesia voice
+- `5596a77` 2026-06-19 — feat(telegram): bidirectional voice memos (Scribe in, sendVoice out)
+- `94f10eb` 2026-06-19 — fix(fly): rebind OneCLI gateway to 0.0.0.0, not 172.17.0.1
+- `0e20eb6` 2026-06-18 — fly-entrypoint: gateway guard rebinds to bridge (172.17.0.1), not loopback
+- `19dc4ab` 2026-06-18 — fix(provider): claude binary is at /pnpm/claude, not /pnpm/bin/claude
+- `7618a58` 2026-06-18 — fly-entrypoint: enforce loopback-only binding for the OneCLI gateway
+- `5fe080e` 2026-06-18 — staging: add Telegram connector (trial)
+- `aef1cbf` 2026-06-18 — fly-entrypoint: stamp upgrade marker to clear the v2.1.0 boot tripwire
+- `f34e590` 2026-06-18 — docs: update token count to 199k tokens · 100% of context window
+- `d208fd7` 2026-06-18 — chore: bump version to 2.1.19
+- `9977af6` 2026-06-18 — chore(migrations): number the new migration files (017, 018)
+- `8e44f07` 2026-06-18 — refactor(approvals): carry approver on a pending_approvals column, not the payload
+- `8c43f13` 2026-06-18 — refactor(approvals): assigned approver is strict — only the named user may resolve
+- `5cf4ff1` 2026-06-17 — refactor: destructure approverUserId / policy.approver instead of repeated access
+- `6e475e5` 2026-06-17 — chore(agent-to-agent): drop self-explanatory comments
+- `0f8499b` 2026-06-17 — refactor(agent-to-agent): drop set-time admin check on policy approver
+- `82e1dc4` 2026-06-17 — feat(approvals): authorize by approver named in payload; policy approver may be source or target
+- `e70b021` 2026-06-17 — refactor(agent-to-agent): destructure payload in applyA2aMessageGate
+- `ea90a12` 2026-06-17 — feat(agent-to-agent): make policy approver mandatory
+- `3b1f450` 2026-06-17 — feat(agent-to-agent): optional single approver per policy
+- `385fb01` 2026-06-17 — refactor(agent-to-agent): split content parsing out of buildGateQuestion
+- `b2160a5` 2026-06-17 — refactor(agent-to-agent): drop named-approver list from v1
+- `f72658b` 2026-06-17 — refactor(agent-to-agent): extract sourceAgentGroupId in routeAgentMessage
+- `3180f3f` 2026-06-17 — chore(agent-to-agent): trim comments to match repo convention
+- `b0bdc57` 2026-06-17 — refactor(agent-to-agent): align policy files with resource conventions
+- `314b91e` 2026-06-16 — feat(agent-to-agent): per-message approval policies on connected agents
+- `53ed3b7` 2026-06-18 — fix(setup): allow env-selected agent provider
+- `e4907c2` 2026-06-18 — refactor: mirror .claude into .agents via symlinks
+- `3f39f57` 2026-06-18 — chore: bump version to 2.1.18
+- `439c24f` 2026-06-18 — docs: link Korean README in language switchers
+- `2a144bb` 2026-06-18 — docs: add Korean README
+- `197faaa` 2026-06-18 — fix(setup): parse Claude OAuth token from wrapped PTY capture
+- `3ffd6dd` 2026-06-17 — refactor: remove dead resolveGroupIpcPath
+- `ee7f891` 2026-06-16 — docs: update token count to 196k tokens · 98% of context window
+- `7fde348` 2026-06-16 — chore: bump version to 2.1.17
+- `d1f94fc` 2026-06-15 — docs(changelog): clarify the OneCLI gateway is a separate, operator-driven upgrade
+- `096b8bf` 2026-06-15 — feat(update-nanoclaw): upgrade OneCLI gateway when its pinned version moves
+- `b92d1f9` 2026-06-15 — docs(add-codex): drop redundant TTY warning in auth note
+- `028897f` 2026-06-15 — docs(add-codex): flag interactive auth step + add host-restart step
+- `ac0a799` 2026-06-14 — refactor(add-codex): install Codex CLI via cli-tools.json, not the Dockerfile
+- `e3986eb` 2026-06-14 — chore: bump version to 2.1.16
+- `6d0d48d` 2026-06-14 — docs: update token count to 195k tokens · 98% of context window
+- `c5b4d11` 2026-06-14 — Apply suggestion from @gavrielc
+- `d5ce02d` 2026-06-14 — docs(CLAUDE.md): fix two relocated Key Files paths
+- `435233a` 2026-06-14 — chore: bump version to 2.1.15
+- `01433ba` 2026-06-14 — fix(agent-runner): deliver budget/billing error turns instead of dropping them
+- `6d521a9` 2026-06-14 — refactor(memory): scope imported-memory doctrine to /migrate-memory
+- `adfae67` 2026-06-14 — feat(container): data-drive global CLI installs from cli-tools.json
+- `13a37de` 2026-06-14 — feat(providers): operator-driven provider selection, switching, and memory migration
+- `03382e9` 2026-06-13 — chore: bump version to 2.1.14
+- `9763551` 2026-06-13 — docs: update token count to 194k tokens · 97% of context window
+- `a619fc1` 2026-06-13 — Apply suggestion from @gavrielc
+- `3d2f3e5` 2026-06-13 — feat(runner): onExchangeComplete provider hook + slash-command interruption
+- `0ee75d3` 2026-06-13 — chore: bump version to 2.1.13
+- `72b9cc7` 2026-06-13 — docs: update token count to 192k tokens · 96% of context window
+- `9b12365` 2026-06-13 — chore: bump version to 2.1.12
+- `878cd68` 2026-06-13 — docs: update token count to 191k tokens · 96% of context window
+- `3f9e89d` 2026-06-12 — feat(onecli): SDK 2.2.1 — credential-stub mounts + machine-checkable pins
+- `14810a5` 2026-06-12 — feat(providers): agent-surfaces capability seam
+- `2cfa86e` 2026-06-12 — feat(memory): opt-in persistent memory scaffold for providers
+- `36cbf17` 2026-06-11 — chore: bump version to 2.1.11
+- `d1bda5d` 2026-06-11 — chore: bump version to 2.1.10
+- `991ef98` 2026-06-11 — docs: update token count to 190k tokens · 95% of context window
+- `0f2557e` 2026-06-11 — chore: bump version to 2.1.9
+- `978b998` 2026-06-11 — chore: bump version to 2.1.8
+- `76ef097` 2026-06-11 — chore: bump version to 2.1.7
+- `42275ed` 2026-06-11 — chore: bump version to 2.1.6
+- `6f2142d` 2026-06-11 — docs: update token count to 189k tokens · 95% of context window
+- `79a0226` 2026-06-11 — chore: bump version to 2.1.5
+- `67ccd9e` 2026-06-11 — fix(setup): auto-submit handoff context as Claude's first prompt
+- `f69af07` 2026-06-11 — feat(webhook-server): raw-route registry — non-Chat-SDK webhooks become an append
+- `93a302b` 2026-06-11 — feat(approvals): add approval-resolved callback registry
+- `eef285b` 2026-06-11 — fix(session-manager): open outbound.db read-write in writeOutboundDirect
+- `a806534` 2026-06-11 — fix(host-sweep): grace period for freshly-woken containers with stale processing claims
+- `0ac8073` 2026-06-11 — fix(chat-sdk-bridge): record the acting user on resolved approval cards
+- `539a2b3` 2026-06-11 — feat(delivery): getDeliveryAction read side for the action registry
+- `fccaadf` 2026-06-11 — fix(channels,db): exact instance dispatch, FK-check scoping, migration-safe skill snippets
+- `3329270` 2026-06-10 — docs: update token count to 185k tokens · 93% of context window
+- `1c024bc` 2026-06-10 — docs: document the channel-instance dimension
+- `6c26f3e` 2026-06-10 — feat(host): thread the channel instance through router, delivery, and typing
+- `ab6ab69` 2026-06-10 — feat(channels): per-instance Chat SDK state namespaces and webhook routes
+- `501afb4` 2026-06-10 — feat(channels): key the adapter registry by instance with channelType fallback
+- `9040dbb` 2026-06-10 — feat(db): add messaging_groups.instance with FK-safe recreate migration
+- `d8748e3` 2026-06-10 — fix: address uninstaller review findings
+- `41a720d` 2026-06-10 — feat: port uninstaller to TS, wire nanoclaw.sh --uninstall, detect existing installs in setup
+- `6ae83f4` 2026-06-09 — feat: add uninstall.sh — per-copy uninstaller with confirmation, dry-run, and OneCLI agent cleanup
+- `ad3dfad` 2026-06-09 — docs: align CONTRIBUTING and README with the registry-branch install model
+- `0bdc6d2` 2026-06-09 — docs: customizing intro, skills model, and skill guidelines
+- `820cd8e` 2026-06-09 — docs: update token count to 185k tokens · 92% of context window
+- `e44d497` 2026-06-09 — chore: bump version to 2.1.4
+- `c6627d3` 2026-06-09 — security: authorize create_agent host-side (approval for confined groups)
+- `51bf403` 2026-06-09 — chore: bump version to 2.1.3
+- `265953f` 2026-06-09 — docs: update token count to 184k tokens · 92% of context window
+- `3e3a294` 2026-06-09 — chore: bump version to 2.1.2
+- `f3fc18e` 2026-06-09 — chore: bump claude-code to 2.1.170 and agent SDK to 0.3.170
+- `d85efea` 2026-06-08 — chore: bump version to 2.1.1
+- `c5b22cb` 2026-06-08 — docs: update token count to 183k tokens · 92% of context window
+- `6420c0e` 2026-06-07 — feat(security): egress lockdown (opt-in) — agent egress only via OneCLI
+- `f9c86d0` 2026-06-07 — docs(ollama): allow prompt caching by filtering the cache-busting hash
+- `9edb33d` 2026-06-07 — docs: update token count to 182k tokens · 91% of context window
+- `092487d` 2026-06-07 — chore: release 2.1.0; guard auto-bump against deliberate version changes
+- `87850aa` 2026-06-07 — docs(changelog): release the upgrade-tripwire entry as 2.1.0
+- `526170f` 2026-06-07 — feat(upgrade): add human-addressed guidance to tripwire banner
+- `cee19ad` 2026-06-06 — feat(skills): rewrite use-native-credential-proxy, add-ollama-tool, migrate-from-openclaw for v2
+- `14dba9b` 2026-06-06 — feat(skills): MCP-tool / capability / operational conformance cleanup
+- `83c2457` 2026-06-06 — feat(skills): provider conformance for opencode and codex
+- `2908ffc` 2026-06-06 — feat(skills): channel-family conformance retrofit
+- `28e814d` 2026-06-06 — chore(skills): drop 4 skills broken on v2 + fix dangling refs
+- `ff22a2b` 2026-06-06 — skill(add-dashboard): document that build guards the @nanoco dependency
+- `4578b58` 2026-06-06 — skill(add-deltachat,add-slack): behavior registration test, implicit dep check
+- `b23c25f` 2026-06-06 — skill(add-slack): make conformant — integration test, drop VERIFY.md
+- `c6afef1` 2026-06-06 — skill(add-deltachat): make conformant — integration test, drop VERIFY.md
+- `3ddfbfa` 2026-06-06 — feat(add-atomic-chat-tool): make conformant — integration tests + standalone remove
+- `6592e84` 2026-06-06 — feat(add-dashboard): conformant skill (minimal integration point + tests)
+- `e734e5c` 2026-06-06 — feat(upgrade): startup tripwire + upgrade marker
+- `d144721` 2026-06-05 — chore: bump version to 2.0.76
+- `0c1897a` 2026-06-05 — fix: blank the secret_url path instead of /*
+- `d16b24d` 2026-06-05 — docs: update token count to 181k tokens · 91% of context window
+- `d0de64b` 2026-06-05 — chore: bump version to 2.0.75
+- `f3fde69` 2026-06-05 — fix: trim the upload-trace not-signed-in message
+- `20140c8` 2026-06-05 — chore: bump version to 2.0.74
+- `0435736` 2026-06-05 — feat: show OneCLI's own setup URL when HF token is missing
+- `384f9c2` 2026-06-05 — chore: bump version to 2.0.73
+- `aa8597a` 2026-06-05 — docs: update token count to 181k tokens · 90% of context window
+- `de88be8` 2026-06-05 — fix: simplify HF token setup + correct secret-mode docs
+- `b914121` 2026-05-31 — docs: update token count to 181k tokens · 91% of context window
+- `341b595` 2026-05-31 — chore: bump version to 2.0.72
+- `729cd8d` 2026-05-30 — feat: add /upload-trace command to upload session trace to Hugging Face
+- `3601a8a` 2026-05-28 — chore: bump version to 2.0.71
+- `81d99e1` 2026-05-28 — chore: bump claude-code to 2.1.154 and claude-agent-sdk to 0.3.154
+- `7667153` 2026-05-25 — PAT: reset stale container_status on startup — fixes 35s delivery delay
+- `e0cdcee` 2026-05-25 — PAT: Firecrawl pre-install, disable Agent tool, strip </think>, disable keepalive for Cerebras
+- `2f141af` 2026-05-25 — PAT: remove back-mind prewarm, add Firecrawl MCP, container stderr, jq
+- `2492259` 2026-05-25 — docs: update token count to 179k tokens · 89% of context window
+- `b142055` 2026-05-25 — chore: bump version to 2.0.70
+- `5eec056` 2026-05-24 — anam-web: /prewarm-warmup — first-gesture back-mind prewarm route
+- `b70338e` 2026-05-24 — poll-loop: discard prewarm session_id — don't pollute user's continuation
+- `d3f3dab` 2026-05-24 — back-mind: prewarm SDK cold-start before user's first message
+- `d505772` 2026-05-24 — add @cerebras/cerebras_cloud_sdk to nanoclaw deps
+- `688abbf` 2026-05-24 — pnpm-lock: register @cerebras/cerebras_cloud_sdk transitive dep
+- `637ef12` 2026-05-24 — poll-loop: gate follow-up push on trigger=1 (fix empty-message bug)
+- `2bae342` 2026-05-24 — anam-web: wire FastLlmKeepalivePinger per WS session
+- `d1d6415` 2026-05-24 — PAT: emit back-mind-llm-call detail row per Anthropic API call
+- `5052801` 2026-05-24 — admin: flush /admin/logs.jsonl headers immediately + keepalive empty lines
+- `bef0cbb` 2026-05-24 — PAT: anam-web.llm-prewarmed — surface connection_reused + connect_ms
+- `96e9d54` 2026-05-24 — PAT: prewarm uses makeProvider direct + wire silent-fallback warning
+- `b21bcbd` 2026-05-24 — PAT: anam-web /prewarm — also warm the fast-LLM TLS socket
+- `8ba38c8` 2026-05-24 — PAT: rewire banter — kind:'banter' rows + <said from="..."> format
+- `4ee9893` 2026-05-23 — PAT: add undici@^8.3.0 dep
+- `7ac102d` 2026-05-23 — PAT: anam-web channel — add /anam-web/ws WebSocket endpoint
+- `1545bae` 2026-05-23 — PAT: source PAT-shared prompts from ../pat-prompts/ (parent repo)
+- `866f329` 2026-05-23 — PAT: prompt-snapshot debug instrumentation + _pat-shared/ + model visibility
+- `7629342` 2026-05-23 — PAT: drop slash_commands from install-caps render — front-mind never uses them
+- `107b9a3` 2026-05-23 — PAT: anam-web container pre-warm endpoint
+- `2445a5d` 2026-05-23 — PAT: drop poll/delivery/token-delta floors to 25ms
+- `cabc7c0` 2026-05-23 — docs: update token count to 178k tokens · 89% of context window
+- `3e53341` 2026-05-23 — chore: bump version to 2.0.69
+- `8f332e0` 2026-05-23 — chore: bump version to 2.0.68
+- `6a2e344` 2026-05-23 — chore: bump version to 2.0.67
+- `c727bb6` 2026-05-23 — fix: load per-group CLAUDE.local.md by adding 'local' to settingSources
+- `3df3047` 2026-05-23 — fix(agent-runner): exit on persistent inbound.db corruption errors
+- `df90f99` 2026-05-23 — test(agent-runner): update formatter test for dropped <messages> envelope
+- `f00f863` 2026-05-23 — fix(agent-runner): honor zero/negative transcript rotate-age override
+- `f34841e` 2026-05-22 — PAT: tell back-mind HOW to detect cross-channel work
+- `1851d14` 2026-05-22 — PAT: cross-channel pre-warn rule in destinations system prompt
+- `6be99fa` 2026-05-22 — PAT: emit signal.send-acked / signal.send-failed on every send RPC
+- `68448c4` 2026-05-22 — chore: bump version to 2.0.66
+- `cea78a7` 2026-05-22 — docs: update token count to 177k tokens · 89% of context window
+- `d986844` 2026-05-22 — chore: bump version to 2.0.65
+- `bef362e` 2026-05-22 — docs: update token count to 176k tokens · 88% of context window
+- `ea06453` 2026-05-22 — fix: correct Photon URL from photon.im to photon.codes
+- `ed3c56a` 2026-05-22 — docs(add-teams): map CLI credential names to TEAMS_APP_* env keys
+- `d365728` 2026-05-22 — docs(add-teams): add CLI path as auto setup option
+- `6686315` 2026-05-22 — fix(agent-runner): rotate oversized/old session transcripts before resume
+- `5208bbe` 2026-05-21 — PAT: split capability resolver into install (per agent group) vs caller (per inbound)
+- `3a87953` 2026-05-21 — fix(signal-auth): read 'number' field from signal-cli 0.13+ listAccounts
+- `2ab57dd` 2026-05-21 — PAT: wire capability resolver into anam-web + phone-call (TaskList #6)
+- `31f30ab` 2026-05-21 — PAT: host-side capability resolver (TaskList #6)
+- `0ec51d4` 2026-05-20 — feat: add add-rtk skill for token-efficient CLI proxy
+- `7d15dbc` 2026-05-20 — fix(permissions): scope channel approval targets
+- `6db6919` 2026-05-14 — fix(setup-register): scope --assistant-name to the registered group only
+- `2883232` 2026-05-19 — anam-web: drain timeline queue on barge-in (fixes timeline clobbering conversation)
+- `ed2139b` 2026-05-19 — slide-bus: host-side postSlideBus stamps thread on all POSTs
+- `1b29a60` 2026-05-19 — fix(setup): correct OneCLI default URL from app to api subdomain
+- `a7aa535` 2026-05-19 — presenter: stamp thread on slide-bus POSTs
+- `fe2e881` 2026-05-19 — fix(agent-runner): drop <messages> envelope so claude-agent-sdk calls API
+- `7f92f17` 2026-05-19 — feat(skills): add whatsapp-formatting container skill
+- `e5e8e9b` 2026-05-19 — fix(add-whatsapp): correct removed --method refs, ship QR-browser wrapper
+- `cb15fe0` 2026-05-19 — PAT: provisioner + resolver use slides.html via extractor (Phase 6)
+- `c79989c` 2026-05-18 — PAT: strip <verbatim> from packets + agent contract
+- `77d5198` 2026-05-18 — PAT: resolver populates current_slide_authored_timeline (no <verbatim>)
+- `0f20c35` 2026-05-18 — PAT: back-mind Sonnet 4.6 default + 100ms active polls
+- `847e999` 2026-05-18 — PAT: propagate PAT_WEB_SCENARIO_SLUG into presenter containers
+- `3e04ec3` 2026-05-18 — fix: prompt-leak guard + debug-default logs + action-started swimlane
+- `e6887b8` 2026-05-18 — present-slides: migrate SKILL.md to new timeline vocabulary
+- `ad66589` 2026-05-18 — PAT: register scenarios.presentation domain extension on anam-web load (Phase 5)
+- `f4d0275` 2026-05-18 — presenter: hard-ban status narration in send_message
+- `f83db7e` 2026-05-18 — presenter: bundle packet into system prompt + fragments on bullet slides
+- `8dbe8c1` 2026-05-18 — docs(changelog): add v2.0.64 entry
+- `4635c40` 2026-05-18 — review(cli): explicit container_configs delete in cascade
+- `b66d10d` 2026-05-18 — tag-stream SKILL.md: ONE turn = ONE slide, then STOP
+- `ce78c2b` 2026-05-18 — Scrap on-disk .cursor for tag-stream scenarios
+- `d1a53a0` 2026-05-18 — review(cli): count deletes inside the transaction
+- `cdc4db5` 2026-05-18 — chore(cli): pnpm run format
+- `c34127d` 2026-05-18 — Phase A-D: presenter tag-stream architecture (host-side)
+- `8d28cd6` 2026-05-17 — PAT (scenarios): SKILL.md — send_message + canonical loop
+- `dae1fed` 2026-05-17 — PAT (scenarios): cert mount fix unblocks back-mind on macOS+Colima — E2E green
+- `289b994` 2026-05-18 — fix(cli): cascade dependent rows on groups delete (#2525)
+- `db13f99` 2026-05-17 — PAT (scenarios): E2E harness + CLAUDE.local.md auto-import fix
+- `6c4229b` 2026-05-17 — PAT (scenarios): scenario-context resolver wired into ChannelOrchestrator
+- `78bb6cb` 2026-05-17 — chore: bump version to 2.0.64
+- `0c1e246` 2026-05-16 — PAT (anam-web): don't require ANAM_WEB_DEFAULT_AGENT_GROUP_ID for pre-existing mgs
+- `6d6f2d1` 2026-05-16 — PAT (scenarios): presenter skill + MCP tools + provisioning endpoint
+- `4b7bfb0` 2026-05-16 — fix(cli): hydrate receiver inbound.db on approval-path destinations add/remove
+- `9133cf4` 2026-05-15 — delivery: materialize cold-contact targets on-demand
+- `2b3b833` 2026-05-15 — container: run claude-code native install.cjs postinstall explicitly
+- `be70d3e` 2026-05-15 — claude provider: point pathToClaudeCodeExecutable at /pnpm/bin/claude
+- `5d004c9` 2026-05-15 — destinations: teach the agent about cold-contact <message> syntax
+- `de0e89a` 2026-05-15 — container: add /pnpm/bin to PATH (pnpm 11.x via corepack)
+- `7d60a22` 2026-05-15 — outbound: unify cold + warm dispatch; delete initiateContact
+- `6418dda` 2026-05-15 — docs(changelog): align v2.0.63 rollup line with RELEASING.md voice
+- `d2a0150` 2026-05-15 — docs(changelog): drop stale docs.nanoclaw.dev link from header
+- `8ea451a` 2026-05-15 — docs(releasing): soften per-bump policy and document release channels
+- `5b14ae2` 2026-05-15 — docs: add v2.0.63 CHANGELOG entry and RELEASING.md
+- `06711b5` 2026-05-15 — chore: bump version to 2.0.63
+- `2abb34b` 2026-05-15 — docs(skills): apply v1-name fix to gmail/gcal tools
+- `b8d7777` 2026-05-15 — docs(skills): standardize project-root lead-in to its own line
+- `43ff3a4` 2026-05-15 — docs(skills): consolidate project-root reminder into prose lead-ins
+- `f3d5b82` 2026-05-15 — docs(skills): tighten install-slug usage per #2493 review
+- `5fff2d2` 2026-05-15 — fix(cli,skills): use per-install slug for service names
+- `529d2db` 2026-05-15 — docs(skill): fix sqlite3/json invocations in gmail/gcal mount steps
+- `26eb89c` 2026-05-15 — docs(skill): align add-gmail-tool/add-gcal-tool with v2 architecture
+- `0d98c09` 2026-05-14 — admin/logs.jsonl: server-side filtering + multi-day scan + level/kind/thread/session filters
+- `728c6a6` 2026-05-15 — fix(approvals): require admin for approval responses
+- `292ca4b` 2026-05-14 — narration: force-close idle sessions; emit call.timed-out
+- `8af8c37` 2026-05-14 — admin: own HTTP listener (8767); phone-call channel_type rename → phone-call
+- `b3c5b42` 2026-05-14 — channels: extract admin handlers; unify ensureMessagingGroup; inline thin wrappers
+- `97b0260` 2026-05-14 — channels: lift NarrationManager + emitApifyRunCompleted + emitErrorSurfaced to realtime
+- `014f351` 2026-05-14 — channels: lift conversationKey + IntentAccumulator + fallback stream to orchestrator
+- `6ed304a` 2026-05-14 — channels: lift handleUserMessage + state to orchestrator; realtime.ts → phone-call.ts
+- `97a8c0a` 2026-05-14 — channels: lift TTS-busy / streaming / history / banter-broadcast carriers to @agentic-toolkit/realtime
+- `64c2337` 2026-05-14 — channels: follow realtime prompts refactor (renames + dead-path strip)
+- `fa945a1` 2026-05-14 — chore: bump version to 2.0.62
+- `cbdebe5` 2026-05-14 — fix(destinations): remove misleading scratchpad clause from internal-tag description
+- `8385236` 2026-05-14 — fix(agent-route): reject unsafe forwarded attachments
+- `8f30a7a` 2026-05-14 — chore: bump version to 2.0.61
+- `ca52d2c` 2026-05-14 — fix(welcome): stop emitting the greeting twice
+- `a5e0585` 2026-05-13 — voice-memo: stop the LLM echoing pipeline status to the user
+- `d935a60` 2026-05-13 — signal: explicit sendReceipt(type=read) per inbound message
+- `e0c3662` 2026-05-13 — signal: switch outbound voice-memo encoder from opus/ogg → AAC/m4a
+- `b336f41` 2026-05-13 — signal: enable readReceipts in updateConfiguration (was typing only)
+- `3e352fa` 2026-05-13 — signal: sendVoiceNote stages bytes via pat-transports sidecar
+- `23636b3` 2026-05-13 — signal: data-URL filename param for voice-note rendering
+- `54f851e` 2026-05-13 — signal: CARTESIA_VOICE_ID env override for Signal voice memos
+- `2e08065` 2026-05-13 — signal: fix Cartesia TTS auth for outbound voice memos (same as STT)
+- `93a9a5e` 2026-05-13 — signal: cross-machine attachment send via data: URLs
+- `fb820c4` 2026-05-13 — signal: fix voice memo transcription (host-side OpenRouter auth)
+- `ca5219a` 2026-05-13 — signal: fix attachment send (likely message-required) + surface real errors
+- `de33db7` 2026-05-13 — anam-web: dedicated banter broadcast channel + /anam-web/banter SSE
+- `4d81dc4` 2026-05-13 — setup: add files:read and files:write to Slack scope checklist
+- `e263352` 2026-05-13 — chore: bump version to 2.0.60
+- `1d4d920` 2026-05-12 — fix(core-instructions): require message wrapping for single-destination agents
+- `10b3acb` 2026-05-12 — anam-web: document ANAM_WEB_DEFAULT_AGENT_GROUP_ID in .env.example
+- `b2a934f` 2026-05-12 — anam-web: auto-provision without requiring a seed mg
+- `c9126a6` 2026-05-12 — signal: auto-provision messaging_group + destination for new senders
+- `3f2abbc` 2026-05-12 — anam-web: new channel adapter for the Anam.ai avatar frontend
+- `a81bbd1` 2026-05-12 — signal: drop account param from subscribeReceive; serialize err
+- `b58d7f9` 2026-05-12 — signal: explicit subscribeReceive after JSON-RPC connect
+- `9f8a130` 2026-05-12 — realtime: drop site-end chat SSE broadcast in rendition
+- `6c9cdac` 2026-05-12 — realtime: streaming is the only banter path; drop non-streaming branch
+- `c9c5ffa` 2026-05-13 — fix(setup): pin OneCLI gateway version to 1.23.0
+- `c3edacd` 2026-05-12 — signal: STT to openai/whisper-large-v3-turbo via /v1/audio/transcriptions
+- `1142578` 2026-05-12 — realtime: fix streamingNarrationCall return-shape mismatch (#31 follow-up)
+- `cd8a581` 2026-05-12 — agent-runner: contract test for toSdkMcpServers translation (#23 d.4)
+- `5a79371` 2026-05-12 — nanoclaw: voice-transport → transports comment refs (follow-up to #33)
+- `6748296` 2026-05-12 — realtime channel: wire narration streaming under PAT_STREAMING_BANTER (task #31)
+- `80ed0a7` 2026-05-12 — generate_image: add `low` quality tier; pass native gpt-image quality param
+- `2018629` 2026-05-12 — husky: scope pre-commit prettier to staged TS files only
+- `2939895` 2026-05-12 — PAT: task #36 — error legibility revert to Haiku-with-verbatim-context
+- `5851c41` 2026-05-12 — PAT: task #32 — extend PAT_ADMINS_BYPASS_APPROVAL to install_packages + add_mcp_server
+- `3eb47c8` 2026-05-12 — PAT: e2e test for inbound attachment materialization (Slack image fix)
+- `65a3922` 2026-05-12 — PAT: collapse three SSE-emission copies in realtime.ts → one helper
+- `50e9dd2` 2026-05-12 — PAT: task #34 — retire standalone outbound MCP tool; send_message is the single outbound surface
+- `4055dce` 2026-05-12 — PAT: remove wiki seed-import — keep skill infra, drop pre-loaded content
+- `2a898eb` 2026-05-12 — PAT: task #42 — send_message rejects bare digits without + prefix
+- `ea87d18` 2026-05-12 — PAT: wire rendition call sites to streaming under PAT_STREAMING_BANTER
+- `a0b3768` 2026-05-12 — PAT: streaming banter-ack pipeline (Path A Stage 2 — partial)
+- `001c62c` 2026-05-12 — docs: update token count to 174k tokens · 87% of context window
+- `7334feb` 2026-05-12 — chore: bump version to 2.0.59
+- `2eb6a1c` 2026-05-12 — fix(permissions): skip channel-type prefix for userIds that already contain a colon
+- `5bd2e2a` 2026-05-11 — PAT: materialize inbound attachment bytes so back-mind can ingest them
+- `bc28efc` 2026-05-11 — PAT: send_message auto-routes namespaced platform-ids to outbound.initiate
+- `b25df00` 2026-05-11 — PAT: task #15 — send_voice_memo via Cartesia Sonic + signal-cli voiceNote
+- `319f281` 2026-05-11 — PAT: task #10 — ffmpeg-remux AAC→m4a before Cartesia Ink POST
+- `5399536` 2026-05-11 — PAT: task #10 — swap voice transcription from OpenAI Whisper to Cartesia Ink
+- `315e02a` 2026-05-11 — PAT: task #10 v2 — Signal attachments via getAttachment JSON-RPC
+- `a384862` 2026-05-11 — PAT: revert task #10 HTTP relay (will land via getAttachment RPC)
+- `849e2d5` 2026-05-11 — PAT: task #10 — Signal attachment relay (cross-process file access)
+- `098ebb8` 2026-05-11 — PAT: Wave 3.1 — error legibility integration (realtime channel)
+- `3fa6dc2` 2026-05-11 — PAT: generate-image SKILL.md — honest latency + real-time/async pre-warn split
+- `b86b7e1` 2026-05-11 — PAT: Wave 2.D — full_fetch + apify skills + http MCP transport
+- `85b507f` 2026-05-11 — PAT: add generate-image skill (gpt-5.4-image-2 via OpenRouter)
+- `1dd30c7` 2026-05-11 — PAT: add-signal SKILL.md — document JAR+JRE switch (post-deploy fix)
+- `c81b205` 2026-05-11 — PAT: Wave 2.E — Karpathy wiki adoption + memory seed
+- `1f3c025` 2026-05-11 — PAT: Wave 2.A — Signal channel adapter (cross-process daemon)
+- `2614a39` 2026-05-11 — PAT: fix realtime channel adapter test suite (task #11)
+- `27472c8` 2026-05-11 — PAT: Wave 2.B — outbound.initiate cold-DM primitive + MCP tool
+- `737488b` 2026-05-11 — PAT: /barge-in robustness — DB-error tolerance + tests
+- `5c4a579` 2026-05-11 — PAT: Wave 1.1 Path C host side — /barge-in + intent accumulator
+- `eeef194` 2026-05-11 — PAT: PAT_ADMINS_BYPASS_APPROVAL flag short-circuits approval cascade
+- `2b9a1de` 2026-05-11 — cosmetic: prettier reflow in realtime.ts (post-save auto-format)
+- `c67dd92` 2026-05-11 — PAT: save accumulated working state — months of in-tree edits
+- `61d7ca6` 2026-05-11 — chore: bump version to 2.0.58
+- `7f4fa65` 2026-05-11 — fix(poll-loop): nudge agent when output lacks message wrapping
+- `e0f5967` 2026-05-11 — docs: update token count to 173k tokens · 87% of context window
+- `c1fd830` 2026-05-11 — chore: bump version to 2.0.57
+- `00ddb3b` 2026-05-11 — fix(compact): place destination reminder at end of compaction summary
+- `a760da7` 2026-05-11 — revert: remove compaction destination reminder (PR #2327)
+- `48dfb1b` 2026-05-11 — chore: bump version to 2.0.56
+- `8ac3cf2` 2026-05-10 — fix(container): gracefully handle missing on_wake column in pre-migration session DBs
+- `0a1b396` 2026-05-11 — docs: update token count to 175k tokens · 87% of context window
+- `cf7da26` 2026-05-11 — chore: bump version to 2.0.55
+- `bda72a4` 2026-05-11 — chore: rename remaining qwibitai/nanoclaw references to nanocoai/nanoclaw
+- `069928a` 2026-05-10 — fix(ci): update update-tokens repo guard
+- `45189ab` 2026-05-10 — fix(ci): update bump-version repo guard
+- `43d69a9` 2026-05-10 — docs: update CONTRIBUTING.md repo references after nanocoai migration
+- `c6d5cd7` 2026-05-10 — fixup(cli-scope): build error, false-positive on custom ops, tests, drop FORK.md
+- `b323b55` 2026-05-10 — fix(cli-scope): add scopeField to groups, sessions, destinations, members
+- `bf34857` 2026-05-10 — fix(cli-scope): add scopeField to groups, sessions, destinations, members
+- `d8aa46c` 2026-05-10 — fix(cli-scope): add scopeField to groups, sessions, destinations, members
+- `610a692` 2026-05-10 — fix(cli-scope): add scopeField to groups, sessions, destinations, members
+- `8a8ec84` 2026-05-10 — fix(cli-scope): fail-closed scopeField enforcement and sessions-get oracle guard
+- `47c85d0` 2026-05-10 — fix(cli-scope): add scopeField to ResourceDef for fail-closed group scope
+- `f49de0f` 2026-05-10 — fix: teach agent to use OneCLI gateway credentials after MCP server install
+- `d8e3f9f` 2026-05-10 — docs: add changelog entry for 2.0.54
+- `8d57bdf` 2026-05-09 — chore: bump version to 2.0.54
+- `9e1dbdf` 2026-05-09 — chore(container): bump claude-code 2.1.116 → 2.1.128
+- `0774667` 2026-05-09 — chore: bump version to 2.0.53
+- `ad5d4d2` 2026-05-03 — feat(container-config): add per-group model + effort overrides
+- `9267d52` 2026-05-09 — chore: bump version to 2.0.52
+- `4c57e4d` 2026-05-09 — docs: soften restart description wording
+- `eff1371` 2026-05-09 — chore: bump version to 2.0.51
+- `dc13300` 2026-05-09 — docs: clarify --message flag on restart for config help
+- `d324419` 2026-05-09 — chore: bump version to 2.0.50
+- `0287d71` 2026-05-09 — docs: move restart guidance into config help descriptions
+- `05906e4` 2026-05-09 — chore: bump version to 2.0.49
+- `6539c02` 2026-05-09 — docs: explain that CLI config changes require restart
+- `5ba9d23` 2026-05-09 — docs: remove empty Unreleased section from changelog
+- `f7a8df0` 2026-05-09 — docs: move changelog entries to 2.0.48
+- `9312d46` 2026-05-09 — docs: add changelog entries for container config DB, on-wake, CLI scope
+- `bd50ef7` 2026-05-09 — fix: only re-stage previously staged files in pre-commit hook
+- `25a5b81` 2026-05-09 — fix: re-stage prettier-formatted files in pre-commit hook
+- `f33f2d8` 2026-05-09 — docs: update token count to 174k tokens · 87% of context window
+- `661da39` 2026-05-09 — chore: bump version to 2.0.48
+- `f9d30e8` 2026-05-09 — style: fix prettier formatting
+- `1c7623c` 2026-05-09 — docs: update for container config DB, on-wake, and CLI scope
+- `faeeba1` 2026-05-09 — fix(security): block cli_scope escalation and cross-group data leaks
+- `04e41fb` 2026-05-09 — feat: default owner agent group to global CLI scope
+- `aebcffe` 2026-05-09 — feat: per-group CLI scope (disabled/group/global)
+- `be3a8a9` 2026-05-09 — feat: race-free on-wake messages and explicit restart CLI
+- `a843275` 2026-05-09 — chore: bump version to 2.0.47
+- `08698da` 2026-05-09 — fix(cli): decouple package commands from docker build
+- `9ce8258` 2026-05-09 — refactor(cli): remove deprecated agent_provider from groups columns
+- `37b5496` 2026-05-09 — refactor(cli): use spaces in custom operation keys
+- `1efe28c` 2026-05-09 — feat(cli): support space-separated multi-word verbs
+- `78cf243` 2026-05-08 — fix(container-runner): raise install_packages build timeout to 15min
+- `4c83a81` 2026-05-08 — style: move column whitelist consts to module top
+- `7eebcf7` 2026-05-08 — fix: harden container config DB layer
+- `31ccc61` 2026-05-08 — feat(db): move container config from filesystem to DB
+- `ef43cbb` 2026-05-08 — docs: remove migration fixes from changelog
+- `0060c6b` 2026-05-08 — docs: add v2.0.45 changelog entry
+- `e6d470d` 2026-05-08 — docs: add ncl CLI to changelog
+- `0e11eaf` 2026-05-08 — docs: update token count to 166k tokens · 83% of context window
+- `4990994` 2026-05-08 — chore: bump version to 2.0.46
+- `01eac7b` 2026-05-08 — style: fix prettier formatting
+- `6caad07` 2026-05-08 — fix(cli): add list filtering/pagination, fix double-close in container ncl
+- `ed571d1` 2026-05-08 — docs(cli): add write examples, approval flow, and nc→ncl rename
+- `046b99c` 2026-05-08 — feat(cli): wire approval flow for agent CLI commands
+- `0855369` 2026-05-08 — refactor(cli): rename nc to ncl
+- `9a649fa` 2026-05-08 — feat(setup): default to interactive Claude handoff on failure
+- `405dd34` 2026-05-08 — chore: bump version to 2.0.45
+- `81cb13e` 2026-05-08 — fix(tests): add missing in_reply_to fields, correct session status type
+- `9629d1c` 2026-05-08 — docs: update token count to 150k tokens · 75% of context window
+- `8585087` 2026-05-08 — test: add delivery retry, permission check, and poll-loop error recovery coverage
+- `fdd75b5` 2026-05-07 — nanoclaw: add /admin/monitor — single-page web UI for live event stream
+- `6e9f35a` 2026-05-07 — chore: bump version to 2.0.44
+- `635a493` 2026-05-08 — test(agent-to-agent): add missing routing coverage
+- `fc2fa91` 2026-05-07 — PAT: structured event logging — schema, log.event helper, hot-path migrate
+- `028cb01` 2026-05-07 — chore: bump version to 2.0.43
+- `f3e1987` 2026-05-08 — refactor: use static gateway skill instead of fetching on spawn
+- `71c2e45` 2026-05-07 — PAT realtime: SSE tail endpoint + state-change events for live monitoring
+- `9b67056` 2026-05-07 — chore: bump version to 2.0.42
+- `6ea4989` 2026-05-08 — test: remove stale A2A session coexistence tests
+- `9090c33` 2026-05-08 — docs(cli): add agent instructions for nc CLI
+- `3b64d6c` 2026-05-07 — chore: bump version to 2.0.41
+- `35233da` 2026-05-07 — docs: update token count to 149k tokens · 75% of context window
+- `107945f` 2026-05-08 — fix(agent-to-agent): route A2A replies back to originating session (#2267)
+- `e6d0376` 2026-05-07 — PAT realtime: per-call host-log slice on /call-ended + serve endpoint
+- `62acf6d` 2026-05-07 — PAT: persistent host log file sink + admin endpoints to serve it
+- `3b07c0c` 2026-05-07 — chore: bump version to 2.0.40
+- `1a358dc` 2026-05-08 — test(a2a): add tests documenting A2A routing bugs (#2332)
+- `7da08b3` 2026-05-07 — docs: update token count to 147k tokens · 74% of context window
+- `684a98d` 2026-05-08 — test: add host-side routing and session resolution tests
+- `e1251da` 2026-05-07 — chore: bump version to 2.0.39
+- `eb6502a` 2026-05-07 — docs: update token count to 147k tokens · 73% of context window
+- `3af6e70` 2026-05-08 — test(agent-runner): add dispatch, origin metadata, and thread resolution tests
+- `61ab600` 2026-05-07 — chore: bump version to 2.0.38
+- `ca17683` 2026-05-07 — docs: update token count to 145k tokens · 72% of context window
+- `1594a0c` 2026-05-08 — Apply suggestion from @gavrielc
+- `a6995cc` 2026-05-07 — docs: update token count to 144k tokens · 72% of context window
+- `93732a4` 2026-05-07 — chore: bump version to 2.0.37
+- `b40d437` 2026-05-07 — chore: bump version to 2.0.36
+- `6f0b8f1` 2026-05-07 — fix(container): pin pnpm to 10.33.0 to match host
+- `1afbba6` 2026-05-07 — docs: update token count to 143k tokens · 71% of context window
+- `cd69bf5` 2026-05-07 — chore: bump version to 2.0.35
+- `1240a0c` 2026-05-07 — feat: fetch gateway skill from OneCLI API with static fallback
+- `8e1e368` 2026-05-07 — PAT realtime: reframe buffered-banter prepend so back-mind doesn't echo
+- `c645f41` 2026-05-07 — PAT realtime: platform_id = caller phone number; lazy mg-per-caller
+- `2026d79` 2026-05-07 — PAT: Narrator rename + max-silence cadence + host-driven gate
+- `42e8ae0` 2026-05-07 — fix(channels): exponential backoff for gateway listener restarts
+- `9ccafcd` 2026-05-07 — docs: update token count to 142k tokens · 71% of context window
+- `860d131` 2026-05-07 — chore: bump version to 2.0.34
+- `e3645f7` 2026-05-07 — address review: add thread resolution test, log catch, remove stray comment
+- `9db39b2` 2026-05-07 — fix(agent-runner): require explicit destination addressing, fix per-destination threading
+- `f7c610a` 2026-05-07 — Apply suggestion from @gavrielc
+- `12719be` 2026-05-07 — feat(poll-loop): inject destination reminder after SDK auto-compaction
+- `57dad14` 2026-05-07 — fix(destinations): default to replying to the origin destination
+- `6d8d085` 2026-05-07 — setup: add "Skip — I'll connect later" option to Claude auth picker
+- `348e200` 2026-05-07 — fix(add-karpathy-llm-wiki): update for v2 — schedule_task MCP + no build step
+- `4305c6a` 2026-05-07 — fix: slim credential docs in group CLAUDE.md and add onecli-gateway container skill
+- `877d2a3` 2026-05-07 — docs(skills): update SKILL.md for debug, init-onecli, add-gmail-tool, add-opencode, add-signal, add-vercel
+- `8eff3e5` 2026-05-07 — feat(skills): add /add-mnemon skill — persistent semantic memory for agent groups
+- `7e0c256` 2026-05-07 — setup: drop "E.164" jargon from iMessage handle card
+- `1eb55e8` 2026-05-07 — setup: add back-to-channels exit to "Other…" channel-name prompt
+- `88ff54c` 2026-05-07 — setup: add back-to-channels exit at every Teams step gate
+- `771c000` 2026-05-06 — PAT: caller_number → senderId; isProcessing wired to request layer
+- `c7bed6e` 2026-05-06 — PAT: narration gating via container-side lifecycle events + 1s TTS gap
+- `5b4b13d` 2026-05-06 — PAT: Fly.io deploy support — REALTIME_BIND_HOST + entrypoint
+- `18635e7` 2026-05-06 — fix(scripts/q): use stmt.reader instead of keyword sniffing for SELECT detection
+- `0d7458c` 2026-05-06 — fix(skills): replace sqlite3 CLI with in-tree better-sqlite3 wrapper
+- `5213c98` 2026-05-06 — setup: correct Slack member-ID card directions
+- `a36acd3` 2026-05-06 — setup: tidy Slack app-creation card
+- `1899ac1` 2026-05-05 — PAT: lint cleanup on realtime channel
+- `bde0900` 2026-05-05 — PAT: unified conversation history + narration brain rewrite + per-call session
+- `4e38f08` 2026-05-05 — PAT: per-thread recentUserTurns map (was leaking cancel signal across scenarios)
+- `1831c4f` 2026-05-05 — PAT: realtime adapter broadcasts kind='trace' SSE events for LLM call introspection; passes recent user turns to banter rendition for barge-in handling
+- `4343484` 2026-05-05 — PAT: lint cleanup on realtime adapter (formatter passed)
+- `80be962` 2026-05-05 — PAT: realtime adapter renders back-mind chat through banter layer before SSE broadcast
+- `22715c1` 2026-05-06 — Update README.md
+- `eacb93c` 2026-05-06 — fix(manage-channels): include canonical SQL queries in SKILL.md
+- `2394070` 2026-05-05 — PAT: smoketest agent group bootstrap (symlinked persona, isolated state)
+- `baf9bd5` 2026-05-05 — PAT: realtime adapter banter/request split + platform_id routing + supportsThreads
+- `2db5173` 2026-05-05 — chore: bump version to 2.0.33
+- `ec23bd7` 2026-05-05 — fix(host-sweep): parse SQLite timestamps as UTC, not local time
+- `8771e25` 2026-05-06 — style(cli): apply prettier formatting
+- `a9fad49` 2026-05-05 — PAT: NarrationManager wires isTtsBusy into NarrationBrain (real signal from /agent-turn-ended)
+- `a597b42` 2026-05-06 — feat(cli): add remaining resources, fix descriptions from code review
+- `4d5af78` 2026-05-05 — fix(migrate-v2): probe correct OneCLI health endpoint (/api/health)
+- `6865811` 2026-05-06 — feat(cli): add CRUD helper, resource definitions, and help command
+- `4269c83` 2026-05-05 — PAT: realtime adapter accepts /agent-turn-ended; TtsBusyTracker
+- `5e2bf1c` 2026-05-06 — feat(cli): replace MCP tool with standalone nc client in container
+- `bc19b71` 2026-05-05 — feat(cli): wire nc CLI commands into container agent
+- `f0fdc8b` 2026-05-05 — PAT: realtime adapter accepts thread_id; init wiring uses per-thread
+- `a8e0a7f` 2026-05-05 — fix(setup): pin Baileys to 7.0.0-rc.9 in install-whatsapp scripts
+- `291a1fc` 2026-05-05 — update Signal intro copy to reflect auto-install
+- `92a2347` 2026-05-05 — setup: auto-install signal-cli when missing
+- `73d45f8` 2026-05-05 — docs: update token count to 141k tokens · 71% of context window
+- `395139c` 2026-05-05 — chore: bump version to 2.0.32
+- `9df6a91` 2026-05-05 — docs: update token count to 141k tokens · 70% of context window
+- `6d6584d` 2026-05-05 — fix(test-infra): openInboundDb honors in-memory test DB
+- `9ac1e6f` 2026-05-05 — chore: bump version to 2.0.31
+- `a870e7e` 2026-05-05 — fix: keep resetStuckProcessingRows private, restore test wrapper
+- `7fdd7ea` 2026-05-05 — setup: update WhatsApp link instructions to "You / Settings"
+- `decf180` 2026-05-05 — setup: add ← Back option to Signal channel flow
+- `c44c7a6` 2026-05-05 — setup: add ← Back option to Teams channel flow
+- `6a54b69` 2026-05-05 — setup: add ← Back option to Slack channel flow
+- `e1ecfb9` 2026-05-05 — setup: add ← Back option to Telegram channel flow
+- `c795ecf` 2026-05-05 — setup: add ← Back option to Discord, WhatsApp, iMessage channel flows
+- `948a0dc` 2026-05-05 — fix: use nodeenv lts instead of pinned node 22
+- `3c5ae96` 2026-05-05 — use node 22 with nvx
+- `3eec441` 2026-05-05 — improve node install to use uvx
+- `e753d09` 2026-05-05 — setup: drop disk-space pre-flight check, keep RAM only
+- `0dce0a2` 2026-05-04 — PAT: realtime channel + Claude SDK hooks + Opus 4.7 + EFFORT env
+- `a57bb8f` 2026-05-05 — style: apply prettier to chat-sdk-bridge card branch
+- `9633788` 2026-05-05 — fix(skills): bump @chat-adapter/* cohort to 4.27.0
+- `32dba60` 2026-05-05 — fix(channels): support display cards (send_card) in Chat SDK bridge
+- `30a8985` 2026-05-04 — fix(migrate): drop WhatsApp LID dual-row migration step
+- `306fa6f` 2026-05-04 — feat(setup): clearer "Open Telegram" copy + mobile fallback hint
+- `1404f7f` 2026-05-04 — chore: bump version to 2.0.30
+- `5f5f4fe` 2026-05-04 — chore: bump version to 2.0.29
+- `251b31c` 2026-05-04 — feat(setup): warn when running on a Google Compute Engine VM
+- `6262211` 2026-05-02 — Add namespacedPlatformId exclusion for DeltaChat
+- `9e4feb0` 2026-05-04 — feat(setup): warn when host is below recommended hardware specs
+- `b33f665` 2026-05-04 — fix(setup): use fmtDuration in the container-build spinner
+- `34c3e90` 2026-05-04 — feat(setup): clarify @BotFather is Telegram's official bot
+- `f68f6da` 2026-05-04 — fix(agent-runner): derive MCP allowedTools from registered mcpServers
+- `37d6335` 2026-05-03 — fix(setup): clean up legacy OneCLI containers before installer runs
+- `5deccc4` 2026-05-03 — fix: direct users to exit Claude Code for migration instead of using ! prefix
+- `6daa1a3` 2026-05-03 — fix: preserve v1 service file for rollback instead of symlinking
+- `58e4df4` 2026-05-03 — fix: add hint to channel multiselect in migration
+- `d88b080` 2026-05-03 — fix: retire legacy v1 service file after migration switchover
+- `6a05e41` 2026-05-03 — fix: require interactive terminal for migrate-v2.sh
+- `5dc5419` 2026-05-03 — Recognize ANTHROPIC_AUTH_TOKEN in setup verification
+- `cf78338` 2026-05-03 — fix: handle missing bun on host and dynamic systemd service name
+- `e432467` 2026-05-03 — fix: update /update-nanoclaw skill for v2 architecture
+- `7fc68a1` 2026-05-03 — chore: bump version to 2.0.28
+- `e343806` 2026-05-03 — feat(setup): headless-aware Claude sign-in pre-message
+- `0e9dadf` 2026-05-03 — fix: accept media-only messages with empty text in onNewMessage
+- `e4181f5` 2026-05-02 — fix(host-sweep): regression in #2183 — orphan-claim delete missed in tests
+- `58fc572` 2026-05-03 — feat(setup): add "Other…" option to channel picker
+- `953264e` 2026-05-02 — chore: bump version to 2.0.27
+- `eba5b78` 2026-05-02 — chore: bump version to 2.0.26
+- `82216b5` 2026-05-02 — Add /add-deltachat skill
+- `3b5e5a2` 2026-05-02 — fix(migrate-v2): reset auto-created messaging_group policy on re-run
+- `7dbedad` 2026-05-02 — fix(migrate-v2): skip symlinks in group copyTree
+- `8181054` 2026-05-02 — fix(migrate-v2): resolve Discord DMs as discord:@me:<id>
+- `7922a19` 2026-05-02 — docs(migrate-from-v1): drop the blocker/deferred table
+- `8c1b209` 2026-05-02 — docs(migrate-from-v1): 2b-channel-auth and 3c-auth are blockers
+- `2bc1279` 2026-05-02 — docs(migrate-from-v1): trim Phase 0 to intent only
+- `2617313` 2026-05-02 — docs(migrate-from-v1): blockers-first + smoke test before deeper work
+- `8439a18` 2026-05-02 — docs(migrate-v2): collapsible README section + skill preflight
+- `dca02f5` 2026-05-02 — feat(migrate-v2): resolve WhatsApp LIDs from store/auth, alias DMs
+- `2a915e8` 2026-05-02 — fix(migrate-v2): infer is_group from JID format
+- `416c283` 2026-05-02 — fix(migrate-v2): bash 3.2 compatibility + reset coverage
+- `aec7ddd` 2026-05-02 — fix(migrate-v2): correct JID parsing, Discord guildId lookup, silent failures
+- `ceb0b9c` 2026-05-02 — fix(test-infra): openInboundDb honors in-memory test DB
+- `8d022fd` 2026-05-01 — fix(host-sweep): reopen outbound DB as writable for orphan claim cleanup
+- `1ebb2dc` 2026-05-02 — fix(poll-loop): slash commands silently broken on warm containers
+- `ce9f175` 2026-05-01 — fix: reorder phase 3 — Docker before OneCLI
+- `cf3fcc1` 2026-05-01 — fix: install Docker if missing, don't skip container build
+- `00a30e3` 2026-05-01 — docs: update changelog, remove experimental label from migration
+- `f35be24` 2026-05-01 — chore: move shared helpers to migrate-v2/, delete migrate-v1/
+- `67eb85d` 2026-05-01 — chore: remove old setup-embedded migration steps
+- `1d73b29` 2026-05-01 — feat: add migrate-v2.sh — standalone v1 → v2 migration script
+- `1b08b58` 2026-05-01 — setup: drop redundant agent ping; harden auth detection and OAuth paste
+- `897b770` 2026-05-01 — chore: bump version to 2.0.25
+- `a71d2a4` 2026-05-01 — docs: update token count to 140k tokens · 70% of context window
+- `663d9a4` 2026-05-01 — docs: update token count to 139k tokens · 70% of context window
+- `a590fbd` 2026-05-01 — chore: bump version to 2.0.24
+- `8c962d3` 2026-04-30 — chore: bump version to 2.0.23
+- `28c38ae` 2026-04-30 — fix(container): pin vercel to 52.2.1 to dodge broken 53.0.1 publish
+- `7ac8dd0` 2026-04-30 — docs: update token count to 139k tokens · 69% of context window
+- `fc3c11b` 2026-05-01 — fix(session-manager): apply outbox path-confinement to inbound attachments
+- `852009d` 2026-04-25 — fix(container): confine outbound attachment paths
+- `8977f0d` 2026-04-30 — chore: bump version to 2.0.22
+- `5ab1a27` 2026-05-01 — review: catch follow-up poll errors + re-check done before push
+- `58d875b` 2026-04-30 — chore: bump version to 2.0.21
+- `3d6a9b7` 2026-04-30 — review: surface ping-test cleanup failures + restore copy
+- `46cd91c` 2026-04-30 — docs: update token count to 138k tokens · 69% of context window
+- `0218159` 2026-04-30 — chore: bump version to 2.0.20
+- `ccfdf2d` 2026-04-30 — fix(agent-runner): open inbound.db fresh per messages_in read
+- `e51f6e0` 2026-04-30 — feat(setup): show under-the-sea lobster splash at boot
+- `cb15e60` 2026-04-30 — feat(setup): move URL fallback into the open-browser prompt
+- `6863e0f` 2026-04-30 — feat(setup): label headless URL fallback with "Get started:"
+- `4d42bb9` 2026-04-30 — feat(setup): skip browser-open prompts on headless devices
+- `a66cd54` 2026-04-29 — feat(setup): switch elapsed-time suffixes to "Xm Ys" past 60s
+- `1db98ee` 2026-04-30 — refactor(setup): check env vars per-step instead of upfront all-or-nothing
+- `5be15be` 2026-04-30 — fix: prevent telegram pairing spinner from flooding the terminal
+- `e56132d` 2026-04-30 — Remove SSH key copy step from root warning instructions
+- `7ce9922` 2026-04-30 — fix(host-sweep): clear orphan processing_ack on kill to prevent claim-stuck loop
+- `35f8e9d` 2026-04-30 — Move SSH hint above user-creation steps
+- `d5388a1` 2026-04-30 — Replace web terminal instructions with SSH setup hint
+- `23a3fea` 2026-04-30 — Add passwordless sudo step to root warning instructions
+- `72837c1` 2026-04-30 — Fix sg docker re-exec restarting setup from scratch
+- `d07cd7a` 2026-04-29 — Remove redundant root login step from user-creation instructions
+- `3d29965` 2026-04-29 — Update root warning instructions: add SSH key copy, remove extra step
+- `0a18c1d` 2026-04-29 — Ensure user is in docker group before sg docker, revert workarounds
+- `dec1be6` 2026-04-29 — Add clone step to root warning user-creation instructions
+- `030ee8a` 2026-04-29 — Update root warning instructions: add root login step, fix ssh user
+- `c4f6540` 2026-04-29 — Change root warning from y/N prompt to numbered menu options
+- `7755082` 2026-04-29 — Add root user warning gate to Linux setup pre-flight
+- `8a20580` 2026-04-30 — fix(setup): wrap scratch agent cleanup in transaction, remove session data
+- `f828e29` 2026-04-30 — chore: bump version to 2.0.19
+- `43f49b9` 2026-04-30 — docs: update token count to 135k tokens · 68% of context window
+- `15f286b` 2026-04-30 — chore: bump version to 2.0.18
+- `6e5e568` 2026-04-30 — sanitize agent sent file names to prevent path traversal
+- `2a3be9e` 2026-04-30 — extract attachment-naming, harden mimeType guard, add tests
+- `8dd004c` 2026-04-30 — fix(scheduling): include routing in schedule_task content JSON
+- `34f3612` 2026-04-29 — docs: update token count to 135k tokens · 67% of context window
+- `1452ed2` 2026-04-29 — chore: bump version to 2.0.17
+- `e31a6c7` 2026-04-29 — revert(credentials): drop auth-required login-message handling
+- `ee165d0` 2026-04-29 — docs: update token count to 134k tokens · 67% of context window
+- `70cb35f` 2026-04-29 — chore: bump version to 2.0.16
+- `9889848` 2026-04-29 — fix(claude-provider): respect operator-set CLAUDE_CODE_AUTO_COMPACT_WINDOW
+- `594d1b4` 2026-04-29 — style(cli): apply prettier formatting
+- `beb5e04` 2026-04-29 — fix(credentials): move auth-required remediation message into provider
+- `3a3d2ee` 2026-04-29 — feat(cli): scaffold `nc` CLI with `list-groups` command
+- `b9d3025` 2026-04-29 — fix(session-manager): derive attachment extension from mimeType and att.type
+- `ef8e3aa` 2026-04-29 — fix(poll-loop): apply pre-task scripts to follow-up injections too
+- `d5b48e4` 2026-04-29 — fix(credentials): address review feedback
+- `8542c48` 2026-04-29 — fix(setup): isolate scratch agent with hardcoded _ping-test folder
+- `8c5d67c` 2026-04-29 — fix(setup): dynamic FK cleanup, remove normalizeName coupling
+- `d860518` 2026-04-29 — feat(setup): delete scratch agent after ping-pong, simplify flow
+- `5f34e26` 2026-04-29 — fix(credentials): translate auth errors and require OneCLI for spawn
+- `db19837` 2026-04-29 — feat(permissions): richer channel-approval flow with agent selection and free-text naming
+- `4608836` 2026-04-29 — feat(setup): paint "assistant" green in the agent-name prompt
+- `26594d2` 2026-04-29 — feat(setup): paint "you" green in the display-name prompt
+- `4c791a4` 2026-04-29 — feat(setup): cyan highlight on active and submitted choices
+- `ab2d509` 2026-04-29 — feat(setup): paint card and log bodies in brand cyan
+- `a014a67` 2026-04-29 — fix password fields not clearing after validation error
+- `aa390b3` 2026-04-29 — detect existing .env and credentials on setup re-run
+- `9c8f680` 2026-04-29 — fix: stop dimming setup card bodies
+- `93be2d1` 2026-04-29 — fix claude setup-token flow for headless/remote systems
+- `8973891` 2026-04-29 — offer to install and authenticate Claude CLI before diagnosis
+- `ede6c01` 2026-04-28 — chore: bump version to 2.0.15
+- `336e01d` 2026-04-28 — fix circuit-breaker off-by-one, ENOENT, and reset-on-throw + tests
+- `2bf296b` 2026-04-28 — add startup circuit breaker and troubleshooting docs
+- `c5d0243` 2026-04-28 — fix(setup): add Interactivity & Shortcuts step to Slack setup
+- `c36f0c6` 2026-04-28 — fix(setup): wire Slack agent during setup like Discord/Telegram
+- `45d3016` 2026-04-28 — docs: update token count to 133k tokens · 67% of context window
+- `7e37b13` 2026-04-28 — Fix path traversal in attachment handling on channel-inbound path
+- `a80f095` 2026-04-27 — fix(setup): inject ~/.local/bin into PATH so post-install onecli is reachable
+- `f8c3d02` 2026-04-26 — docs: update token count to 133k tokens · 66% of context window
+- `b808ab4` 2026-04-26 — chore: bump version to 2.0.14
+- `be86bd3` 2026-04-27 — fix(setup): remove duplicate pollHealth import in auto.ts
+- `6591062` 2026-04-27 — refactor: route custom Anthropic endpoint through OneCLI vault
+- `26fc3ff` 2026-04-25 — feat: pass ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN into agent containers
+- `7693a20` 2026-04-27 — feat(setup): validate onecli api token starts with oc_
+- `e706dca` 2026-04-27 — feat(setup): default OneCLI remote URL to https://app.onecli.sh
+- `f048447` 2026-04-27 — feat(setup): authenticate onecli CLI for remote vault setup
+- `efdd05a` 2026-04-26 — feat(setup): advanced settings registry with remote OneCLI support
+- `6b431c1` 2026-04-26 — feat(setup): add remote OneCLI option in setup flow
+- `b6be3b9` 2026-04-25 — docs(skills): merge add-signal-v2 lessons into add-signal, drop v2
+- `8d85222` 2026-04-24 — chore: bump version to 2.0.13
+- `15a6950` 2026-04-24 — chore: bump version to 2.0.12
+- `226fc93` 2026-04-24 — docs: update token count to 132k tokens · 66% of context window
+- `fc375ca` 2026-04-23 — fix(register): wire channels with correct engage fields, skip prefix for native IDs
+- `6d35c85` 2026-04-24 — skill(add-gcal-tool): OneCLI-native Google Calendar MCP tool
+- `52f8661` 2026-04-24 — docs(providers): note that container.json provider is what the runner reads
+- `f37e775` 2026-04-24 — Revert src changes; skill applies them at install time
+- `5cbfcce` 2026-04-24 — chore: bump version to 2.0.11
+- `2b51a4e` 2026-04-24 — fix(workflows): label PRs from forks that follow the contributing template
+- `3d6837c` 2026-04-24 — chore(format): apply prettier to chat-sdk-bridge.ts
+- `9fd694c` 2026-04-24 — chore(setup): minimize verify diff
+- `4fc2c42` 2026-04-24 — test(setup): cover CLI-only verify status
+- `1de5a03` 2026-04-24 — fix(setup): accept CLI-only verify success
+- `f41c162` 2026-04-24 — detect setup auth ping failures
+- `fd03b89` 2026-04-24 — fix(agent-route): reject unsafe attachment filenames to prevent path traversal
+- `672e228` 2026-04-24 — fix(agent-route): forward file attachments between agents
+- `81ef193` 2026-04-24 — refactor(session-state): key continuations per provider to survive provider switches
+- `9e33274` 2026-04-23 — skill(add-gmail-tool): OneCLI-native Gmail MCP tool
+- `d0c608c` 2026-04-23 — fix(setup): register step uses engage_mode columns dropped by migration 010
+- `a4346f5` 2026-04-23 — docs: update token count to 130k tokens · 65% of context window
+- `5845a5a` 2026-04-23 — fix(container-runner): honor agent_provider DB columns with session override
+- `ce28e7f` 2026-04-24 — docs(add-codex): bump CODEX_VERSION to 0.124.0
+- `3fa0014` 2026-04-23 — feat(setup): wire Signal into the auto setup flow
+- `78b0ad6` 2026-04-23 — chore: bump version to 2.0.10
+- `2fd2bf3` 2026-04-23 — chore(signal): move adapter source to channels branch
+- `f351e46` 2026-04-23 — refactor(approvals): persist title+options on channel/sender approval tables
+- `5f3bd9c` 2026-04-23 — fix(signal): address review feedback from #1953
+- `5d32efb` 2026-04-23 — chore: bump version to 2.0.9
+- `2861009` 2026-04-23 — docs: update token count to 129k tokens · 64% of context window
+- `bd032c2` 2026-04-23 — chore: bump version to 2.0.8
+- `c6d2f45` 2026-04-23 — feat: add Signal channel adapter
+- `e5a7a33` 2026-04-23 — docs(add-codex): fix Dockerfile install step — separate RUN block, not combined list
+- `0ec56b7` 2026-04-23 — docs(add-codex): add skill for installing Codex provider from providers branch
+- `97868af` 2026-04-23 — fix(delivery): make pending_questions/approvals insert idempotent
+- `ff277c0` 2026-04-23 — fix(chat-sdk-bridge): encode option index in callback_data for Telegram 64-byte cap
+- `237876c` 2026-04-23 — chore(format): wrap session-manager import in container-runner
+- `209061f` 2026-04-23 — fix(sweep): wake before reset + idempotent retry for orphan claims
+- `bee80b0` 2026-04-23 — fix(container): clear orphan heartbeat before spawn
+- `539af75` 2026-04-23 — fix(setup): detect registered groups from v2 central db
+- `438deda` 2026-04-23 — chore: bump version to 2.0.7
+- `dd5bc85` 2026-04-23 — refactor(skill/atomic-chat-tool): ship MCP file in skill folder, revert src edits
+- `97e356d` 2026-04-23 — chore: bump version to 2.0.6
+- `3a9b98f` 2026-04-23 — feat: add Atomic Chat MCP tool skill
+- `04e0e18` 2026-04-23 — chore: retrigger CI (pre-existing flaky container test)
+- `9faa8a9` 2026-04-23 — fix(migrate-v1): splice guild_id into Discord platform_id during seed
+- `e1c8876` 2026-04-23 — feat(migrate-v1): auto-resolve missing v2 channel keys via adapter APIs
+- `3ee7d21` 2026-04-23 — feat: add v1 → v2 migration to setup flow (experimental)
+- `40f5683` 2026-04-23 — fix(approvals): show correct post-click labels on channel/sender cards
+- `15f3068` 2026-04-23 — fix(approvals): show human-readable names in approval cards
+- `d121cd1` 2026-04-23 — fix(router): pass isGroup from adapter through to messaging group creation
+- `61ca43d` 2026-04-23 — fix(discord): resolve user ID from DM interactions for approval clicks
+- `3101f65` 2026-04-23 — feat(setup): add Slack and iMessage channel flows (experimental)
+- `d8b1f52` 2026-04-23 — chore: bump version to 2.0.5
+- `2383bde` 2026-04-23 — fix(container): scope orphan reaper by install label so peers don't kill each other
+- `ae2c09c` 2026-04-23 — docs: add fork-specific notes in FORK.md
+- `dee7e0b` 2026-04-23 — feat(setup): Yes-default + session-persist on claude-assist, quieter first-chat
+- `990d243` 2026-04-23 — fix(setup): bypass rate-limited GitHub API when installing onecli CLI
+- `910342f` 2026-04-23 — style(setup): lift text weight — prose becomes regular, outcomes bold
+- `7f4583d` 2026-04-23 — fix(setup): add npm global prefix bin to PATH after fallback install
+- `56ef5b4` 2026-04-23 — feat(setup): clarify setup flow from user-feedback session
+- `8a19ad0` 2026-04-23 — chore: bump version to 2.0.4
+- `5f1b3e5` 2026-04-23 — style: apply prettier formatting to install-slug additions
+- `72aba8c` 2026-04-23 — docs: update token count to 128k tokens · 64% of context window
+- `3d44001` 2026-04-23 — chore: bump version to 2.0.3
+- `7a9401d` 2026-04-23 — feat(setup): per-checkout service name and docker image tag
+- `4f6d62a` 2026-04-23 — docs(readme-zh): align Chinese README with v2 English
+- `564000d` 2026-04-23 — docs(readme-ja): align Japanese README with v2 English
+- `601fc7c` 2026-04-23 — docs(readme): split Quick Start into separate commands
+- `cdb9442` 2026-04-23 — docs(readme): clone into nanoclaw-v2 in Quick Start
+- `8326b4c` 2026-04-23 — fix(setup): offer to reuse an existing OneCLI instead of clobbering it
+- `22c2bef` 2026-04-22 — chore: bump version to 2.0.2
+- `6cd261a` 2026-04-23 — chore(container): loosen /home/node to 0777
+- `d97a0e1` 2026-04-23 — fix(setup): resolve channels remote dynamically, don't assume `origin`
+- `16421cc` 2026-04-22 — fix(setup): fall back to npm install when corepack is missing
+- `469dd9a` 2026-04-22 — refactor(skills): collapse setup skill to one instruction — run bash nanoclaw.sh
+- `dbb859b` 2026-04-22 — docs: update token count to 127k tokens · 64% of context window
+- `dbb8244` 2026-04-22 — chore: bump version to 2.0.1
+- `25687dc` 2026-04-22 — chore(deps): drop @chat-adapter/telegram from trunk
+- `5df8d9d` 2026-04-22 — docs: drop v2 refactor planning docs ahead of merge
+- `8412b89` 2026-04-22 — feat(diagnostics): funnel events throughout setup with persisted install-id
+- `39ae04d` 2026-04-22 — docs(welcome-skill): expand onboarding tour with capability reveals and trust framing
+- `d2f5304` 2026-04-22 — docs(module-fragments): add instructions for create_agent, interactive, and remaining core tools
+- `52ebdce` 2026-04-22 — docs(claude-md): drop host-facing header comment from shared base
+- `e2b1df8` 2026-04-22 — docs(claude-md): strengthen memory discipline in shared base
+- `3b8240a` 2026-04-22 — refactor(self-mod): drop request_rebuild — approvals now bundle rebuild+restart
+- `e64bdb3` 2026-04-22 — refactor(claude-md): split shared base into module fragments, inject name at runtime
+- `95e74d8` 2026-04-22 — docs(onecli): expand secrets section; correct stale admin-roles refs
+- `202ee71` 2026-04-22 — feat(setup): auto-detect timezone after CLI agent step
+- `0ed00b3` 2026-04-22 — docs(claude.md): add v1-merge STOP banner directing to migrate-v2.sh
+- `3db66c0` 2026-04-22 — fix: forward ONECLI_API_KEY to OneCLI SDK for authenticated container config
+- `5371c76` 2026-04-22 — docs(readme): mark translations as pre-v2 pending update
+- `fe942dd` 2026-04-22 — chore: bump to 2.0.0 with v2 CHANGELOG entry
+- `8e1c8f8` 2026-04-22 — style: apply prettier formatting to touched files
+- `8662f21` 2026-04-22 — docs(readme): update for v2 + scripted setup default
+- `390e095` 2026-04-22 — feat(setup): hand off to Claude for Teams finish-wiring
+- `a70e418` 2026-04-22 — feat(setup): Microsoft Teams wiring with Claude handoff
+- `fb82c1b` 2026-04-22 — Delete docs/shared-src.md
+- `7da24b1` 2026-04-22 — fix(agent-runner): remove thread_id filter and fix processing ack on empty result
+- `c8fc1da` 2026-04-22 — refactor(claude-md): compose per-group CLAUDE.md from shared base + fragments
+- `8a12fa6` 2026-04-21 — refactor: shared source — replace per-group agent-runner copies with single RO mount
+- `596035b` 2026-04-22 — feat(setup): operator role prompt per channel, owner by default
+- `4859d8f` 2026-04-22 — feat(setup): Claude-assisted error recovery with resume-at-step retry
+- `dfcbab5` 2026-04-22 — feat(setup): optional WhatsApp wiring + cross-channel UX polish
+- `72b7a72` 2026-04-22 — feat(setup): ping agent before chat, detect stale service, auto-install Claude
+- `9b6e5b2` 2026-04-22 — feat(setup): optional Discord wiring in setup:auto
+- `a263da3` 2026-04-22 — feat(setup): prompt to install Homebrew on factory macOS
+- `7d20816` 2026-04-22 — feat(setup): rewrite copy for first-time users + split auth flow
+- `9b7d4d5` 2026-04-22 — refactor(setup): split auto.ts into runner + theme + telegram channel
+- `416fe01` 2026-04-22 — refactor(setup): drop CLI-bonus wiring from init-first-agent
+- `5269eda` 2026-04-22 — feat(setup): three-level output (clack UI / progression log / raw per-step)
+- `6e0d742` 2026-04-22 — feat(setup): brand setup:auto with @clack/prompts + brand palette
+- `e24ecbf` 2026-04-22 — refactor(setup): own pair-telegram.ts in this branch with clean output
+- `356a4d0` 2026-04-22 — feat(setup): render Telegram pairing code in a focused banner
+- `5a472c4` 2026-04-22 — fix(setup): print bot URL alongside the deep-link attempt
+- `e7d798b` 2026-04-22 — feat(setup): validate Telegram token via getMe and deep-link to bot
+- `92c28a9` 2026-04-22 — feat(setup): run init-first-agent after Telegram pairing
+- `9c7e1d0` 2026-04-22 — feat(setup): optional Telegram wiring in setup:auto
+- `c87cd25` 2026-04-21 — feat(verify): end-to-end agent ping via CLI channel
+- `85faa3e` 2026-04-21 — fix(setup): rephrase display-name prompt
+- `d02001e` 2026-04-21 — feat(setup): prompt for display name, hardcode agent persona
+- `81838bb` 2026-04-21 — fix(setup): clarify silent-paste prompt
+- `1c748f1` 2026-04-21 — refactor(setup): drop timezone step from setup:auto chain
+- `52a9ab5` 2026-04-21 — feat(add-wechat): personal WeChat channel via Tencent iLink Bot API
+- `be6cec5` 2026-04-21 — fix(setup): auto-recover from stale docker group mid-session
+- `e86d0d9` 2026-04-21 — feat(setup): wire CLI agent in setup:auto
+- `fd2e404` 2026-04-21 — fix(setup): auto-install Node and bypass corepack prompt
+- `264849d` 2026-04-21 — feat(setup): add nanoclaw.sh entry point
+- `b0cae1b` 2026-04-21 — feat(setup): chain register-claude-token.sh into setup:auto
+- `ee5995a` 2026-04-21 — feat(setup): add register-claude-token.sh
+- `3ce4101` 2026-04-21 — feat(setup): chain OneCLI install in setup:auto
+- `2311721` 2026-04-21 — feat(setup): add scripted setup driver and auto-start Docker
+- `0107228` 2026-04-21 — refactor(setup): drop Apple Container support
+- `91c668e` 2026-04-21 — fix: persist SDK session_id on init + split long messages before adapter truncation
+- `c9977d6` 2026-04-21 — chore(settings): drop permissions allowlist from checked-in settings.json
+- `1f7508f` 2026-04-21 — refactor(skills): merge /new-setup-2 into unified /new-setup
+- `40ddc94` 2026-04-21 — Revert "fix(init-first-agent): seed welcome via inbound.db; drop --no-cli-bonus"
+- `77e6d3b` 2026-04-21 — Revert "refactor(skills): merge /new-setup-2 into unified /new-setup"
+- `01ffce6` 2026-04-21 — Revert "fix(permissions): welcome new approved channels via /welcome, route to them"
+- `9776dd4` 2026-04-21 — fix(permissions): welcome new approved channels via /welcome, route to them
+- `483969a` 2026-04-21 — refactor(skills): merge /new-setup-2 into unified /new-setup
+- `9fe5299` 2026-04-21 — fix(init-first-agent): seed welcome via inbound.db; drop --no-cli-bonus
+- `d8d61d3` 2026-04-21 — fix: Teams user-id prefix + defer cli:local owner grant
+- `212fc1f` 2026-04-17 — docs(add-emacs): rewrite skill for copy-from-channels-branch pattern
+- `53c11a2` 2026-04-17 — chore(skills): delete 9 irrelevant legacy skills
+- `f0090eb` 2026-04-20 — fix(container): point SDK to pnpm-installed Claude Code binary
+- `63b8beb` 2026-04-20 — fix(container): bump Claude Code to 2.1.116 and Agent SDK to ^0.2.116
+- `0f6a1ba` 2026-04-20 — style: apply prettier formatting to touched files
+- `6c26c04` 2026-04-20 — feat(router,cli): replyTo override + CLI admin-transport flows
+- `dadf258` 2026-04-20 — feat(new-setup-2): add per-channel bundled install scripts
+- `866b791` 2026-04-20 — fix(container): add /start to filtered commands
+- `712a0e1` 2026-04-20 — feat(new-setup): wrap node/docker installs and add generic set-env step
+- `ccb676a` 2026-04-20 — feat(new-setup-2): use AskUserQuestion for timezone + mounts; number channel list
+- `0d145ad` 2026-04-20 — feat(new-setup-2): add host directory access step
+- `9870deb` 2026-04-20 — feat(new-setup-2): add timezone step with UTC confirmation
+- `97d9cf1` 2026-04-20 — chore(skills): normalize + broaden setup allowlists
+- `cdefc97` 2026-04-20 — feat(new-setup-2): broaden install-telegram permission + allow tail/head/grep
+- `a29f3e5` 2026-04-20 — feat(new-setup-2): bundle Telegram install into one script
+- `719f97e` 2026-04-20 — feat(permissions): unknown-channel registration flow with owner approval
+- `5f8a138` 2026-04-20 — docs(skills): update add-matrix skill
+- `a4061a0` 2026-04-20 — refactor(channels,router): move all policy to router; bridge is transport
+- `4e1cee0` 2026-04-20 — feat(new-setup-2): phase-2 setup skill + --no-cli-bonus flag
+- `2eb6907` 2026-04-20 — feat(new-setup): silent CLI wiring + post-service branch point
+- `b159722` 2026-04-20 — refactor(channels): shrink bridge shouldEngage to flood gate + subscribe signal
+- `ad97829` 2026-04-20 — docs(add-signal-v2): replace inline voice section with reference to add-voice-transcription-free-whisper
+- `bc0b559` 2026-04-20 — docs(add-signal-v2): document XDG attachment path behaviour and voice fix
+- `68058cb` 2026-04-20 — fix(permissions): authorize unknown-sender approval clicks
+- `f74df3b` 2026-04-20 — fix(router): trust SDK isMention signal; drop broken hasMention regex
+- `0105de0` 2026-04-20 — fix(host-sweep): skip ceiling check when heartbeat file is absent
+- `06918f3` 2026-04-20 — feat(channels): add Signal channel adapter (v2) — skill and docs
+- `f894b5b` 2026-04-20 — chore: ignore .env* variants in addition to .env
+- `31f2da9` 2026-04-20 — fix(container): gate poll loop on trigger=1 to honor accumulate contract
+- `c38e5b1` 2026-04-20 — fix(channels): wire accumulate mode through the bridge
+- `ce25e1e` 2026-04-20 — style(channels): prettier line-wrap in chat-sdk-bridge.test.ts
+- `52c6223` 2026-04-20 — fix(channels): register onNewMessage(/./) to fix pattern mode in group chats
+- `57e0cda` 2026-04-20 — Revert "fix(channels): pre-subscribe group threads for pattern / accumulate wirings"
+- `73b2088` 2026-04-20 — fix(channels): pre-subscribe group threads for pattern / accumulate wirings
+- `fca3d8d` 2026-04-20 — fix(migrations): drop 011 table-rebuild; keep only pending_sender_approvals
+- `9882c94` 2026-04-20 — fix(channels): use Chat SDK ChatMessage.text, not .content
+- `a1079da` 2026-04-20 — fix(new-setup): always source ONECLI_URL from installer stdout
+- `5d5f72e` 2026-04-20 — docs(action-items): add item 22 (unknown-channel wiring approval flow)
+- `622a370` 2026-04-20 — feat(permissions): unknown-sender request_approval flow + flipped default policy
+- `16b9499` 2026-04-20 — feat(routing): engage modes + sender scope + accumulate/drop + per-agent fan-out
+- `6a81519` 2026-04-20 — feat(lifecycle): stuck detection + heartbeat lifecycle + SDK tool blocklist
+- `dcfa12e` 2026-04-20 — feat(timezone): recreate v1 TZ-aware formatting + scheduling behavior
+- `0283391` 2026-04-20 — chore(config): remove dead POLL_INTERVAL / SCHEDULER_POLL_INTERVAL / IPC_POLL_INTERVAL
+- `4795067` 2026-04-20 — docs: add v1→v2 action-items analysis + SDK signal probe tool
+- `0dae349` 2026-04-19 — docs(add-opencode): pin SDK/CLI to 1.4.17, document overlay propagation and env vars
+- `0d09c6e` 2026-04-19 — docs(add-linear): OAuth app auth, bridge patch, team routing, wiring
+- `57ad359` 2026-04-19 — docs(add-github): document bot account, userName, sender policy, and wiring
+- `96d7656` 2026-04-19 — refactor(new-setup): rewrite probe in pure bash, drop unavailable fallback
+- `5542107` 2026-04-19 — fix(new-setup): align onecli health path and rework auth flow
+- `0992979` 2026-04-19 — feat(new-setup): probe host-deps and skip bootstrap when already installed
+- `f553c81` 2026-04-19 — refactor(new-setup): add step-4 join barrier and drop scripted one-liners
+- `77fec6c` 2026-04-19 — fix(new-setup): avoid double-bootstrap and corepack EACCES on system Node
+- `77624d7` 2026-04-19 — fix(new-setup): wrap probe in shell script for single-command permission check
+- `b3e8b2e` 2026-04-19 — fix(new-setup): run probe before pnpm is installed
+- `f6ddd20` 2026-04-19 — feat(new-setup): add skill definition
+- `6db8155` 2026-04-19 — feat(new-setup): add probe step for dynamic context injection
+- `01389ff` 2026-04-19 — feat(new-setup): add onecli, auth, and cli-agent dispatcher steps
+- `47e3203` 2026-04-19 — feat: add /add-ollama-provider skill and docs/ollama.md
+- `5ed5b72` 2026-04-18 — docs: consolidate refactor follow-ups into a single REFACTOR.md
+- `131fc99` 2026-04-18 — feat(channels): add CLI channel — talk to your agent from the terminal
+- `7169c25` 2026-04-18 — refactor: relocate outbox I/O to session-manager + dead-code sweep
+- `95fdec3` 2026-04-18 — refactor(modules): re-tier approvals as default; extract self-mod as optional
+- `46b19dc` 2026-04-18 — refactor(modules): extract agent-to-agent as registry-based module
+- `32bcc2c` 2026-04-18 — refactor(permissions): preserve pre-PR behavior in three spots
+- `7cc4ecc` 2026-04-18 — refactor(modules): extract permissions as optional module
+- `473f766` 2026-04-18 — refactor(modules): extract scheduling as registry-based module
+- `626c565` 2026-04-18 — fix(modules): break circular import TDZ between index.ts and modules
+- `a457339` 2026-04-18 — refactor(modules): extract approvals + interactive as registry-based modules
+- `4202041` 2026-04-18 — refactor: scaffold module registries and default-module layout
+- `a1b2272` 2026-04-18 — chore(deps): bump @onecli-sh/sdk to 0.3.1
+- `53e8135` 2026-04-18 — docs: add module contract for refactor
+- `86becf8` 2026-04-18 — chore: delete v1 reference code
+- `caf2320` 2026-04-18 — docs: add v2 preview announcement to README
+- `27c5220` 2026-04-17 — fix(channels): bridge openDM delegates to adapter directly
+- `e93292d` 2026-04-17 — fix(agent-runner): spawn built-in MCP server with bun, not node
+- `bd659fd` 2026-04-17 — style(v2/delivery): prettier reflow of test import
+- `ac9535b` 2026-04-17 — fix(v2/delivery): prevent double-send from overlapping delivery polls
+- `bfc626b` 2026-04-17 — docs: drop v2 framing across CLAUDE.md and 12 docs
+- `c37609f` 2026-04-17 — docs(skills): drop "v2" from skill content + src/index.ts log lines
+- `00fb1be` 2026-04-17 — chore(skills): rename add-*-v2 → add-* and drop dead v1 channel skills
+- `4857512` 2026-04-17 — refactor(v2): move setup/groups.ts off trunk + drop pino dep
+- `712720e` 2026-04-17 — refactor(v2): drop @chat-adapter/shared dep — duck-type NetworkError
+- `a3376c2` 2026-04-17 — docs(channel-skills): rewrite all 13 /add-*-v2 skills for copy-from-channels-branch pattern
+- `437ba63` 2026-04-17 — refactor(v2): move channel adapters off v2 trunk
+- `32a973f` 2026-04-17 — docs(add-opencode): rewrite skill for copy-from-providers-branch pattern
+- `03dd559` 2026-04-17 — style: trim trailing whitespace in providers barrel
+- `e0258e8` 2026-04-17 — refactor(v2): move opencode provider off v2 trunk
+- `c9dd6e0` 2026-04-14 — docs: update OpenCode Zen integration details in SKILL.md
+- `2215026` 2026-04-14 — feat(v2): OpenCode agent provider
+- `7639f7b` 2026-04-17 — style(v2/providers): prettier reflow of provider-container-registry signatures
+- `1f3b023` 2026-04-17 — refactor(v2/providers): self-registration barrel + host container-config registry
+- `f04921d` 2026-04-17 — docs(v2): runtime-split guide, CLAUDE.md gotchas, setup CJK autodetect
+- `c5d0ef8` 2026-04-17 — feat(v2): migrate container runtime to Bun, improve image build surface
+- `45c35a0` 2026-04-17 — docs(v2/db): add database architecture reference
+- `31063a1` 2026-04-17 — docs(v2/checklist): reflect progress on package install, vercel, and scope adjustments
+- `22498ae` 2026-04-17 — fix: remaining npm→pnpm gaps + dockerignore for pnpm symlinks
+- `504e529` 2026-04-17 — fix: pnpm-lock sync, per-group build-script allowlist, ppnpm typos
+- `44e2361` 2026-04-14 — fix: migrate container agent-runner to pnpm with proper build scripts
+- `994b323` 2026-04-14 — docs: add supply chain security rules for pnpm
+- `163f570` 2026-04-14 — chore: add .pnpm-store to gitignore and commit formatting fix
+- `211d2b5` 2026-04-14 — docs: convert all skill instructions from npm to pnpm
+- `8fbf986` 2026-04-14 — docs: update documentation for pnpm migration
+- `2b7fef6` 2026-04-14 — chore: migrate setup.sh bootstrap to pnpm
+- `0b06343` 2026-04-14 — chore: use pnpm in dynamic container commands
+- `58420e1` 2026-04-14 — chore: migrate container Dockerfile to pnpm with corepack
+- `d1ddfa0` 2026-04-14 — chore: migrate CI workflows and git hooks to pnpm
+- `113caa9` 2026-04-14 — chore: replace package-lock.json with pnpm-lock.yaml
+- `3e1f226` 2026-04-14 — chore: add pnpm packageManager field and workspace config
+- `1aeb8fb` 2026-04-16 — refactor(add-vercel): drop Frontend Engineer delegation, add pre-deploy checks
+- `cc784ff` 2026-04-16 — refactor(v2): remove trigger_credential_collection MCP tool
+- `e55ed0f` 2026-04-16 — fix(whatsapp): upgrade Baileys 6.7→6.17, fix proto import and 515 restart
+- `cdf18e6` 2026-04-16 — feat(v2): add update_task MCP tool, dedup list_tasks by series
+- `8ef30ad` 2026-04-16 — fix(v2): cancel/pause/resume recurring tasks via series_id
+- `419d04f` 2026-04-16 — chore(agent-runner): sync package-lock for existing deps
+- `4c46dd3` 2026-04-16 — fix(v2): await handleRecurrence so the DB isn't closed mid-flight
+- `9617087` 2026-04-16 — fix(v2): compare process_after as datetime, not raw string
+- `b9f95df` 2026-04-16 — feat(v2): add pre-task script hook for scheduled tasks
+- `82422d2` 2026-04-16 — fix(vercel): complete add-vercel flow for fresh installs
+- `056d308` 2026-04-16 — feat(welcome): progressive discovery onboarding
+- `4ae9785` 2026-04-16 — fix(setup): move OpenClaw detection into environment step
+- `fdece80` 2026-04-16 — fix: reply in the Slack DM thread the user wrote in
+- `79fd142` 2026-04-16 — improve setup UX: welcome message + AskUserQuestion for pre-approval
+- `ce80e4e` 2026-04-16 — feat(setup): add Linear channel, fix setup permissions
+- `a1a3240` 2026-04-16 — refactor(telegram-pairing): remove TTL expiry from pairing codes
+- `39d2af9` 2026-04-16 — feat(v2): track unregistered senders + setup improvements
+- `57c9bfc` 2026-04-16 — improve setup flow: streamline steps, add pre-approval, new manage-mounts skill
+- `03684d3` 2026-04-15 — style: apply prettier formatting
+- `81d45b5` 2026-04-15 — refactor(v2): remove builder-agent dev-agent/worktree/swap flow
+- `20a24df` 2026-04-15 — style: apply prettier formatting
+- `75c2fde` 2026-04-15 — feat(v2): builder-agent self-modification WIP + container-config as per-group file
+- `c54c779` 2026-04-15 — feat(v2/add-vercel): add frontend-engineer skill with agent delegation
+- `e9a427a` 2026-04-15 — docs(v2): add /add-dashboard skill with resource-based pusher
+- `8ef26d3` 2026-04-15 — fix(v2/telegram): await pairing interceptor work to serialize DB commits
+- `7732198` 2026-04-15 — feat(pair-telegram): emit REMINDER_TO_ASSISTANT in status block
+- `eba94b7` 2026-04-15 — docs: update token count to 43.8k tokens · 22% of context window
+- `da9a73b` 2026-04-15 — chore: bump version to 1.2.53
+- `1eaf4f8` 2026-04-15 — Revert "docs(skills): print pairing code as final message; drop log-tail verify"
+- `bd6a26a` 2026-04-15 — docs(skills): print pairing code as final message; drop log-tail verify
+- `6801a14` 2026-04-15 — docs(skills): require pairing code be printed as final user-visible message
+- `f60b426` 2026-04-15 — docs(skills): surface telegram pairing code outside bash output
+- `c483860` 2026-04-15 — feat(v2/telegram): send pairing-success confirmation to paired chat
+- `ed5dc5e` 2026-04-15 — fix(v2/chat-sdk): project author into flat sender fields for router gate
+- `38163bc` 2026-04-15 — fix: add ONECLI_API_KEY to config mock in container-runner tests
+- `8b5b581` 2026-04-15 — fix: forward ONECLI_API_KEY to OneCLI SDK for authenticated container config
+- `db3aa0b` 2026-04-15 — docs(v2/checklist): reflect post-refactor MCP gating, cold-DM infra, and delivery ACL
+- `4d56252` 2026-04-15 — style: apply prettier formatting
+- `c60a9be` 2026-04-15 — style: apply prettier formatting
+- `0d3326a` 2026-04-15 — feat(v2): user-level privilege model + cold DM infra + init-first-agent skill
+- `8430e54` 2026-04-14 — style: apply prettier formatting
+- `63746df` 2026-04-14 — fix(v2/delivery): allow agent self-messages without a destination row
+- `2df81e0` 2026-04-14 — fix(v2/approvals): render correct title + selected label after click
+- `42467d7` 2026-04-14 — style: apply prettier formatting
+- `d92d75e` 2026-04-14 — feat(v2/approvals): per-card titles and structured options
+- `8d60af7` 2026-04-14 — feat(v2): add /add-vercel skill for agent Vercel deployments
+- `1903fab` 2026-04-14 — feat(v2/approvals): bundle install_packages + rebuild into one approval
+- `192a5a7` 2026-04-14 — docs(v2): add /add-whatsapp-v2 setup skill
+- `c36541b` 2026-04-14 — feat(v2/whatsapp): add file attachments, reactions, and inbound media
+- `c02ac06` 2026-04-14 — feat(v2): add formatting, approvals, and echo filter to WhatsApp adapter
+- `f304c67` 2026-04-14 — fix(telegram): sanitize outbound markdown for legacy parse mode
+- `c303b6e` 2026-04-13 — feat(v2): add native WhatsApp adapter using Baileys v6
+- `d16755e` 2026-04-13 — docs(v2-checklist): note self-approval UX gap
+- `871bfa1` 2026-04-13 — fix(v2): use in-tree symlink for global CLAUDE.md @import
+- `9a955b9` 2026-04-13 — docs(v2-checklist): plan main/non-main -> owner/admin refactor
+- `ae88d2b` 2026-04-13 — fix(telegram): retry adapter setup on transient network errors
+- `65afcdc` 2026-04-13 — feat(telegram-pairing): surface wrong-code attempts + auto-regen with retry cap
+- `2454444` 2026-04-13 — feat(telegram-pairing): accept bare 4-digit codes
+- `2017589` 2026-04-13 — feat(telegram): self-contained pairing for chat ownership verification
+- `af13c23` 2026-04-13 — style: format group-init.ts signature
+- `2e6dc21` 2026-04-13 — refactor(v2): per-group filesystem init, persistent across spawns
+- `8676c07` 2026-04-13 — feat(v2): support async channel adapter factories
+- `3db0dce` 2026-04-13 — docs(teams-v2): full setup guide with Azure CLI, manifest, and sideloading
+- `d4aacfe` 2026-04-13 — fix(v2): clear per-group agent-runner src before copy
+- `b63dd18` 2026-04-13 — refactor(agent-runner): decouple provider interface from Claude specifics
+- `e07158e` 2026-04-12 — fix(agent-runner): preserve thread_id when sending to current channel
+- `f0e4f07` 2026-04-12 — refactor(v2): extract webhook server into standalone module
+- `5a606a8` 2026-04-12 — refactor(v2): use Chat SDK webhooks proxy and clean up webhook server
+- `669a844` 2026-04-12 — refactor(v2): extract session DB operations into src/db/session-db.ts
+- `2376c88` 2026-04-12 — docs(v2): add delivery-failure-feedback to system actions checklist
+- `b140b36` 2026-04-12 — fix(agent-runner): reply to originating channel in single-destination shortcut
+- `7e74bfd` 2026-04-12 — feat(v2): Teams adapter env-driven app type and updated skill docs
+- `a9f9eda` 2026-04-12 — docs(slack-v2): update skill with DM setup, webhook URL, and reinstall step
+- `9476a80` 2026-04-12 — feat(v2): shared webhook server for webhook-based channel adapters
+- `53e12a6` 2026-04-12 — chore(v2): drop session-DB schema band-aid in writeSessionRouting
+- `7bd8c6a` 2026-04-12 — fix(v2): retry channel adapter setup on transient network errors
+- `4c477ac` 2026-04-12 — fix(v2): retry as plain text when adapter rejects markdown
+- `9dda75b` 2026-04-12 — docs(v2): cross-mount invariants + diagrams; inline a2a routing
+- `c9fa5cd` 2026-04-11 — docs(v2): expand checklist — credential collection, approvals, Chat SDK input
+- `062b0cb` 2026-04-11 — fix(agent-runner): add updated_at column to session_state on older DBs
+- `e92b245` 2026-04-11 — feat(v2): OneCLI 0.3.1 — approvals, credential collection, threaded routing
+- `9dc8bc5` 2026-04-11 — docs(v2): expand checklist — chat-first setup, product focus, skills marketplace
+- `630dd54` 2026-04-11 — chore(container): drop v1 IPC dirs and update entrypoint comment
+- `b59216c` 2026-04-11 — fix(v2): persist SDK session ID across container restarts
+- `b591d7c` 2026-04-10 — refactor: move destinations from JSON file into inbound.db
+- `09e1861` 2026-04-10 — feat: single-destination shortcut — no wrapping needed when there's only one
+- `67f0816` 2026-04-10 — style: prettier formatting fixes
+- `e83ffbc` 2026-04-10 — feat: named destinations + permission enforcement + fire-and-forget self-mod
+- `4004a6b` 2026-04-10 — docs: add self-customize skill and refine communication guidance
+- `6eb81b5` 2026-04-10 — style: prettier formatting fixes
+- `d8fbd3b` 2026-04-10 — feat: agent-to-agent communication, dynamic agent creation, self-modification tools
+- `9af9bc9` 2026-04-09 — fix(discord-v2): document required DISCORD_PUBLIC_KEY and APPLICATION_ID
+- `69939b7` 2026-04-09 — docs: fix v2 checklist accuracy — pre-agent scripts, typing, stubs
+- `e2dbc35` 2026-04-09 — docs: add auto-onboarding to v2 checklist
+- `5a309a0` 2026-04-09 — fix: only send onboarding message on first wiring, not re-registration
+- `4a999ec` 2026-04-09 — feat: auto-onboarding when a channel is registered
+- `a2badbd` 2026-04-09 — fix: normalize platform ID at registration, not router lookup
+- `9f5c37f` 2026-04-09 — fix: handle platform ID prefix mismatch in router, not register
+- `6941e37` 2026-04-09 — fix: auto-prefix platform IDs in register.ts to match Chat SDK format
+- `d656b5c` 2026-04-09 — fix: Chat SDK bridge delivery and typing for non-Discord adapters
+- `57a6491` 2026-04-09 — v2: channel isolation model, manage-channels skill, refactored channel skills
+- `ed76d51` 2026-04-09 — docs: add v2 setup wiring status and remaining work
+- `1dc5750` 2026-04-09 — fix: uncomment Discord import in channel barrel
+- `e7514ed` 2026-04-09 — fix: wire v2 setup flow — barrel import, registration, verification
+- `b76fd42` 2026-04-09 — style: prettier formatting fixes
+- `82cb363` 2026-04-09 — v2: split session DB into inbound/outbound for write isolation
+- `320176e` 2026-04-09 — fix: remaining -v2 references in scripts, add v1 channels barrel
+- `2b64fec` 2026-04-09 — fix: clean up iMessage adapter type compatibility
+- `9486d56` 2026-04-09 — v2: make v2 the main entry point, move v1 to src/v1/
+- `12af451` 2026-04-09 — v2: add Chat SDK channel adapters and skills for 11 platforms
+- `8a06b01` 2026-04-09 — v2: SQLite state adapter, admin commands, compact feedback
+- `c31bb02` 2026-04-09 — v2 phase 5: pending questions with interactive cards
+- `c348fab` 2026-04-09 — v2 phase 5: scheduling fixes, media handling, command processing
+- `afbc20a` 2026-04-09 — v2 phase 4+5: Discord via Chat SDK, expanded MCP tools, message seq IDs
+- `b36f127` 2026-04-09 — style: prettier formatting fixes
+- `6f2a731` 2026-04-09 — v2: fix agent-runner lifecycle and session DB reliability
+- `7201fe5` 2026-04-09 — v2 phase 4: channel adapter interface, registry, and host wiring
+- `d35386a` 2026-04-08 — style: apply prettier formatting to v2 source files
+- `03c4e3b` 2026-04-08 — v2: fix container launch for v2 agent-runner
+- `8535875` 2026-04-08 — v2: add host core integration tests
+- `d7c68e0` 2026-04-08 — v2 phase 3: host core — router, session manager, delivery, sweep
+- `18d0b6e` 2026-04-08 — v2: add agent-runner integration tests
+- `5a0098e` 2026-04-08 — v2 phase 2: agent-runner — provider interface, poll loop, formatter
+- `3f0451b` 2026-04-08 — v2 phase 1: foundation — types, DB layer, logging
+- `90acff2` 2026-04-08 — chore: set printWidth to 120 and reformat
+- `e540df4` 2026-04-08 — docs: add code style (120 char lines, concise logging) and config pattern
+- `a03f832` 2026-04-08 — docs: add v1 conflict hotspot analysis and isolation strategies
+- `820c506` 2026-04-08 — docs: add DB file structure and migration strategy
+- `1b652e1` 2026-04-08 — docs: add code structure principles for skill customization
+- `b539fdd` 2026-04-08 — docs: v2 architecture design — session DB, channel adapters, agent provider
+- `934f063` 2026-04-07 — update deps
+- `751a9ed` 2026-04-06 — fix(gmail): add OneCLI credential mode detection
+- `22d7856` 2026-04-06 — reduce setup friction
+- `ca9333d` 2026-04-06 — improve diagnostics
+- `6c289c3` 2026-04-05 — chore: add .npmrc with 7-day minimum release age
+- `b8cf308` 2026-04-05 — chore: bump version to 1.2.52
+- `653390d` 2026-04-05 — chore: bump version to 1.2.51
+- `19ce90c` 2026-04-05 — fix
+- `0918f78` 2026-04-05 — fix
+- `4fd7586` 2026-04-05 — update init-onecli
+- `5adc949` 2026-04-05 — Update SKILL.md to use ONECLI_URL variable
+- `1d5c38d` 2026-04-05 — fix: three issues in karpathy wiki skill
+- `75c2e18` 2026-04-05 — chore: bump version to 1.2.50
+- `f77f9ce` 2026-04-05 — feat: set auto-compact threshold to 165k tokens
+- `15e356a` 2026-04-05 — chore: revert unrelated db.ts formatting change
+- `33b5627` 2026-04-05 — chore: rename skill to add-karpathy-llm-wiki
+- `f69979f` 2026-04-05 — fix: simplify source handling step and fix typo in wiki skill
+- `54bf454` 2026-04-05 — refactor: rework wiki skill to use Karpathy's original text as reference
+- `36943fb` 2026-04-05 — feat: add /add-wiki skill for persistent LLM Wiki knowledge bases
+- `1488c5b` 2026-04-04 — fix: add writable global memory mount for main agent
+- `22ab96c` 2026-04-04 — fix: correct global memory path in container CLAUDE.md
+- `3703c9d` 2026-04-05 — feat: suggest /migrate-nanoclaw when user is far behind upstream
+- `761d3a1` 2026-04-05 — feat: add migrated_from_openclaw field to setup diagnostics
+- `cbb4da1` 2026-04-04 — docs: update token count to 43.7k tokens · 22% of context window
+- `b752e5c` 2026-04-04 — chore: bump version to 1.2.49
+- `d4a6b4a` 2026-04-05 — fix: portable stat and subshell variable mutation in cleanup script
+- `67020f9` 2026-04-05 — feat: auto-prune stale session artifacts on startup + daily
+- `9019e4e` 2026-04-04 — docs: update token count to 43.5k tokens · 22% of context window
+- `8a02170` 2026-04-04 — chore: bump version to 1.2.48
+- `db3440f` 2026-04-04 — feat: upgrade agent SDK to 0.2.92 with 1M context and 200k auto-compact
+- `b2a5a58` 2026-04-04 — feat: add /migrate-from-openclaw skill for guided OpenClaw migration
+- `426ae02` 2026-04-04 — feat: add diagnostics telemetry to migrate-nanoclaw skill
+- `7ef1c4f` 2026-04-04 — fix: apply lessons from real-world migration test run
+- `f60bb3c` 2026-04-03 — feat: add /migrate-nanoclaw skill for intent-based upgrades
+- `3608f05` 2026-04-03 — docs: update token count to 43.4k tokens · 22% of context window
+- `8f28cde` 2026-04-03 — chore: bump version to 1.2.47
+- `032ba77` 2026-04-03 — feat: mount store rw for main agent and add requiresTrigger to register_group
+- `e9db4d4` 2026-04-03 — Update SKILL.md
+- `bf11109` 2026-04-03 — docs: update breaking changes and Apple Container skill security
+- `6f93b20` 2026-04-03 — fix: relax breaking change detection to match [BREAKING] anywhere in line
+- `f23a54a` 2026-04-02 — docs: update token count to 43.3k tokens · 22% of context window
+- `6e0653f` 2026-04-02 — chore: bump version to 1.2.46
+- `ee599b9` 2026-04-02 — feat: add reply/quoted message context support
+- `7b337a7` 2026-04-02 — docs: add Telegram channel contributors
+- `22f5d55` 2026-04-02 — Add Contributor Covenant Code of Conduct
+- `51f50bb` 2026-04-01 — docs: update token count to 43.0k tokens · 22% of context window
+- `4c7bc80` 2026-04-01 — chore: bump version to 1.2.45
+- `87e8914` 2026-04-01 — style: run prettier on container/agent-runner/src/
+- `7b0d79a` 2026-04-01 — chore: bump version to 1.2.44
+- `468c617` 2026-04-01 — style: run prettier and eslint on src/
+- `4c8b9cd` 2026-03-30 — docs: update token count to 42.6k tokens · 21% of context window
+- `78bfb8d` 2026-03-30 — chore: bump version to 1.2.43
+- `001ee6e` 2026-03-31 — fix: correct stale session regex and remove duplicate retry logic
+- `d675859` 2026-03-30 — fix: Fix npm audit errors
+- `38009be` 2026-03-30 — fix: auto-recover from stale Claude Code session on exit code 1
+- `474346e` 2026-03-30 — fix: recover from stale Claude Code session IDs instead of retrying infinitely
+- `2983946` 2026-03-28 — fix: setup skill skips /use-native-credential-proxy for apple container
+- `a3fb3be` 2026-03-28 — docs: warn about silently wrong auto-merges in maintenance guide
+- `3ab833b` 2026-03-28 — docs: note that workflow removal recurs on every forward merge
+- `8c4ab36` 2026-03-28 — docs: update fork maintenance guide with merge learnings
+- `8bb8e03` 2026-03-28 — docs: add branch and fork maintenance guidelines
+- `37aee02` 2026-03-28 — chore: bump version to 1.2.42
+- `90af26a` 2026-03-28 — chore: remove claw skill test
+- `fff37d5` 2026-03-28 — fix: setup skill routes credential system by container runtime
+- `0c420cf` 2026-03-27 — docs: align contributing guidelines with updated PR hygiene wording
+- `5ed74c3` 2026-03-27 — docs: scope PR hygiene check to PR creation only, improve wording
+- `ad507fa` 2026-03-27 — docs: clarify PR hygiene check wording
+- `94689fc` 2026-03-27 — docs: consolidate PR hygiene check from 3 commands to 2
+- `4743513` 2026-03-27 — docs: add PR hygiene check to CLAUDE.md and contributing guidelines
+- `c3e9a89` 2026-03-27 — chore: bump version to 1.2.41
+- `acb0aba` 2026-03-27 — fix: broken tests and stale .env.example
+- `4f1b09f` 2026-03-27 — fix: migrate x-integration host.ts from pino to built-in logger
+- `fa4ace4` 2026-03-27 — docs: update token count to 42.4k tokens · 21% of context window
+- `e6e0c6f` 2026-03-27 — chore: bump version to 1.2.40
+- `c98205c` 2026-03-27 — fix: prevent full message history from being sent to container agents
+- `2faf1c6` 2026-03-27 — docs: update token count to 42.1k tokens · 21% of context window
+- `842ec5f` 2026-03-27 — chore: bump version to 1.2.39
+- `6e602a1` 2026-03-27 — chore: bump version to 1.2.38
+- `8776505` 2026-03-27 — chore: bump version to 1.2.37
+- `8935e4f` 2026-03-27 — docs: add k8s image GC known issue to debug checklist
+- `f900670` 2026-03-27 — docs: update token count to 42.0k tokens · 21% of context window
+- `62fc8c7` 2026-03-27 — chore: bump version to 1.2.36
+- `7e7492e` 2026-03-27 — style: apply prettier formatting to logger
+- `7b22e23` 2026-03-27 — chore: replace pino/pino-pretty with built-in logger
+- `2f472a8` 2026-03-27 — feat: add opt-in model management tools to ollama skill setup
+- `8f01a9a` 2026-03-27 — chore: remove unused dependencies (yaml, zod, @vitest/coverage-v8)
+- `f537597` 2026-03-26 — Preserve isMain on IPC updates
+- `0f01fe2` 2026-03-26 — fix(env): prevent crash on single-character .env values
+- `a4fd4f2` 2026-03-26 — fix(security): prevent command injection in stopContainer and mount path injection
+- `4383e3e` 2026-03-26 — chore: bump version to 1.2.35
+- `730ea0d` 2026-03-26 — fix: refine task scripts intro wording
+- `eda14f4` 2026-03-26 — fix: include script field in task snapshot for current_tasks.json
+- `a29ca08` 2026-03-26 — fix: rewrite task scripts intro for broader use cases and clarity
+- `813e1c6` 2026-03-25 — fix: improve task scripts agent instructions
+- `d25b79a` 2026-03-26 — docs: add auth credentials guidance to main group CLAUDE.md
+- `a417465` 2026-03-26 — fix(init-onecli): only offer to migrate container-facing credentials
+- `d398ba5` 2026-03-26 — feat(init-onecli): offer to migrate non-Anthropic .env credentials to vault
+- `8b53a95` 2026-03-26 — feat: add /init-onecli skill for OneCLI Agent Vault setup and credential migration
+- `4c6d924` 2026-03-26 — docs: update README and security docs to reflect OneCLI Agent Vault adoption
+- `0320e3f` 2026-03-26 — docs: add ingyukoh to contributors
+- `54a8648` 2026-03-26 — feat: add model management tools to add-ollama-tool skill
+- `e4f15b6` 2026-03-25 — rename skill to add-macos-statusbar
+- `349b54a` 2026-03-25 — fix(add-statusbar): derive log path from binary location, fix SKILL.md
+- `9413ace` 2026-03-25 — chore: add edwinwzhe and scottgl9 to contributors
+- `2c44708` 2026-03-25 — chore: add edwinwzhe to contributors
+- `2cddefb` 2026-03-25 — docs: update token count to 41.3k tokens · 21% of context window
+- `125757b` 2026-03-25 — chore: bump version to 1.2.34
+- `68c59a1` 2026-03-25 — feat(skill): add Emacs channel skill
+- `deb5389` 2026-03-25 — fix(skill/channel-formatting): correct Telegram link behaviour in SKILL.md
+- `7bfd060` 2026-03-25 — chore: bump version to 1.2.33
+- `3a26f69` 2026-03-25 — chore: bump version to 1.2.32
+- `1f36232` 2026-03-25 — docs: add flobo3 to contributors
+- `7bba21a` 2026-03-25 — feat(skill): add channel-formatting skill
+- `6d4f972` 2026-03-25 — chore: bump version to 1.2.31
+- `b8f6a9b` 2026-03-25 — docs: update token count to 41.2k tokens · 21% of context window
+- `fd44468` 2026-03-25 — chore: bump version to 1.2.30
+- `df76dc6` 2026-03-25 — docs: update token count to 41.0k tokens · 20% of context window
+- `bb736f3` 2026-03-25 — chore: bump version to 1.2.29
+- `9391304` 2026-03-25 — docs: update token count to 40.2k tokens · 20% of context window
+- `31c03cf` 2026-03-25 — chore: bump version to 1.2.28
+- `0240f48` 2026-03-25 — fix: use main template for isMain groups in runtime registration
+- `b7434b8` 2026-03-25 — fix: use explicit Read tool directive for diagnostics instructions
+- `80f6fb2` 2026-03-25 — style: fix prettier formatting in registerGroup template copy
+- `d4073a0` 2026-03-25 — chore: remove auto-sync GitHub Actions
+- `d622a79` 2026-03-25 — fix: suppress spurious chat message on script skip
+- `6e5834e` 2026-03-25 — docs: update token count to 40.1k tokens · 20% of context window
+- `093530a` 2026-03-25 — chore: bump version to 1.2.27
+- `675a6d8` 2026-03-25 — chore: remove accidentally merged Telegram channel code
+- `63f680d` 2026-03-25 — chore: remove grammy and pin better-sqlite3/cron-parser versions
+- `4e3189d` 2026-03-25 — fix: create CLAUDE.md from template when registering groups via IPC
+- `2c46d74` 2026-03-25 — fix: clarify WhatsApp phone number prompt to prevent auth failures
+- `aeabfcc` 2026-03-25 — fix: enable loginctl linger so user service survives SSH logout
+- `5d5b904` 2026-03-24 — chore: bump version to 1.2.26
+- `f375dd5` 2026-03-24 — docs: update token count to 42.4k tokens · 21% of context window
+- `6d4e251` 2026-03-24 — chore: bump version to 1.2.25
+- `11847a1` 2026-03-25 — fix: validate timezone to prevent crash on POSIX-style TZ values
+- `616c1ae` 2026-03-25 — fix: expand auto-resolve patterns and add missing forks to dispatch
+- `2142f03` 2026-03-24 — chore: bump version to 1.2.25
+- `4d853c5` 2026-03-24 — docs: update token count to 42.2k tokens · 21% of context window
+- `e26e1b3` 2026-03-24 — chore: bump version to 1.2.24
+- `bf9b7d0` 2026-03-25 — fix: auto-resolve package-lock/badge/version conflicts in fork sync
+- `8d0baac` 2026-03-24 — fix: remove prompt manipulation text from diagnostics steps
+- `e6df18c` 2026-03-24 — docs: update token count to 39.9k tokens · 20% of context window
+- `58faf62` 2026-03-24 — docs: update token count to 39.8k tokens · 20% of context window
+- `7d640cb` 2026-03-24 — chore: bump version to 1.2.23
+- `7366b0d` 2026-03-24 — docs: trim OneCLI section wording
+- `0015931` 2026-03-24 — fix: honor per-group trigger patterns
+- `d05a8de` 2026-03-24 — fix: refresh stale agent-runner source cache on code changes
+- `3572280` 2026-03-24 — style: fix prettier formatting
+- `07cf1fb` 2026-03-24 — docs: add OneCLI secrets management section to CLAUDE.md
+- `14247d0` 2026-03-24 — skill: add /use-native-credential-proxy, remove dead proxy code
+- `b0671ef` 2026-03-24 — docs: update token count to 40.7k tokens · 20% of context window
+- `81f6703` 2026-03-24 — chore: bump version to 1.2.22
+- `57085cc` 2026-03-24 — fix: revert promotion logic — never overwrite existing CLAUDE.md
+- `3207c35` 2026-03-24 — fix: promote CLAUDE.md to main template when group becomes main
+- `07dc8c9` 2026-03-24 — test: cover multi-channel main and cross-channel name propagation
+- `b6e1868` 2026-03-24 — test: add coverage for CLAUDE.md template copy in register step
+- `5a12ddd` 2026-03-05 — fix(register): create CLAUDE.md in group folder from template
+- `8dcc70c` 2026-03-24 — docs: add Windows (WSL2) to supported platforms
+- `01b6258` 2026-03-24 — docs: update outdated documentation, add docs portal links
+- `724fe72` 2026-03-23 — fix(claw): mount group folder and sessions into container
+- `5f42646` 2026-03-23 — fix: implement --force flag for mount-allowlist overwrite
+- `ff16e93` 2026-03-22 — fix: skip mount-allowlist write if file already exists
+- `4f7efd3` 2026-03-23 — fix: make diagnostics step explicit so Claude actually follows it
+- `def3748` 2026-03-22 — fix: restore subscription vs API key choice in setup step 4
+- `d40affb` 2026-03-23 — fix: skip bump-version and update-tokens on forks
+- `2583af7` 2026-03-23 — fix: ensure OneCLI agents exist for all groups on startup
+- `7f6298a` 2026-03-19 — fix: add onecli CLI to PATH if not found after install
+- `b7f8c20` 2026-03-19 — fix: setup skill uses 127.0.0.1 for OneCLI and offers dashboard vs CLI choice
+- `e936961` 2026-03-18 — feat: replace credential proxy with OneCLI gateway for secret injection
+- `00ff0e0` 2026-03-23 — fix(db): default Telegram backfill chats to DMs
+- `02d51af` 2026-03-21 — trim diagnostics verbosity
+- `a4fbc9d` 2026-03-21 — show full payload to user, not just properties
+- `f973946` 2026-03-21 — cross-skill opt-out and gather system info via shell
+- `09d833c` 2026-03-21 — replace diagnostics script with curl, simplify flow
+- `f33c66b` 2026-03-21 — simplify setup diagnostics to single event
+- `e242317` 2026-03-21 — simplify diagnostics instructions
+- `e10b136` 2026-03-21 — refactor: move diagnostics into each skill's own directory
+- `31ac74f` 2026-03-21 — fix: remove claw skill accidentally added to this branch
+- `d96be5d` 2026-03-21 — scope diagnostics to setup and update-nanoclaw only
+- `d768a04` 2026-03-21 — docs: move Docker Sandboxes out of README hero section
+- `8c39795` 2026-03-21 — docs: update token count to 40.9k tokens · 20% of context window
+- `ec1b145` 2026-03-21 — docs: update contributing guidelines and skill type taxonomy
+- `bf1e2a3` 2026-03-21 — refactor: extract claw script from SKILL.md into separate file
+- `b2377bb` 2026-03-20 — Fix Python 3.8 compat, document --image flag and --rm behavior
+- `1846929` 2026-03-20 — Add claw CLI skill
+- `c3b1987` 2026-03-21 — chore: bump version to 1.2.21
+- `b30b5a6` 2026-03-20 — style: apply prettier formatting to modified files
+- `30ebcaa` 2026-03-20 — feat: add ESLint with error-handling rules
+- `b7420c6` 2026-03-21 — chore: bump version to 1.2.20
+- `0ce11f6` 2026-03-21 — feat: add Slack formatting skill for NanoClaw agents
+- `1734be7` 2026-03-19 — fix: collect diagnostics for sub-skills invoked during setup
+- `8c1d559` 2026-03-19 — fix: strip PostHog internal fields from dry-run output
+- `3747dfe` 2026-03-19 — fix: also strip distinct_id from dry-run output
+- `33874de` 2026-03-19 — fix: strip api_key from dry-run output shown to user
+- `f04a895` 2026-03-19 — feat: add opt-in diagnostics via PostHog
+- `91f17a1` 2026-03-19 — chore: bump version to 1.2.19
+- `cf3d9dc` 2026-03-18 — fix: reduce docker stop timeout for faster restarts
+- `7a8c24b` 2026-03-19 — docs: update token count to 40.7k tokens · 20% of context window
+- `c78042e` 2026-03-19 — chore: bump version to 1.2.18
+- `cf89904` 2026-03-17 — security: stop logging user prompt content on container errors
+- `b7f1d48` 2026-03-18 — style: fix prettier formatting in db.ts
+- `a4dc3a7` 2026-03-18 — docs: add task script instructions to agent CLAUDE.md
+- `9f5aff9` 2026-03-18 — feat: add script execution phase to agent-runner
+- `42d098c` 2026-03-18 — feat: pass script from task scheduler to container
+- `eb65121` 2026-03-18 — feat: add script to ContainerInput and task snapshot
+- `0f283cb` 2026-03-18 — feat: pass script through IPC task processing
+- `a516cc5` 2026-03-18 — feat: add script parameter to MCP task tools
+- `675acff` 2026-03-18 — feat: add script field to ScheduledTask type and database layer
+- `c75de24` 2026-03-18 — docs: add Japanese README
+- `c71c7b7` 2026-03-18 — chore: bump version to 1.2.17
+- `96852f6` 2026-03-18 — Apply suggestion from @gavrielc
+- `e7d0ffb` 2026-03-18 — docs: update token count to 40.6k tokens · 20% of context window
+- `9200612` 2026-03-18 — chore: bump version to 1.2.16
+- `c8f03ed` 2026-03-16 — docs: update token count to 40.5k tokens · 20% of context window
+- `8b64741` 2026-03-16 — chore: bump version to 1.2.15
+- `2608127` 2026-03-16 — fix: add KillMode=process so remote-control survives restarts
+- `12ff258` 2026-03-16 — style: format remote-control tests with prettier
+- `9244828` 2026-03-16 — test: update remote-control tests for stdin pipe change
+- `d49af91` 2026-03-16 — fix: auto-accept remote-control prompt to prevent immediate exit
+- `de62ef6` 2026-03-14 — format remote-control files with Prettier
+- `8cbd715` 2026-03-14 — add read-only /capabilities and /status skills
+- `fb66428` 2026-03-14 — docs: update token count to 40.4k tokens · 20% of context window
+- `9b82611` 2026-03-14 — chore: bump version to 1.2.14
+- `c984e6f` 2026-03-14 — docs: update token count to 41.1k tokens · 21% of context window
+- `3d649c3` 2026-03-14 — chore: bump version to 1.2.17
+- `cb20038` 2026-03-14 — fix: only skip /chatid and /ping, let other / messages through
+- `e2b0d2d` 2026-03-14 — feat: add /remote-control command for host-level Claude Code access
+- `2640973` 2026-03-14 — chore: bump version to 1.2.13
+- `e7318be` 2026-03-14 — chore: bump claude-agent-sdk to ^0.2.76
+- `662e81f` 2026-03-14 — chore: bump version to 1.2.16
+- `54a55af` 2026-03-14 — chore: bump version to 1.2.15
+- `d197546` 2026-03-14 — chore: bump claude-agent-sdk to ^0.2.76
+- `38ebb31` 2026-03-13 — Update README.md
+- `df9ba0e` 2026-03-13 — fix: correct Docker Sandboxes documentation URL
+- `e6ff5c6` 2026-03-13 — feat: add manual Docker Sandboxes setup guide
+- `6f64b31` 2026-03-13 — fix: add divider after announcement section
+- `c739175` 2026-03-13 — fix: add divider between badges and announcement section
+- `3414625` 2026-03-13 — fix: left-align install commands in announcement section
+- `2a90f98` 2026-03-13 — fix: add supported platforms note to Docker Sandboxes section
+- `49595b9` 2026-03-13 — fix: separate install commands into individual code blocks
+- `48d352a` 2026-03-13 — feat: add Docker Sandboxes announcement to README
+- `d81f8e1` 2026-03-11 — docs: update token count to 41.0k tokens · 20% of context window
+- `f210fd5` 2026-03-11 — chore: bump version to 1.2.14
+- `d000acc` 2026-03-11 — fix: use https.globalAgent in grammY Bot to support sandbox proxy
+- `7e9a698` 2026-03-11 — feat: add nanoclaw-docker-sandboxes to fork dispatch list
+- `1f2e930` 2026-03-11 — fix: auto-resolve package-lock conflicts when merging forks
+- `2dedd15` 2026-03-11 — docs: update token count to 40.9k tokens · 20% of context window
+- `cb9fba8` 2026-03-11 — chore: bump version to 1.2.13
+- `845da49` 2026-03-11 — fix: prettier formatting for telegram.ts
+- `272cbcf` 2026-03-11 — fix: update sendMessage test expectations for Markdown parse_mode
+- `0cfdde4` 2026-03-10 — fix: remove claude plugin marketplace commands (skills are local now)
+- `04fb44e` 2026-03-10 — fix: setup registration — use initDatabase/setRegisteredGroup, .ts imports, correct CLI commands
+- `7061480` 2026-03-10 — fix: add concurrency group to prevent parallel fork-sync races
+- `d8a1ee8` 2026-03-10 — fix: use npm ci in bootstrap to prevent dirty lockfile blocking merges
+- `51ad949` 2026-03-10 — fix: re-fetch before skill branch merges to avoid stale refs
+- `018deca` 2026-03-10 — fix: use GitHub App token for fork-sync (workflows permission needed)
+- `15ed3cf` 2026-03-10 — fix: repair escaped newlines in fork-sync workflow
+- `107f974` 2026-03-10 — fix: update sync condition to check repo name, not owner
+- `9a4fb61` 2026-03-10 — feat: add Markdown formatting for outbound messages
+- `5ca0633` 2026-03-10 — fix: refresh tasks snapshot immediately after IPC task mutations
+- `d572bab` 2026-03-10 — feat: add marketplace skills as local project skills
+- `621fde8` 2026-03-10 — fix: update marketplace cache before installing skills plugin in setup
+- `f41b399` 2026-03-10 — fix: register marketplace and install channel skills individually in setup
+- `4dee68c` 2026-03-10 — fix: run npm install after channel merges in setup to catch new dependencies
+- `b913a37` 2026-03-10 — ci: remove old merge-forward-skills.yml (replaced by fork-sync-skills.yml)
+- `d487faf` 2026-03-10 — ci: rename sync workflow to fork-sync-skills.yml to avoid merge conflicts with core
+- `e6ea914` 2026-03-10 — ci: add repo guard to merge-forward workflow to prevent conflicts on forks
+- `8564937` 2026-03-09 — docs: update token count to 38.8k tokens · 19% of context window
+- `5118239` 2026-03-10 — feat: skills as branches, channels as forks
+- `5acab2c` 2026-03-09 — ci: add upstream sync and merge-forward workflow
+- `e7852a4` 2026-03-08 — chore: bump version to 1.2.12
+- `13ce4aa` 2026-03-09 — feat: enhance container environment isolation via credential proxy (#798)
+- `8521e42` 2026-03-08 — Add /compact skill for manual context compaction (#817)
+- `4cb13b2` 2026-03-08 — skill/ollama-tool: local Ollama model inference via MCP
+- `83b91b3` 2026-03-08 — skill/telegram: Telegram channel integration
+- `4ccc5c5` 2026-03-08 — chore: bump version to 1.2.11
+- `a689a18` 2026-03-08 — fix: close task container promptly when agent uses IPC-only messaging (#840)
+- `ab9abbb` 2026-03-08 — feat(skill): add WhatsApp reactions skill (emoji reactions + status tracker) (#509)
+- `5b2bafd` 2026-03-08 — fix(whatsapp): use sender's JID for DM-with-bot registration, skip trigger (#751)
+- `32dda34` 2026-03-08 — status-icon-01
+- `cfabdd8` 2026-03-08 — fix broken step references in setup/SKILL.md (#794)
+- `af937d6` 2026-03-06 — feat(skills): add image vision skill for WhatsApp (#770)
+- `be19911` 2026-03-06 — fix(whatsapp): write pairing code to file for immediate access (#745)
+- `0b260ec` 2026-03-06 — feat(skills): add pdf-reader skill (#772)
+- `1e89d61` 2026-03-06 — docs: update token count to 37.5k tokens · 19% of context window
+- `cf99b83` 2026-03-06 — chore: bump version to 1.2.10
+- `74b02c8` 2026-03-06 — fix(db): add LIMIT to unbounded message history queries (#692) (#735)
+- `8c38a8c` 2026-03-06 — docs: update token count to 37.4k tokens · 19% of context window
+- `24c6fa2` 2026-03-06 — chore: bump version to 1.2.9
+- `632713b` 2026-03-06 — feat: timezone-aware context injection for agent prompts (#691)
+- `47ad2e6` 2026-03-06 — fix: add-voice-transcription skill drops WhatsApp registerChannel call (#766)
+- `5a4e326` 2026-03-06 — chore: bump version to 1.2.8
+- `ec0e42b` 2026-03-06 — fix: correct misleading send_message tool description for scheduled tasks (#729)
+- `ced0068` 2026-03-06 — docs: update token count to 37.3k tokens · 19% of context window
+- `c48314d` 2026-03-06 — chore: bump version to 1.2.7
+- `68123fd` 2026-03-06 — feat: add update_task tool and return task ID from schedule_task
+- `e14c858` 2026-03-06 — Update README.md
+- `298c3ea` 2026-03-04 — feat: add /add-ollama skill for local model inference (#712)
+- `6ad6328` 2026-03-04 — chore: bump version to 1.2.6
+- `5955cd6` 2026-03-04 — chore: update claude-agent-sdk to 0.2.68
+- `590dc21` 2026-03-04 — chore: bump version to 1.2.5
+- `df2bac6` 2026-03-04 — fix: format src/index.ts to pass CI prettier check (#711)
+- `5aed615` 2026-03-04 — chore: bump version to 1.2.4
+- `1436186` 2026-03-04 — fix: rename _chatJid to chatJid in onMessage callback
+- `3d17e95` 2026-03-04 — docs: update token count to 36.4k tokens · 18% of context window
+- `cd3c2f0` 2026-03-04 — chore: bump version to 1.2.3
+- `4de981b` 2026-03-04 — add sender allowlist for per-chat access control (#705)
+- `a5845a5` 2026-03-04 — docs: update token count to 35.3k tokens · 18% of context window
+- `32d5827` 2026-03-04 — chore: bump version to 1.2.2
+- `f794185` 2026-03-04 — fix: atomic claim prevents scheduled tasks from executing twice (#657)
+- `03f792b` 2026-03-04 — feat(skills): add use-local-whisper skill package (#702)
+- `5e3d8b6` 2026-03-04 — fix(whatsapp): add error handling to messages.upsert handler (#695)
+- `58dec06` 2026-03-04 — docs: use canonical lowercase clone URL (#681)
+- `8e664e6` 2026-03-04 — Update README.md
+- `21a4eaf` 2026-03-02 — docs: update token count to 35.1k tokens · 18% of context window
+- `e7bad73` 2026-03-02 — chore: bump version to 1.2.1
+- `0210aa9` 2026-03-03 — refactor: implement multi-channel architecture (#500)
+- `d92e175` 2026-03-03 — feat: check for breaking changes after update-nanoclaw
+- `5c58ea0` 2026-03-02 — fix: auto-initialize skills system when applying first skill
+- `bae8538` 2026-03-02 — Fix/shadow env in container (#646)
+- `7702316` 2026-03-02 — fix: prevent command injection in setup verify PID check
+- `62c25b1` 2026-03-01 — chore: bump version to 1.1.6
+- `5eddca9` 2026-03-01 — docs: update token count to 38.5k tokens · 19% of context window
+- `77641b0` 2026-03-01 — chore: bump version to 1.1.5
+- `16ab463` 2026-03-01 — fix: normalize wrapped WhatsApp messages before reading content (#628)
+- `16d005f` 2026-03-01 — docs: add happydog-intj and bindoon to contributors
+- `94680e9` 2026-03-01 — chore: bump version to 1.1.4
+- `51bb329` 2026-03-02 — feat: add third-party model support (#592)
+- `80cdd23` 2026-03-01 — chore: remove old /update skill, replaced by /update-nanoclaw
+- `3475e89` 2026-03-01 — skill: add /update-nanoclaw for syncing customized installs with upstream (#217)
+- `d48ef91` 2026-03-01 — fix: add CJK font support for Chromium screenshots
+- `8f91d3b` 2026-02-27 — docs: move examples section below Why in repo-tokens README
+- `6d8f833` 2026-02-27 — docs: add NanoClaw as example in repo-tokens README
+- `a6a1178` 2026-02-27 — chore: add husky and format:fix script (#535)
+- `da61a7e` 2026-02-25 — docs: update token count to 38.4k tokens · 19% of context window
+- `24001a2` 2026-02-25 — chore: bump version to 1.1.3
+- `11c2010` 2026-02-25 — refactor: CI optimization, logging improvements, and codebase formatting (#456)
+- `bd2e236` 2026-02-25 — docs: add AmaxGuan to CONTRIBUTORS.md
+- `9232c11` 2026-02-25 — docs: add rgarcia to CONTRIBUTORS.md
+- `7d95ddf` 2026-02-25 — docs: add pottertech to CONTRIBUTORS.md
+- `3e578eb` 2026-02-25 — docs: add tydev-new to CONTRIBUTORS.md
+- `40882ab` 2026-02-25 — docs: add CONTRIBUTORS.md with Alakazam03
+- `ee1dab8` 2026-02-25 — chore: add gabi-simons as codeowner for core paths
+- `e0cf045` 2026-02-25 — chore: remove .claude/settings.local.json
+- `ee7f720` 2026-02-25 — /add-slack (#366)
+- `bc05d5f` 2026-02-25 — fix(add-telegram): update test assertions for 5-arg onChatMetadata signature
+- `ae2f339` 2026-02-24 — chore(skills): rebase core skills (telegram, discord, voice) to latest main and fix db schema gaps
+- `3dd48f3` 2026-02-25 — fix(add-gmail): restore YAML frontmatter to SKILL.md
+- `8e164f6` 2026-02-25 — fix(add-gmail): graceful startup when credentials missing + poll backoff
+- `df0e5fc` 2026-02-24 — remove unused
+- `6dd9082` 2026-02-24 — refactor: remove GMAIL_CHANNEL_ENABLED env flag from add-gmail skill
+- `18c0432` 2026-02-24 — Fix QR data handling in WhatsApp auth (#467)
+- `5298449` 2026-02-24 — chore: add .nvmrc specifying Node 22 (#473)
+- `41e2424` 2026-02-24 — refactor: restructure add-gmail skill for new skill architecture
+- `1c31726` 2026-02-24 — add npm cache to gitignore
+- `29a5daf` 2026-02-24 — refactor: remove deterministic caching system from skills engine (#453)
+- `1448a14` 2026-02-24 — docs: update token count to 38.2k tokens · 19% of context window
+- `796906b` 2026-02-24 — chore: bump version to 1.1.2
+- `7631a5c` 2026-02-24 — fix: add error handling and tests for WA Web version fetch
+- `f4277b2` 2026-02-24 — docs: update token count to 38.1k tokens · 19% of context window
+- `3a876c1` 2026-02-24 — chore: bump version to 1.1.1
+- `ec176a0` 2026-02-24 — fix: use fetchLatestWaWebVersion to prevent 405 connection failures (#443)
+- `9f802bc` 2026-02-23 — docs: rewrite README for broader audience and updated feature set
+- `1ff1fd6` 2026-02-23 — feat: add official Qodo skills and codebase intelligence (#428)
+- `226b520` 2026-02-23 — chore: bump version to 1.1.0
+- `f59ca7c` 2026-02-23 — docs: make /update skill discoverable, add auto version bumping
+- `1216b5b` 2026-02-23 — feat: add /update skill for pulling upstream changes (#372)
+- `628d434` 2026-02-22 — docs: update token count to 38.0k tokens · 19% of context window
+- `9fb1790` 2026-02-23 — fix: improve type safety and add error logging (#378)
+- `856f980` 2026-02-22 — Fix critical skills path-remap root escape (including symlink traversal) (#367)
+- `264f855` 2026-02-23 — Replace 'ask the user' with AskUserQuestion tool in skills (#389)
+- `e59856f` 2026-02-23 — Fix: filter empty messages from polling queries (#383)
+- `f5b2068` 2026-02-22 — docs: update token count to 37.9k tokens · 19% of context window
+- `5958175` 2026-02-23 — fix: use 'Assistant' as fallback name instead of 'AssistantNameMissing'
+- `1046a79` 2026-02-22 — docs: update token count to 37.8k tokens · 19% of context window
+- `77f7423` 2026-02-22 — fix: pass host timezone to container and reject UTC-suffixed timestamps (#371)
+- `107aff8` 2026-02-22 — fix: pass assistantName to container agent instead of hardcoding 'Andy'
+- `6b85ac5` 2026-02-22 — docs: update token count to 37.7k tokens · 19% of context window
+- `02d8528` 2026-02-22 — fix: pause malformed scheduled tasks
+- `c6391cc` 2026-02-22 — fix: block group folder path escapes
+- `6d4277f` 2026-02-22 — docs: update token count to 37.0k tokens · 18% of context window
+- `5fb1064` 2026-02-22 — fix: mount project root read-only to prevent container escape (#392)
+- `ef00320` 2026-02-22 — Update README.md
+- `e8d1d1e` 2026-02-22 — docs: update token count to 36.9k tokens · 18% of context window
+- `92d1440` 2026-02-22 — refactor: move setup scripts out of src/ to reduce build token count
+- `c1a2491` 2026-02-22 — docs: update token count to 49.9k tokens · 25% of context window
+- `8fc1c23` 2026-02-22 — Migrate setup from bash scripts to cross-platform Node.js modules (#382)
+- `ccef3bb` 2026-02-22 — fix: block symlink escapes in skills file ops
+- `1980d97` 2026-02-21 — docs: update token count to 36.8k tokens · 18% of context window
+- `5f58941` 2026-02-21 — fix: add .catch() handlers to fire-and-forget async calls (#221) (#355)
+- `cb29440` 2026-02-21 — fix: update voice note test to match empty-content skip behavior
+- `6e22abb` 2026-02-06 — fix: replace hardcoded /Users/user fallback with os.homedir()
+- `9003259` 2026-02-21 — docs: update token count to 36.6k tokens · 18% of context window
+- `3d8c0d1` 2026-02-21 — test: add coverage for isTaskContainer and idleWaiting reset
+- `c6b69e8` 2026-02-21 — fix: correctly trigger idle preemption in streaming input mode
+- `93bb94f` 2026-02-21 — fix: only preempt idle containers when scheduled tasks enqueue
+- `6f177ad` 2026-02-16 — fix: skip empty WhatsApp protocol messages
+- `d336b32` 2026-02-21 — fix: copy skill subdirectories recursively (#175)
+- `94ba537` 2026-02-22 — Decouple formatting test from `@Andy` (#329)
+- `3c79c61` 2026-02-21 — docs: fix README_zh consistency and remove Skills System CLI section
+- `3d1859f` 2026-02-21 — docs(zh): Apply stylistic and consistency improvements to README_zh.md (#328)
+- `646411f` 2026-02-21 — docs: add nanoclaw.dev link to README header
+- `41e54a9` 2026-02-20 — fix: pass filePath in setupRerereAdapter stale MERGE_HEAD cleanup
+- `7181c49` 2026-02-20 — feat: add /convert-to-apple-container skill, remove /convert-to-docker (#324)
+- `a407216` 2026-02-20 — feat: add voice transcription as nanorepo skill (#326)
+- `6b9b3a1` 2026-02-20 — docs: update skills to use Docker commands after runtime migration (#325)
+- `a7faac6` 2026-02-20 — docs: update token count to 36.3k tokens · 18% of context window
+- `607623a` 2026-02-20 — feat: convert container runtime from Apple Container to Docker (#323)
+- `51a50d4` 2026-02-20 — docs: update token count to 36.4k tokens · 18% of context window
+- `c6e1bfe` 2026-02-20 — refactor: extract runtime-specific code into src/container-runtime.ts (#321)
+- `8fd6791` 2026-02-19 — Update README.md (#316)
+- `5a16a9d` 2026-02-19 — Documentation improvements
+- `646491c` 2026-02-18 — docs: update token count to 36.3k tokens · 18% of context window
+- `51788de` 2026-02-19 — Skills engine v0.1 + multi-channel infrastructure (#307)
+- `a689f8b` 2026-02-18 — fix: quote ASSISTANT_NAME in .env to handle special characters
+- `6f71987` 2026-02-18 — docs: update token count to 35.6k tokens · 18% of context window
+- `802805d` 2026-02-18 — Fix/WA reconnect, container perms, assist name in env (#297)
+- `f257b93` 2026-02-18 — chore: update Discord invite link
+- `b7c9d98` 2026-02-16 — fix: ensure setup skill runs Docker conversion before building containers
+- `ff574a2` 2026-02-16 — chore: update social preview with new subtitle
+- `b125cb1` 2026-02-16 — chore: add nanoclaw profile and sales images
+- `88140ec` 2026-02-16 — feat: add setup skill with scripted steps (#258)
+- `5694ac9` 2026-02-15 — docs: update token count to 35.5k tokens · 18% of context window
+- `5031d0f` 2026-02-15 — ci: add workflow_dispatch trigger to token count workflow (#254)
+- `c467941` 2026-02-15 — fix: add git pull --rebase before push in token count workflow (#253)
+- `e4d77cd` 2026-02-15 — fix: use GitHub App token for token count workflow
+- `9261a25` 2026-02-15 — feat: add is_bot_message column and support dedicated phone numbers (#235)
+- `c8ab3d9` 2026-02-15 — feat: add repo-tokens GitHub Action with token count badge
+- `6f2e10f` 2026-02-14 — fix: typing indicator now shows on every message, not just the first
+- `5c68dee` 2026-02-13 — fix: repair WhatsApp channel tests (missing Browsers mock and async flush)
+- `ae474fd` 2026-02-13 — fix: use available instead of paused when stopping typing indicator
+- `658f6b0` 2026-02-13 — fix: send available presence on connect so typing indicators work consistently
+- `1549ad5` 2026-02-13 — security: pass secrets via SDK env option and delete temp file (#213)
+- `1a07869` 2026-02-13 — security: sanitize env vars from agent Bash subprocesses (#171)
+- `c30bd62` 2026-02-13 — docs: update Chinese README and move language link to badge row
+- `b5a6757` 2026-02-13 — fix: pass requiresTrigger through IPC and auto-discover additional directories
+- `acdc645` 2026-02-12 — fix: WhatsApp auth improvements and LID translation for DMs
+- `6863c0b` 2026-02-12 — test: add comprehensive WhatsApp connector tests (#182)
+- `a354997` 2026-02-12 — Add Apple Container Networking Setup documentation (#178)
+- `4647353` 2026-02-12 — chore: add /groups/ and /launchd/ to CODEOWNERS
+- `8eb80d4` 2026-02-11 — fix: prevent infinite message replay on container timeout (#164)
+- `2b56fec` 2026-02-11 — Refactor index (#156)
+- `196abf6` 2026-02-09 — docs: clarify agent swarms vs teams in Telegram skill
+- `b3f5814` 2026-02-09 — feat: move to Claude's native memory management
+- `116fba1` 2026-02-09 — fix: bust shields.io cache for Discord badge
+- `126b3f4` 2026-02-09 — feat: add Telegram agent swarm skill
+- `6f02ee5` 2026-02-09 — Adds Agent Swarms
+- `6cd165f` 2026-02-08 — feat: Add /add-telegram skill for Telegram channel support (#83)
+- `b2bd141` 2026-02-09 — Fix orphan container cleanup and update installation steps (#149)
+- `f26468c` 2026-02-07 — fix: setup skill reliability, requiresTrigger option, agent-browser visibility
+- `675ed30` 2026-02-07 — fix: improve container error logging to include full stdout/stderr
+- `8dd27bc` 2026-02-06 — fix: defend against missing structured output and message without content
+- `2ecda36` 2026-02-06 — small tweak to acknowledgement prompt
+- `44f0b3d` 2026-02-06 — fix: improve agent output schema, tool descriptions, and shutdown robustness
+- `ae17715` 2026-02-06 — feat: per-group queue, SQLite state, graceful shutdown (#111)
+- `03df69e` 2026-02-06 — fix: address review feedback for per-group queue reliability
+- `eac9a6a` 2026-02-06 — feat: per-group queue, SQLite state, graceful shutdown
+- `db216a4` 2026-02-06 — fix: proper container lifecycle management to prevent stopped container accumulation
+- `abc1c06` 2026-02-05 — feat: Add Chinese README and language switcher
+- `3a4d340` 2026-02-05 — Fix duplicate responses caused by reconnect-stacking loops
+- `1f8cd26` 2026-02-04 — Add voice transcription skill using OpenAI Whisper API (#77)
+- `1179801` 2026-02-03 — refactor: deduplicate logger into shared module (#39)
+- `392ba62` 2026-02-04 — fix: translate WhatsApp LID JIDs to phone JIDs for self-chat messages (#62)
+- `c9ca34a` 2026-02-04 — Add X integration skill (#52)
+- `3084fab` 2026-02-03 — Remove ToS gray areas section from README (#65)
+- `7ff9a65` 2026-02-03 — Update setup skill to use claude setup-token for auth
+- `21c66df` 2026-02-03 — Add prettier
+- `1a32bff` 2026-02-03 — Improve setup UX with AskUserQuestion tool and security education (#60)
+- `80e68dc` 2026-02-02 — Add social preview image
+- `7223511` 2026-02-02 — Add contribution guidelines and PR checks for skills-only model
+- `ff23125` 2026-02-02 — Add Docker support and integrate /convert-to-docker into setup flow
+- `849b224` 2026-02-02 — Fix minor issues in add-parallel skill
+- `1b960c5` 2026-02-02 — Add /add-parallel skill for Parallel AI integration (#28)
+- `93e639f` 2026-02-02 — Add /convert-to-docker skill for Docker migration (#23)
+- `fb5dbcb` 2026-02-02 — Update README.md
+- `40d4154` 2026-02-02 — Update README.md
+- `98f82b7` 2026-02-02 — Update README.md
+- `d20df2e` 2026-02-02 — Update README.md
+- `4711ec4` 2026-02-02 — Add register_group IPC command for dynamic group registration
+- `05a29d5` 2026-02-02 — Security improvements: per-group session isolation, remove built-in Gmail
+- `22eb525` 2026-02-01 — Add Qwibit Ops context and NanoClaw Testing group
+- `17f7b84` 2026-02-01 — Add /add-gmail skill for Gmail integration
+- `d000f33` 2026-02-01 — Add container output size limiting to prevent memory issues (#18)
+- `33ef0c6` 2026-02-01 — Fix message cursor to only advance on successful processing (#17)
+- `c45f0ef` 2026-02-01 — Escape regex metacharacters in ASSISTANT_NAME for trigger pattern (#16)
+- `e5b436a` 2026-02-01 — Fix group metadata sync setting epoch timestamp for new groups (#15)
+- `df52232` 2026-02-01 — Pre-launch fixes: error handling, cleanup, consistency
+- `48822ff` 2026-02-01 — Add mount security allowlist for external directory access (#14)
+- `5760b75` 2026-02-01 — Fix timezone handling and message filtering
+- `066eeb9` 2026-02-01 — Make OpenClaw critique specific with actual numbers
+- `016a1a0` 2026-02-01 — Add group metadata sync for easier group activation
+- `572338b` 2026-02-01 — Add context_mode option for scheduled tasks
+- `f6e7f7a` 2026-02-01 — Make main group respond to all messages without trigger prefix
+- `6745a1c` 2026-02-01 — Apply fixes from closed PRs: sentinel markers, JID lookup, schedule validation
+- `7aa051f` 2026-02-01 — Fix: only update lastAgentTimestamp on agent success
+- `a904c65` 2026-02-01 — Fix message loss when processMessage throws
+- `092411d` 2026-02-01 — Remove message content from info-level logs
+- `a8155e2` 2026-02-01 — Fix hardcoded home directory fallback in container runner
+- `6a94aec` 2026-02-01 — Secure IPC with per-group namespaces to prevent privilege escalation
+- `49e7875` 2026-02-01 — Fix security: only expose auth vars to containers, not full .env
+- `c255451` 2026-02-01 — Move Quick Start section above Philosophy
+- `1699dfc` 2026-02-01 — Update README.md
+- `479ca16` 2026-02-01 — Add NanoClaw logo and branding assets
+- `17e7b46` 2026-02-01 — Refactor: delete dead code, extract utils, rename files for clarity
+- `847032d` 2026-02-01 — Fix task deletion FK constraint error
+- `2dedd18` 2026-02-01 — Fix scheduled tasks and improve task scheduling UX
+- `f25e0f9` 2026-02-01 — Remove redundant comments throughout codebase
+- `732c624` 2026-02-01 — Fix security issues: IPC auth, message logging, container logs
+- `552b26c` 2026-02-01 — Add PreCompact hook for conversation archiving, remove /clear command
+- `aa6dcf3` 2026-02-01 — Add typing indicator while agent is processing
+- `2026eaf` 2026-02-01 — Clean up README prose and add contribution FAQ
+- `e9c5187` 2026-02-01 — Rewrite README intro with balanced OpenClaw comparison
+- `fb4ce8d` 2026-02-01 — Update project and agent context files
+- `dbf39a9` 2026-02-01 — Rewrite documentation with project philosophy and RFS
+- `1d4cf51` 2026-02-01 — Support OAuth token authentication as alternative to API key
+- `8ca4c95` 2026-02-01 — Fix session persistence and auto-start container system
+- `67e0295` 2026-02-01 — Fix container execution and add debug tooling
+- `0ccdaaa` 2026-01-31 — Mount project root for main channel
+- `ef24c45` 2026-01-31 — Update setup skill for container architecture
+- `09c0e81` 2026-01-31 — Add containerized agent execution with Apple Container
+- `fa13b14` 2026-01-31 — Add built-in scheduler with group-scoped tasks
+- `423d45c` 2026-01-31 — Update docs to reflect current architecture
+- `0c08e8a` 2026-01-31 — Use date + time format in message timestamps
+- `22bd3d7` 2026-01-31 — Store and display sender's WhatsApp name
+- `cbe33f4` 2026-01-31 — Keep trigger in prompt, simplify message formatting
+- `f2afb11` 2026-01-31 — Include missed messages when catching up the agent
+- `4ec74e9` 2026-01-31 — Simplify runAgent: just pass the prompt
+- `545cbc7` 2026-01-31 — Remove unnecessary shutdown handlers
+- `0691601` 2026-01-31 — Extract database operations into separate db.ts module
+- `78426c7` 2026-01-31 — Extract config and types into separate files, clean up index.ts
+- `fe5ae97` 2026-01-31 — Improve setup skill: better Gmail explanation, use placeholders
+- `8a385c7` 2026-01-31 — Separate WhatsApp auth from daemon into standalone script
+- `e1867f8` 2026-01-31 — Replace QR code display with macOS notification
+- `295c3e6` 2026-01-31 — Fix: exit gracefully when auth needed in daemon mode
+- `c17823a` 2026-01-31 — Initial commit: NanoClaw - Personal Claude assistant via WhatsApp

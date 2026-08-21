@@ -1,0 +1,10 @@
+{
+  "name": "pat-observability-mcp",
+  "private": true,
+  "type": "module",
+  "description": "MCP server exposing OpenObserve _search over PAT's centralized logs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  }
+}

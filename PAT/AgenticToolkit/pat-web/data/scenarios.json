@@ -1,0 +1,19 @@
+{
+  "scenarios": [
+    {
+      "slug": "ai-self-replication-palisade-2026",
+      "kind": "presentation",
+      "title": "AI Self-Replication: From Theory to Demonstration",
+      "audience": "Senate / Congressional staffer (non-technical policy audience)",
+      "agent_group_id": "ag-<redacted>",
+      "messaging_group_id": "mg-1778978463662-iw7w7x",
+      "created_at": "2026-05-17T00:45:34.769Z",
+      "packet_dir": "/Users/user/Projects/AgenticToolkit/agentic_toolkit/pat-web/data/packets/ai-self-replication-palisade-2026",
+      "display": {
+        "slide_count": 6,
+        "duration_budget_s": 420
+      },
+      "capabilities": ["signal"]
+    }
+  ]
+}

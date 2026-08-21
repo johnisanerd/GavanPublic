@@ -1,0 +1,53 @@
+# Environment
+.env
+.env.local
+.venv/
+venv/
+.direnv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+tests/one_off/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Inspect AI
+.inspect/
+
+# Inspect static viewer bundles
+public/inspect-bundles/
+
+# Logs
+logs/**
+!logs/.gitkeep
+
+# Runner experiment logs
+runner/logs/
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+
+# Scripts with tokens
+scripts/

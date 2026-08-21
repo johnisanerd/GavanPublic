@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: unit-tests
+        name: Unit tests
+        entry: uv run pytest tests/unit/ -x -q
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: e2e-tests
+        name: E2E tests (LLM)
+        entry: uv run pytest tests/llm/ -x -q --timeout=300
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

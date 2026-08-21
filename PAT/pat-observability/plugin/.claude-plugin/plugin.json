@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "pat-observability",
+  "description": "Query PAT's centralized logs (OpenObserve) — structured events incl. debug/llm.call across prod+staging, plus raw signal/dockerd/gateway output. MCP `query`/`schema` tools + a forensics skill.",
+  "author": { "name": "Palisade Research", "email": "gavan@palisaderesearch.org" }
+}

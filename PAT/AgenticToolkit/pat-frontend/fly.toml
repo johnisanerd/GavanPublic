@@ -1,0 +1,58 @@
+# fly.toml — pat-frontend
+#
+# Public Fly app that serves the React SPA and proxies SSE from
+# pat-nanoclaw via the .flycast private network. Two tokens drive
+# behavior:
+#   - PAT_VIEWER_TOKEN — what the user puts in `?token=...` to load
+#     the dashboard.
+#   - PAT_ADMIN_TOKEN  — what the proxy uses to authenticate TO
+#     nanoclaw's /admin/logs.tail. Distinct so they can rotate
+#     independently; a leaked viewer token grants read-only monitor.
+#
+# Set with: fly secrets set PAT_VIEWER_TOKEN=... PAT_ADMIN_TOKEN=...
+
+app = "pat-frontend"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8787"
+  # Default upstream — override per-environment via fly secrets if needed.
+  # `.internal` resolves directly via 6PN; we use it instead of `.flycast`
+  # because pat-nanoclaw has no `[[services.ports]]` block (flycast needs one).
+  # 8767 is the dedicated admin/observatory server (see fly.nanoclaw.toml
+  # PAT_ADMIN_PORT). Was 8765 — flipped 2026-05-15 with R10 of
+  # plans/refactor-bundle-2026-05-14.md.
+  NANOCLAW_INTERNAL_HOST = "pat-nanoclaw.internal:8767"
+  NANOCLAW_INTERNAL_SCHEME = "http"
+
+  # Pairing identities for the "Link a new handle" modal (public config, not
+  # secrets). pairing-targets.ts has NO defaults — a channel only shows if set
+  # here, so each env links to its OWN identities (no cross-env leak). These are
+  # the PROD identities.
+  PAT_SIGNAL_NUMBER = "+15550100003"
+  PAT_TELEGRAM_BOT = "pat_prod_bot"
+  PAT_SLACK_BOT_NAME = "Pat"
+  PAT_PHONE_NUMBER = "+15550100007"
+
+[http_service]
+  internal_port = 8787
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/healthz"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
+  cpus = 1

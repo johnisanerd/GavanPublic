@@ -1,0 +1,261 @@
+# Commit history (flattened archive)
+
+Flattened to a single snapshot for release; subjects preserved for provenance (redacted).
+
+- `a8d5a28` 2026-07-16 — Snapshot of in-flight working-tree changes before machine migration
+- `c2ec17d` 2025-12-18 — Add Pretty Ranger Slack Output story to CURRENT_SPRINT
+- `701a357` 2025-12-18 — Use existing markdown converter for Ranger output
+- `db8bf75` 2025-12-18 — Improve Ranger Slack formatting
+- `03b4fe4` 2025-12-18 — Pretty Ranger Slack output with DRY formatting
+- `f502955` 2025-12-18 — Fix JSON parsing validation + improve tool result formatting
+- `f1726e4` 2025-12-18 — Add --verbose (required for stream-json with -p)
+- `3556f88` 2025-12-18 — Switch to stream-json for proper line-by-line streaming
+- `1f4d66c` 2025-12-18 — Refactor SlackStreamThrottle to use aiolimiter
+- `4dc9f6b` 2025-12-18 — Reduce throttle to 3s, add debug logging
+- `1356238` 2025-12-18 — Add narration instructions to minimal mode prompt
+- `587a2ce` 2025-12-18 — Throttle Slack output instead of buffering (5s interval)
+- `f702508` 2025-12-18 — Render Ranger completion as Block Kit with findings and questions
+- `2815c17` 2025-12-18 — Parse stream-json output for readable Slack messages
+- `1231601` 2025-12-18 — Revert to --verbose plain text output (stream-json was unreadable)
+- `11fd4f2` 2025-12-18 — Fix: add --verbose for stream-json, use hiking_boot emoji
+- `ca45bb6` 2025-12-18 — Improve Ranger Slack streaming with stream-json output format
+- `06d9136` 2025-12-18 — Encourage holiday emojis in ranger prompts
+- `b3536a1` 2025-12-18 — Document ctx.client_id workaround in CURRENT_SPRINT
+- `ac4a2f4` 2025-12-18 — Fix ranger auth detection with header workaround
+- `817f912` 2025-12-18 — Try get_access_token() for client_id detection in MCP
+- `c43c8e0` 2025-12-18 — Fix tests for store v3 (rangers support)
+- `71e9d38` 2025-12-18 — Add Railway logging docs and MCP debug logging
+- `0f29d41` 2025-12-18 — Remove --output-format json to get streaming text output
+- `77b2888` 2025-12-18 — Fix Claude Code invocation: use --mcp-config flag explicitly
+- `826bdbc` 2025-12-18 — Fix Ranger E2B integration issues
+- `e97016b` 2025-12-18 — Add unit tests for Ranger functionality
+- `89f2787` 2025-12-18 — Fix Ranger Slack integration: flat channel messages, per-trailrun threads
+- `1b5b293` 2025-12-18 — Fix Slack threading: first trailrun creates thread, not /ranger/run
+- `85d8b70` 2025-12-18 — Register SlackTrailrunHook for ranger trailruns
+- `bc2a3e5` 2025-12-18 — Mark all Ranger sprint stories as complete
+- `d00256f` 2025-12-18 — Implement Ranger autonomous research agent
+- `ca0c4d9` 2025-12-18 — Reorganize sprint: add Ranger stories, archive completed work
+- `a14cdb9` 2025-12-17 — Add backlog task to rotate MCP bearer token
+- `74f4320` 2025-12-17 — Add full prompt template to ranger plan
+- `e295302` 2025-12-17 — Gitignore scripts directory (contains tokens)
+- `be8c9a1` 2025-12-17 — Ranger integration: update plan and add config settings
+- `44b746b` 2025-12-17 — Style inline citations with italics in Slack
+- `fe81944` 2025-12-17 — Add Thread Q&A with Citations to changelog
+- `3286911` 2025-12-17 — Extract shared highlight extraction for answerers
+- `74eba80` 2025-12-17 — Fix Slack answerer to use two-step architecture (markdown → blocks)
+- `0a6ca5c` 2025-12-17 — Update changelog with image generation section
+- `8cc90a7` 2025-12-17 — Fix Anthropic schema compatibility and add backup model fallback to answerer
+- `8c72b65` 2025-12-17 — Add two-step summarization and TrailRunner architecture to changelog
+- `c6e2888` 2025-12-17 — Retry config generation on all failures, add changelog
+- `e6f5393` 2025-12-17 — Add backup utility model fallback for config generation
+- `bdf4288` 2025-12-17 — Show user-friendly error messages for config generation failures
+- `122b676` 2025-12-17 — Add logging for empty LLM responses (refusal/content filter diagnosis)
+- `424e09e` 2025-12-17 — Strip links from citations in table cells
+- `e0b1c7a` 2025-12-17 — Fix deep links for multi-model experiments missing eval_file
+- `435b656` 2025-12-17 — Add space between inline quote and citation tag
+- `38a2f8b` 2025-12-17 — Add detailed error logging for config generation failures
+- `08662da` 2025-12-16 — Fix deep links using wrong eval file for multi-model experiments
+- `89cbfd3` 2025-12-16 — Fix ProgressIndicator race condition overwriting final message
+- `4ccf900` 2025-12-16 — Remove redundant /trailruns/status and /trailruns/experiments endpoints
+- `78da384` 2025-12-16 — Add trailhead_list MCP tool and /trailruns/list endpoint
+- `8e26598` 2025-12-16 — Add backlog bug: escaped characters in Slack blockquotes
+- `b14d7a5` 2025-12-16 — Separate reasoning models from flagship tier in model guidance
+- `7605676` 2025-12-16 — Add no-duplicate-citations prompt guidance + backlog story
+- `7d6c9e4` 2025-12-16 — Add backlog story for MCP/API Slack visualization
+- `333fa76` 2025-12-16 — Allow progress updates during summarization phase
+- `79feeb3` 2025-12-16 — Fix spinner race condition with asyncio.Lock
+- `14cfe19` 2025-12-16 — Add debug logging to spinner lifecycle + multiline quote handling
+- `2f9ad3e` 2025-12-16 — Fix spinner stuck after parsing: treat RESULT_READY as terminal event
+- `b67ac62` 2025-12-16 — Fix outdated summarizer tests to match current implementation
+- `c91f3db` 2025-12-16 — Add debug logging for all Slack API calls
+- `801e367` 2025-12-16 — Add centralized logging with environment variable control
+- `3429434` 2025-12-15 — Add TOMORROW.md with next session plan
+- `b776896` 2025-12-15 — Fix progress race with hook-level finished flag
+- `65b6996` 2025-12-15 — Fix progress events overriding completion status
+- `4214a7e` 2025-12-15 — Improve citation format and reduce summary length
+- `fa3d85b` 2025-12-15 — Strip openrouter/ prefix from model slugs in metadata footer
+- `5400335` 2025-12-15 — Strip openrouter/ prefix for model name lookup
+- `83ac134` 2025-12-15 — Add Railway deployment timing note (~5 min)
+- `0d6d4c9` 2025-12-15 — Increase MCP run timeout to 300s for longer experiments
+- `cbbac3c` 2025-12-15 — Fix claude mcp add arg order - positional args before flags
+- `9a346ce` 2025-12-15 — Add bearer token auth to MCP server
+- `1029f17` 2025-12-15 — Use PORT env var for MCP internal API calls
+- `8a4825e` 2025-12-15 — Fix MCP HTTP transport with stateless mode
+- `68b3bdf` 2025-12-12 — Mount MCP at root with /mcp path to avoid redirect
+- `dfaad91` 2025-12-12 — Temporarily disable MCP auth for debugging
+- `3323f18` 2025-12-12 — Simplify MCP path to /mcp instead of /mcp/mcp
+- `ee227e7` 2025-12-12 — Fix MCP HTTP transport lifespan initialization
+- `db0b8f3` 2025-12-12 — Add bearer token auth and HTTP transport for MCP server
+- `56bb831` 2025-12-12 — Fix MCP results tool for toon format responses
+- `b665f4d` 2025-12-12 — Add MCP server for Claude Code integration
+- `f91a74a` 2025-12-12 — Add Trailhead overview, cancel endpoint, and status check to research agent
+- `d8dbc81` 2025-12-12 — Rename and improve research agent prompt
+- `b1d730a` 2025-12-12 — Add research_agent.md prompt for autonomous AI safety research
+- `0bca234` 2025-12-12 — Fix missing await on update_trailrun in cancel test
+- `7e77221` 2025-12-12 — Fix flaky e2e test and add highlights endpoint to backlog
+- `a04d3db` 2025-12-12 — Fix test to handle LLM returning list instead of object
+- `74914dc` 2025-12-12 — Add integration tests for results endpoint
+- `f633606` 2025-12-12 — Add results endpoint and refactor experiment generation
+- `ab12040` 2025-12-11 — Add idempotency guard for duplicate Slack button clicks
+- `5eb007c` 2025-12-11 — Fix SummarizerResponse validation for rich_text/context blocks
+- `957a6db` 2025-12-11 — Fix build_link signature to accept eval_file parameter
+- `91cabfd` 2025-12-11 — Add separate JSON endpoints for trailruns status and experiments
+- `8cbad96` 2025-12-11 — Split trailrun endpoints into one file per endpoint
+- `1436f56` 2025-12-11 — Address code review feedback
+- `0226b4b` 2025-12-11 — Add CANCELLED event type for proper event emission on cancel
+- `44f84c0` 2025-12-11 — Restore lost functionality from slack_trailrunner refactor
+- `81b525f` 2025-12-11 — Restore animated spinner for Slack progress updates
+- `967f52c` 2025-12-11 — Fix unit tests for unified trailrun architecture
+- `649acea` 2025-12-10 — Unified TrailRunner with event hooks architecture
+- `6b4c50d` 2025-12-10 — Update plan: phase functions + hybrid event emission
+- `b5c41ab` 2025-12-10 — Add unified TrailRunner with event hooks plan
+- `d89b17e` 2025-12-10 — Fix deep links pointing to wrong eval file in multi-model experiments
+- `df40acd` 2025-12-10 — Consolidate output formats to slack + markdown only
+- `b86650d` 2025-12-10 — Refactor summarization to two-step architecture with quote sanitization
+- `65ef9ce` 2025-12-10 — Update types.py schema to match Slack's actual structure
+- `15d6df9` 2025-12-09 — Fix table cells and update prompt examples
+- `2e84718` 2025-12-09 — Fix table cells: wrap rich_text elements in rich_text_section
+- `c21dece` 2025-12-09 — Add format=slack to /generate-run-summarize, fix deep links and attribution
+- `41b61d7` 2025-12-09 — Add Slack Block Kit output test to catch deep link and attribution bugs
+- `15be3be` 2025-12-09 — Fix deep links and sample/turn attribution for highlights
+- `100b52c` 2025-12-09 — Fix SummarizerResponse validation for processed blocks
+- `82bb1f4` 2025-12-09 — Add Anthropic structured output schema compatibility test
+- `baa5809` 2025-12-09 — Fix Anthropic schema compatibility for TextStyle
+- `96d1741` 2025-12-09 — Extend e2e test to verify highlight extraction from real experiments
+- `2d3851a` 2025-12-09 — Add highlight extraction to API endpoint and improve e2e tests
+- `e1ed9cc` 2025-12-09 — Standardize on 'description' for citation labels
+- `a0fa38b` 2025-12-09 — Add experiment context to highlight extraction
+- `e649d34` 2025-12-09 — Polish highlight/citation system after code review
+- `f965865` 2025-12-09 — Increase CLI max_samples default from 3 to 6
+- `23bee22` 2025-12-08 — Fix line length and import ordering lint issues
+- `f6995b5` 2025-12-08 — Add citation system with verified quotes across all summarizer formats
+- `149f1cb` 2025-12-08 — Add deep link support for citation highlights
+- `a55a5bb` 2025-12-08 — Add two-step citation analysis with highlight extraction
+- `ca7a227` 2025-12-08 — Integrate citations into Slack summarizer
+- `3654f78` 2025-12-08 — Add citations module with fuzzy quote verification
+- `858f415` 2025-12-08 — Revise integration plan with proper Petri architecture understanding
+- `b084e3c` 2025-12-08 — Add detailed Petri architecture analysis
+- `86c3a27` 2025-12-08 — Add Petri integration plan for Basic/Advanced modes
+- `4368fed` 2025-12-08 — Fix vendored Petri imports (petri.X → src.vendor.petri.X)
+- `e193afa` 2025-12-08 — Vendor Petri framework for citation extraction and fuzzy matching
+- `6f540a7` 2025-12-04 — Add startup logging for trailruns and bundles
+- `ceda305` 2025-12-04 — Trigger rebuild
+- `50dffd0` 2025-12-04 — Add INSPECT_BUNDLE_DIR setting for configurable bundle storage
+- `438db28` 2025-12-04 — Add backlog item for auditing Inspect metadata in summarizer context
+- `a8933d0` 2025-12-04 — Add trailrun persistence with versioned schema
+- `b0a6c71` 2025-12-03 — Add literal prompt support in experiment config generation
+- `8a6104c` 2025-12-03 — Centralize all LLM prompts in src/prompts/
+- `87456cd` 2025-12-03 — Fix security issues from code review
+- `ba45ecc` 2025-12-02 — Fix code review issues
+- `eeb812e` 2025-12-02 — Remove redundant timeout marker (pytest-timeout handles it)
+- `bb02cff` 2025-12-02 — Add pytest-timeout for test timeouts
+- `704c301` 2025-12-02 — Add full e2e Slack flow tests, delete slash commands
+- `e731b4e` 2025-12-02 — Add MockSlackClient for testing Slack flows
+- `9e69338` 2025-12-02 — Add unit tests for task cancellation system
+- `f6127cd` 2025-12-02 — Switch to standard typecheck mode, fix cancel system bug
+- `ec3a02e` 2025-12-02 — Reorganize files: rename pipeline.py, move config_gen to trailrun
+- `1317cae` 2025-12-02 — Restore trailrun tracking in pipeline endpoint
+- `8a36760` 2025-12-02 — Fix LLM tests and add pytest-dotenv
+- `cb46aad` 2025-12-02 — Update documentation to reflect current architecture
+- `b29f7f9` 2025-12-02 — Flatten src/app/ to src/ and add streaming test to sprint
+- `0a7bacf` 2025-12-02 — Decouple trailrun execution from Slack dependencies
+- `0cb9965` 2025-12-02 — Break up ai_client.py into client/ module with separate llm.py and image.py
+- `fe12272` 2025-12-02 — Refactor: reorganize tests, extract endpoints, update architecture
+- `1644c17` 2025-12-01 — Restructure codebase: create cli/, utils/, and reorganize files
+- `bf009ee` 2025-12-01 — Remove legacy code and unused features
+- `ca94d2e` 2025-12-01 — Add plans/ folder with refactor documentation
+- `36d933b` 2025-10-23 — Add manual code review findings from 1-hour timebox review
+- `c2b83a3` 2025-11-27 — Allow empty blocks in SummarizerResponse for image-only answers
+- `e6cd964` 2025-11-27 — Fix image generation in Slack thread questions
+- `721ea4d` 2025-11-27 — Address code review feedback
+- `e2189d0` 2025-11-27 — Add image generation for shareable infographics
+- `320eb39` 2025-11-26 — Update lockfile
+- `14f4143` 2025-11-26 — Use config title for experiment names instead of AI generation
+- `5bf659f` 2025-11-26 — Update pyproject.toml
+- `2aa8c9b` 2025-11-26 — Pin Python <3.14 and bias model selection toward newest versions
+- `9ad0600` 2025-11-26 — Migrate from direct OpenAI/Anthropic APIs to OpenRouter
+- `7151ec0` 2025-10-20 — Add animated progress spinner to Q&A responses
+- `0ffce81` 2025-10-20 — Add ephemeral warnings when Q&A blocked by experiment status
+- `396a609` 2025-10-20 — Enable Q&A via @mentions in experiment threads
+- `88e9ec6` 2025-10-20 — Add handler for View Data button to prevent unhandled request warnings
+- `a4d7258` 2025-10-20 — Fix Start/Cancel buttons creating duplicate messages
+- `6bbb332` 2025-10-20 — Refactor slack_app.py into organized domain modules
+- `ed82f8b` 2025-10-20 — Fix config update stalling + add ProgressIndicator error logging
+- `5a163e8` 2025-10-20 — Document main message footer progress updates in COMPLETED.md
+- `18dba1e` 2025-10-20 — Update main message footer instead of posting separate thread status
+- `98ab5ca` 2025-10-20 — Document progress animation fix and access control in COMPLETED.md
+- `16c131c` 2025-10-20 — Add access control to experiment actions
+- `b4ded4a` 2025-10-20 — Switch @mention handler to regular messages for progress animation
+- `570c378` 2025-10-20 — Clean up BACKLOG.md and document recent stories in COMPLETED.md
+- `0ff19ad` 2025-10-20 — Add progress indicators to config generation and updates
+- `12c1beb` 2025-10-20 — Add programmatic metadata footer to Slack summaries
+- `5e99fd4` 2025-10-20 — Organize one-off tests into tests/oneoff/ directory
+- `7806a33` 2025-10-20 — Simplify Slack answerer prompt with Q&A-focused guidance
+- `0a41cdc` 2025-10-20 — Move Slack formatting examples from txt file to Python constant
+- `45a1753` 2025-10-20 — Add thread-based Q&A with answerers architecture
+- `ff00750` 2025-10-20 — Post summaries in thread, show config in main message
+- `58b64b5` 2025-10-20 — Add table formatting and fix interaction timeouts
+- `24adca3` 2025-10-20 — fix tests
+- `8c76e02` 2025-10-20 — fix utcnow deprecation warnings
+- `1c670fd` 2025-10-20 — direnv: install dev dependencies too
+- `8ef6f06` 2025-10-20 — Make experiment config iteration ephemeral until Start/Cancel
+- `0aad3ce` 2025-10-20 — Record completed stories to COMPLETED.md
+- `74caa8b` 2025-10-20 — Add interactive experiment configuration UI
+- `15028ee` 2025-10-20 — Analyze all .eval files with stratified iterative sampling
+- `a03db07` 2025-10-20 — Standardize progress indication across all Slack commands
+- `a712b98` 2025-10-18 — Implement intelligent Slack posting with two-tier fallbacks
+- `a490528` 2025-10-17 — Fix OpenAI structured output unwrapping
+- `9891bfa` 2025-10-17 — Fix Slack mrkdwn formatting - use explicit \n for newlines
+- `d427948` 2025-10-17 — Focus summarizers on model behavior, not infrastructure metrics
+- `cb0523f` 2025-10-17 — Add reusable ProgressIndicator utility
+- `6def941` 2025-10-17 — Add /trailruns dashboard with true cancellation support
+- `ea1feff` 2025-10-17 — limits
+- `a275943` 2025-10-17 — end-to-end `/trailhead new`
+- `a1a190f` 2025-10-17 — Keep bundle generation errors on stderr, operational logs on stdout
+- `1960553` 2025-10-17 — Refine Slack summarization prompts for better formatting
+- `fe495ca` 2025-10-17 — Move completed stories (14, 15, 18) to COMPLETED.md
+- `77c6a32` 2025-10-17 — Update references to summarizer_cli in docs and config
+- `894dbb9` 2025-10-17 — Rename summarizer.py to summarizer_cli.py (Story 18)
+- `3df41e4` 2025-10-17 — Remove old Compass icon files (Story 14 cleanup)
+- `b8bc997` 2025-10-17 — Clean up emoji usage in slack_app.py (Story 15)
+- `5a950cb` 2025-10-17 — Reorganize static files into public/ directory structure
+- `a1ee476` 2025-10-17 — Add /test/trailrun endpoint for local testing
+- `3f3c400` 2025-10-17 — Add Inspect viewer bundle generation to trailrun report phase
+- `3a6fca9` 2025-10-17 — openai and anthropic only for now
+- `978edcb` 2025-10-17 — experiment creator
+- `6e1e747` 2025-10-17 — proxy to gpt-5
+- `20ac966` 2025-10-17 — echo
+- `e71e745` 2025-10-17 — move uvicorn logs from stderr to stdout
+- `51628cb` 2025-10-17 — move normal output from stderr to stdout
+- `08804c8` 2025-10-17 — /trailhead  new -> /trailhead yaml
+- `c0a8b28` 2025-10-17 — Add refactoring stories to current sprint
+- `ca704e4` 2025-10-17 — Fix modal handler registration to use regex pattern
+- `af35fae` 2025-10-17 — Add trailrun orchestration system for Design -> Run -> Report lifecycle
+- `d77870c` 2025-10-17 — Use monospace spinner animation for progress
+- `01bab27` 2025-10-17 — Fix SummarizerResponse serialization and add progress animation
+- `a5940e8` 2025-10-17 — Fix summarizer function call signature
+- `b29c6d4` 2025-10-17 — Consolidate token limits to MAX_RESEARCH_TOKENS
+- `20a9c9a` 2025-10-17 — Change tool call annotation from CALLS to TOOLS
+- `313edb6` 2025-10-17 — Optimize parser output format for token efficiency
+- `3ff8604` 2025-10-17 — Implement Inspect eval parser with intelligent sampling
+- `82bc2fd` 2025-10-17 — Fix URL handling for Slack's link escaping format
+- `fd78a18` 2025-10-17 — Add ephemeral messages and comprehensive logging
+- `43f8425` 2025-10-17 — Add gitignore entries and missing files
+- `bb567f8` 2025-10-17 — Fix linting issues in summarizer and slack_app
+- `e45c772` 2025-10-17 — Rename project from Compass to Trailhead
+- `522d588` 2025-10-17 — Improve summarizer prompts for conversational insights
+- `37fd02b` 2025-10-17 — Add ACCEPT_NON_SLACK_REQUESTS configuration
+- `eddbd8d` 2025-10-16 — add railway CLI to dev shell
+- `0f28d65` 2025-10-16 — Use Railway PORT env var in start task
+- `7cc5679` 2025-10-16 — Add production start task
+- `fa5db09` 2025-10-16 — Consolidate project structure and migrate to root directory
+- `4842018` 2025-10-15 — choose name automatically
+- `f7ac516` 2025-10-16 — Initial Compass implementation with multi-format summarizer
+- `edeee60` 2025-10-15 — runner
+- `29a17bd` 2025-10-14 — move stuff under my subdir
+- `4615e84` 2025-10-14 — dirs
+- `b321dd6` 2025-10-14 — update
+- `684cacd` 2025-10-14 — update
+- `c324070` 2025-10-14 — add readme
+- `6cd2e8c` 2025-10-14 — add uv and inspect
+- `87c5332` 2025-10-14 — add nix flake direnv config

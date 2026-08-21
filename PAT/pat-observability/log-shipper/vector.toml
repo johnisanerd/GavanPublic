@@ -1,0 +1,81 @@
+# Path B — raw-log catch-all. Ships the raw stdout/stderr of the ENTIRE PAT
+# namespace (every `pat-*` Fly app, current and future) from Fly's NATS log bus
+# into OpenObserve `pat_raw`, tagged by app + env. Nothing outside `pat-*` is
+# ever stored.
+#
+# Captures the streams that never reach nanoclaw's day-file:
+#   - signal-cli daemon JVM text (getServerGuid/getSender NPEs, sealed-sender
+#     drops) on pat-transports  ← the stuff that cost the multi-hour outages
+#   - dockerd / OneCLI gateway / build output / init crashes on pat-nanoclaw
+#   - pat-frontend / pat-web / pat-signal-rig stdout, and any future pat-* app
+#
+# ── SCOPING ────────────────────────────────────────────────────────────────
+# Goal: ALL pat-* apps, and ONLY pat-* apps. The org `<redacted-fly-org>`
+# also runs unrelated apps (internal-app-a, internal-app-b, internal-app-c, …) that must never be
+# stored.
+#
+# NATS can't prefix-match inside a subject token (no `logs.pat-*.>`), so we
+# subscribe to the org stream and DROP everything non-`pat-` in the transform
+# BEFORE the sink. Result: the whole pat- namespace is captured automatically
+# (new pat-* apps need zero config changes), and nothing unrelated is ever
+# persisted or forwarded. The shipper reads org traffic transiently in-memory
+# and discards non-pat immediately; only pat-* reaches OpenObserve.
+#
+# (Alternative if you want subscription-level scoping instead of a filter:
+# enumerate one `[sources.*]` per pat app with `subject = "logs.<app>.>"`. That
+# avoids reading org traffic at all, at the cost of editing this file whenever a
+# pat- app is added. We chose the prefix filter so "ALL pat stuff" can't drift.)
+#
+# Fly calls NATS an unversioned internal transport — verify the envelope shape
+# (`.message`, `.fly.app.name`) against a live sample before trusting it.
+
+[sources.fly_nats]
+type = "nats"
+url = "nats://[fdaa::3]:4223"
+subject = "logs.>"                  # org-wide; filtered to pat-* below, pre-sink
+connection_name = "pat-log-shipper"
+[sources.fly_nats.auth]
+strategy = "user_password"
+[sources.fly_nats.auth.user_password]
+user = "${ORG}"                     # org slug: <redacted-fly-org>
+password = "${ACCESS_TOKEN}"        # org-wide read token (fly tokens create org)
+
+[transforms.scope]
+type = "remap"
+inputs = ["fly_nats"]
+source = '''
+# Vector's nats source puts the raw Fly payload in `.message`; parse it into the
+# Fly envelope (which carries .fly.app.name + .message = the actual log line).
+. = parse_json(.message) ?? {}
+
+# Coerce to an infallible string so the predicate below isn't fallible (VRL E110).
+app = to_string(.fly.app.name) ?? "unknown"
+
+# Capture the ENTIRE pat- namespace and ONLY that. Everything else in the org
+# (internal-app-a, internal-app-b, internal-app-c, …) is dropped here — never stored, never sent.
+if !starts_with(app, "pat-") { abort }
+
+# Drop the observability stack's OWN logs — OpenObserve, this shipper, and the
+# forwarder each log every ingest/query, which gets re-shipped here = a feedback
+# loop (pat-observability alone was ~47k rows/hr, drowning the real apps and
+# blowing up storage). These carry no PAT forensic value; exclude them.
+if app == "pat-observability" || app == "pat-log-shipper" || app == "pat-log-forwarder" { abort }
+
+.app = app
+.env = if ends_with(app, "-staging") { "staging" } else { "prod" }
+.source = "fly-stdout"
+'''
+
+[sinks.openobserve]
+type = "http"
+inputs = ["scope"]
+uri = "${OPENOBSERVE_URL}/api/${OPENOBSERVE_ORG}/pat_raw/_json"
+method = "post"
+encoding.codec = "json"
+[sinks.openobserve.auth]
+strategy = "basic"
+user = "${OPENOBSERVE_USER}"
+password = "${OPENOBSERVE_PASSWORD}"
+[sinks.openobserve.batch]
+max_events = 200
+timeout_secs = 2

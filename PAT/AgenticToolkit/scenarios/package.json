@@ -1,0 +1,54 @@
+{
+  "name": "@agentic-toolkit/scenarios",
+  "version": "0.0.1",
+  "description": "Scenario primitives for the Palisade Agentic Toolkit — named, pre-configured agent-group experiences (presentations, future kinds). Models the scenario as a content packet + provisioned agent group + per-kind UI surface.",
+  "type": "module",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./presentation": {
+      "types": "./dist/presentation/index.d.ts",
+      "import": "./dist/presentation/index.js"
+    },
+    "./presentation/react": {
+      "types": "./dist/presentation/react/index.d.ts",
+      "import": "./dist/presentation/react/index.js"
+    },
+    "./presentation/react/deck-styles.css": "./src/presentation/react/deck-styles.css",
+    "./presentation/fixtures": {
+      "types": "./dist/presentation/fixtures/index.d.ts",
+      "import": "./dist/presentation/fixtures/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --dir src"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "@revealjs/react": ">=0.2",
+    "reveal.js": ">=5",
+    "@agentic-toolkit/realtime": "*"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "@revealjs/react": { "optional": true },
+    "reveal.js": { "optional": true },
+    "@agentic-toolkit/realtime": { "optional": true }
+  },
+  "devDependencies": {
+    "@revealjs/react": "^0.2.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "reveal.js": "^6.0.1",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.4"
+  }
+}

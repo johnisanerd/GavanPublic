@@ -1,0 +1,30 @@
+{
+  "name": "@agentic-toolkit/smoketest",
+  "version": "0.0.1",
+  "description": "Tier 3 smoke harness: drives realistic conversations against a running NanoClaw realtime channel.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run src/",
+    "test:smoke": "vitest run test/",
+    "scenarios": "tsx src/cli.ts",
+    "scenario": "tsx src/cli.ts",
+    "repl": "tsx src/repl.ts",
+    "smoke": "tsx src/cli.ts",
+    "chat": "tsx src/chat.ts",
+    "trace": "tsx src/trace.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@cartesia/cartesia-js": "^3.0.0",
+    "ws": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
+  }
+}

@@ -1,0 +1,69 @@
+# Staging variant of pat-transports. Cartesia bridge + (2026-07-03) a
+# `signal` process group mirroring prod, so the Signal channel can be
+# smoke-tested end-to-end on staging without touching prod. Points at
+# pat-nanoclaw-staging.
+app            = "pat-transports-staging"
+primary_region = "sjc"
+kill_signal    = "SIGTERM"
+kill_timeout   = "20s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8000"
+  TZ   = "UTC"
+  # REALTIME_BASE_URL set as a Fly secret → pat-nanoclaw-staging.flycast:8765
+
+[processes]
+  cartesia = "python main.py"
+  signal   = "/app/signal-cli/entrypoint.sh"
+
+# PAT (2026-07-03): signal-cli state volume for staging PAT's identity
+# (+15550100004). Mirrors prod's pat_signal_state. Created with
+# `flyctl volumes create pat_signal_state_staging -a pat-transports-staging -r sjc -s 1`
+# then seeded from the local Mac (minimal staging-only accounts.json + the
+# hash-keyed account dir). Needs SIGNAL_ACCOUNT + SIGNAL_TCP_BIND secrets.
+[[mounts]]
+  source      = "pat_signal_state_staging"
+  destination = "/root/.local/share/signal-cli"
+  processes   = ["signal"]
+
+[[services]]
+  protocol      = "tcp"
+  internal_port = 8000
+  processes     = ["cartesia"]
+  auto_stop_machines  = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+  [[services.ports]]
+    port     = 443
+    handlers = ["tls", "http"]
+  [[services.ports]]
+    port        = 80
+    handlers    = ["http"]
+    force_https = true
+  [services.concurrency]
+    type       = "connections"
+    hard_limit = 100
+    soft_limit = 80
+  [[services.tcp_checks]]
+    interval     = "30s"
+    timeout      = "5s"
+    grace_period = "30s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"
+  processes = ["cartesia"]
+
+# signal-cli VM — mirrors prod (Java daemon + signal_staging.py sidecar
+# combined working set OOM'd at 256MB; 512MB is the prod-proven floor).
+[[vm]]
+  cpu_kind = "shared"
+  cpus     = 1
+  memory   = "512mb"
+  size     = "shared-cpu-1x"
+  processes = ["signal"]

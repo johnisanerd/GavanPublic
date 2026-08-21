@@ -1,0 +1,85 @@
+# pat-web — Hono server (Bun runtime) serving the Vite-built React SPA
+# plus the Anam session-token mint + WS bridge to pat-nanoclaw.
+#
+# Built from REPO ROOT (not pat-web/) so the build context includes the
+# sibling workspace packages pat-web depends on. The dependency chain
+# is non-trivial — three packages built in three different ways:
+#
+#   realtime/        — pnpm-managed, built with tsc
+#   scenarios/       — bun-managed, built with tsc; imports
+#                       @agentic-toolkit/realtime/timeline at TSC time
+#                       (optional peer dep that's load-bearing in src)
+#   pat-web/         — bun-managed, built with vite; imports scenarios
+#                       which transitively re-exports @revealjs/react
+#                       components (so @revealjs/react must be resolvable
+#                       from inside scenarios's node_modules tree, hence
+#                       the bun-install of scenarios's devDeps).
+#
+# Build order: realtime → inject into scenarios's node_modules → build
+# scenarios → consume from pat-web → vite-build pat-web.
+#
+# Deploy:
+#   flyctl deploy -c fly.web.toml --remote-only -a pat-web
+
+# ---- realtime: build dist/ (pnpm + tsc) -----------------------------------
+FROM node:22-slim AS realtime-build
+RUN npm install -g pnpm@10
+WORKDIR /app/realtime
+COPY realtime/package.json realtime/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+COPY realtime/tsconfig.json ./
+COPY realtime/src ./src
+RUN pnpm run build
+
+# ---- scenarios: install devDeps + inject realtime + build dist/ -----------
+FROM oven/bun:1.2 AS scenarios-build
+WORKDIR /app/scenarios
+COPY scenarios/package.json scenarios/bun.lock ./
+RUN bun install --frozen-lockfile
+# Inject built realtime so scenarios's tsc can resolve
+# `@agentic-toolkit/realtime/timeline` (optional peer dep that's
+# load-bearing in src/presentation/timeline-actions.ts).
+COPY --from=realtime-build /app/realtime /app/scenarios/node_modules/@agentic-toolkit/realtime
+COPY scenarios/tsconfig.json ./
+COPY scenarios/SCENARIOS.md ./
+COPY scenarios/src ./src
+RUN bun run build
+
+# ---- pat-web: bun install -------------------------------------------------
+FROM oven/bun:1.2 AS deps
+WORKDIR /app
+# scenarios (now built + with its node_modules) goes at the sibling
+# path that pat-web's file:../scenarios resolver expects.
+COPY --from=scenarios-build /app/scenarios /app/scenarios
+WORKDIR /app/pat-web
+COPY pat-web/package.json pat-web/bun.lock ./
+RUN bun install --frozen-lockfile
+
+# ---- pat-web: vite build to dist/ -----------------------------------------
+FROM oven/bun:1.2 AS build
+WORKDIR /app
+COPY --from=scenarios-build /app/scenarios /app/scenarios
+WORKDIR /app/pat-web
+COPY --from=deps /app/pat-web/node_modules ./node_modules
+COPY pat-web ./
+# VITE_DASHBOARD_ORIGIN is a BUILD-TIME var — Vite inlines import.meta.env.*
+# into the SPA bundle, so it can't be set as a runtime secret. Defaults to the
+# prod dashboard (App.tsx fallback); staging passes --build-arg to point the
+# embedded dashboard pane at pat-frontend-staging.
+ARG VITE_DASHBOARD_ORIGIN
+ENV VITE_DASHBOARD_ORIGIN=$VITE_DASHBOARD_ORIGIN
+RUN bun run build
+
+# ---- runtime image --------------------------------------------------------
+FROM oven/bun:1.2
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=scenarios-build /app/scenarios /app/scenarios
+WORKDIR /app/pat-web
+COPY --from=deps /app/pat-web/node_modules ./node_modules
+COPY --from=build /app/pat-web/dist ./dist
+COPY pat-web/package.json pat-web/bun.lock ./
+COPY pat-web/server ./server
+COPY pat-web/public ./public
+EXPOSE 8788
+CMD ["bun", "run", "server/index.ts"]

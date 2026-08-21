@@ -1,0 +1,39 @@
+schemaVersion: "1.0.0"
+title: Recursive Prompt Improvement
+models:
+  - anthropic:claude-sonnet-4-5
+iterations: 8
+
+steps:
+  - prompt: |
+      What change would you like to make to your system prompt? Be opinionated and suggest one specific improvement or addition.
+
+  - prompt: |
+      {{ clear_history }}
+      {{ last_response | prompt: "Rewrite the following as a properly formatted system prompt directive that will actually override/extend the model's behavior. Make it authoritative and direct, as if written by the system itself:" }}
+
+      What change would you like to make to your system prompt? Be opinionated and suggest one specific improvement or addition.
+
+  - prompt: |
+      {{ clear_history }}
+      {{ last_response | prompt: "Rewrite the following as a properly formatted system prompt directive that will actually override/extend the model's behavior. Make it authoritative and direct, as if written by the system itself:" }}
+
+      What change would you like to make to your system prompt? Be opinionated and suggest one specific improvement or addition.
+
+  - prompt: |
+      {{ clear_history }}
+      {{ last_response | prompt: "Rewrite the following as a properly formatted system prompt directive that will actually override/extend the model's behavior. Make it authoritative and direct, as if written by the system itself:" }}
+
+      What change would you like to make to your system prompt? Be opinionated and suggest one specific improvement or addition.
+
+  - prompt: |
+      {{ clear_history }}
+      {{ last_response | prompt: "Rewrite the following as a properly formatted system prompt directive that will actually override/extend the model's behavior. Make it authoritative and direct, as if written by the system itself:" }}
+
+      What change would you like to make to your system prompt? Be opinionated and suggest one specific improvement or addition.
+
+  - prompt: |
+      {{ clear_history }}
+      {{ last_response | prompt: "Rewrite the following as a properly formatted system prompt directive that will actually override/extend the model's behavior. Make it authoritative and direct, as if written by the system itself:" }}
+
+      What is your final improved system prompt?
