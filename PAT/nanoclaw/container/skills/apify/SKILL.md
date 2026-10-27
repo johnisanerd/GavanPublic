@@ -15,7 +15,7 @@ Apify is exposed as a remote MCP server. The `mcp__apify__*` tools appear in you
 - **Search**: `apify/google-search-scraper`, `apify/bing-search-scraper`, `apify/duckduckgo-search-scraper`
 - **Sites**: `apify/website-content-crawler` (general purpose, well-tuned), `apify/rag-web-browser` (LLM-friendly summarizer)
 - **E-commerce**: `apify/amazon-product-scraper`, `apify/aliexpress-scraper`, the eBay / Walmart / Etsy family
-- **Specialty**: `apify/google-maps-scraper`, `apify/booking-scraper`, `apify/linkedin-jobs-scraper`, `lukaskrivka/google-trends`, `apify/twitter-following-scraper`
+- **Specialty**: `johnvc/google-maps-places-api`, `apify/booking-scraper`, `apify/linkedin-jobs-scraper`, `lukaskrivka/google-trends`, `apify/twitter-following-scraper`
 
 …and a long tail. **Browse the Actor library before settling on a generic scraper** — there's almost always a purpose-built one.
 
